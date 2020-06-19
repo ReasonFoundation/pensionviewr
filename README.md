@@ -1,11 +1,11 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# PensionDataViewer
+# pensionviewr
 
-The goal of `PensionDataViewer` is to simplify the process of gathering and
+The goal of `pensionviewr` is to simplify the process of gathering and
 visualizing public pension plan data from the Reason pension database.
-This repo contains the functions of the `PensionDataViewer` package, which
+This repo contains the functions of the `pensionviewr` package, which
 once installed locally, provides helpful functions for creating and
 exporting graphics made in ggplot in the style used by the Reason
 Pension Integrity Project team.
@@ -14,6 +14,9 @@ Pension Integrity Project team.
 
 `pensionviewr` is not on CRAN, so you will have to install it directly
 from Github using `devtools`.
+
+For that you'd want to create a Token:
+https://happygitwithr.com/github-pat.html
 
 If you do not have the `devtools` package installed, you will have to
 run the first line in the code below as well.
