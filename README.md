@@ -13,13 +13,14 @@ Pension Integrity Project team.
 ## Create Token:
 To use devtools you'd need to authenticate yourself by
 creating Personal Access Tokens (PAT):
- - [1] Obtain a PAT by typing `usethis::browse_github_pat()`.
+
+ - Obtain a PAT by typing `usethis::browse_github_pat()`.
 Click "Generate token" and Copy to Clipboard the displayed string of 40 letter/digits.
- - [2] Find your .Renviron in your home directory by typing:
+ - Find your .Renviron in your home directory by typing:
 `usethis::edit_r_environ()`
- - [3] Put your PAT in your .Renviron file. Have a line that looks like this:
+ - Put your PAT in your .Renviron file. Have a line that looks like this:
 `GITHUB_PAT=8c70fd8419398999c9ac5bacf3192882193cadf2` (but use your own PAT instead)
- - [4] Save .Renviron file & restart R
+ - Lastly, save edited .Renviron file & restart R
 
 ## Installing pensionviewr
 
