@@ -1,11 +1,11 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# pensionviewr
+# PensionDataViewer
 
-The goal of `pensionviewr` is to simplify the process of gathering and
+The goal of `PensionDataViewer` is to simplify the process of gathering and
 visualizing public pension plan data from the Reason pension database.
-This repo contains the functions of the `pensionviewr` package, which
+This repo contains the functions of the `PensionDataViewer` package, which
 once installed locally, provides helpful functions for creating and
 exporting graphics made in ggplot in the style used by the Reason
 Pension Integrity Project team.
