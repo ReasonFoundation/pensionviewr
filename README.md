@@ -21,7 +21,7 @@ Click "Generate token" and Copy to Clipboard the displayed string of 40 letter/d
  - Put your PAT in your .Renviron file. Have a line that looks like this:
 `GITHUB_PAT=8c70fd8419398999c9ac5bacf3192882193cadf2` (but use your own PAT instead)
  - Save edited .Renviron file, and
- - Lastly, restart R & check your PAT:
+ - Lastly, restart R & check your PAT by:
 `Sys.getenv("GITHUB_PAT")`
 
 ## Installing pensionviewr
