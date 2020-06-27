@@ -32,3 +32,5 @@ Imports:
 URL: http://github.com/ReasonFoundation/pensionviewr
 BugReports: http://github.com/ReasonFoundation/pensionviewr/issues
 RoxygenNote: 7.1.0
+Suggests: 
+    testthat

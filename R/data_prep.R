@@ -1,3 +1,5 @@
+devtools::test()
+
 #' Grab a list of the plans with their state from the Reason database.
 #'
 #' @return A dataframe containing the pension plan id, name, and state.
