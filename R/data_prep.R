@@ -16,7 +16,7 @@ planList <- function() {
     password = dw$password,
     sslmode = "require"
   )
-
+  
   # define the query to retrieve the plan list
   q1 <- "select plan.id,
   display_name,
@@ -27,7 +27,7 @@ planList <- function() {
   inner join state
   on government.state_id = state.id
   order by state.name"
-
+  
   # sends the query to the connection
   res <- RPostgres::dbSendQuery(con, q1)
   # fetches the results
@@ -64,25 +64,25 @@ pullSourceData <-
       password = dw$password,
       sslmode = "require"
     )
-  # define the query to retrieve the plan data
-  #Moved plan_id up to use it in the query below.
-  plan_id <- pl$id[pl$display_name == plan_name]
-  query <- paste("select * from pull_plan_data(",plan_id,")")
-  
-  result <- RPostgres::dbSendQuery(con, query)
-  #RPostgres::dbBind(result, list(1))
-  all_data <- RPostgres::dbFetch(result) %>%
-    janitor::clean_names()
-  RPostgres::dbClearResult(result)
-  RPostgres::dbDisconnect(con)
-  
-  all_data %>%
-    dplyr::group_by_at(dplyr::vars(-.data$attribute_value)) %>%  # group by everything other than the value column.
-    dplyr::mutate(row_id = 1:dplyr::n()) %>%
-    dplyr::ungroup() %>%  # build group index
-    tidyr::spread(.data$attribute_name, .data$attribute_value, convert = TRUE) %>%    # spread
-    dplyr::select(-.data$row_id) %>%  # drop the index
-    janitor::clean_names()
+    # define the query to retrieve the plan data
+    #Moved plan_id up to use it in the query below.
+    plan_id <- pl$id[pl$display_name == plan_name]
+    query <- paste("select * from pull_plan_data(",plan_id,")")
+    
+    result <- RPostgres::dbSendQuery(con, query)
+    #RPostgres::dbBind(result, list(1))
+    all_data <- RPostgres::dbFetch(result) %>%
+      janitor::clean_names()
+    RPostgres::dbClearResult(result)
+    RPostgres::dbDisconnect(con)
+    
+    all_data %>%
+      dplyr::group_by_at(dplyr::vars(-.data$attribute_value)) %>%  # group by everything other than the value column.
+      dplyr::mutate(row_id = 1:dplyr::n()) %>%
+      dplyr::ungroup() %>%  # build group index
+      tidyr::spread(.data$attribute_name, .data$attribute_value, convert = TRUE) %>%    # spread
+      dplyr::select(-.data$row_id) %>%  # drop the index
+      janitor::clean_names()
   }
 
 #' Pull the data for a specified plan from the Reason pension databse.
@@ -126,16 +126,16 @@ pullData <-
   inner join plan_master_attribute_names
   on plan_annual_master_attribute.master_attribute_id = plan_master_attribute_names.id
   where plan_id = $1"
-
+    
     plan_id <- pl$id[pl$display_name == plan_name]
-
+    
     result <- RPostgres::dbSendQuery(con, query)
     RPostgres::dbBind(result, list(plan_id))
     all_data <- RPostgres::dbFetch(result) %>%
       janitor::clean_names()
     RPostgres::dbClearResult(result)
     RPostgres::dbDisconnect(con)
-
+    
     all_data %>%
       dplyr::group_by_at(dplyr::vars(-.data$attribute_value)) %>%  # group by everything other than the value column.
       dplyr::mutate(row_id = 1:dplyr::n()) %>%
@@ -170,8 +170,8 @@ loadData <- function(filename) {
 #' }
 
 selectedData <- function(wide_data) {
-
-   wide_data %>%
+  
+  wide_data %>%
     dplyr::select(
       year,
       plan_name = display_name,
@@ -225,4 +225,3 @@ selectedData <- function(wide_data) {
       actual_contribution_rates = as.numeric(.data$er_contribution) / as.numeric(.data$payroll)
     )
 }
-
