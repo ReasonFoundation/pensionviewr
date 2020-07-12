@@ -52,6 +52,7 @@ planList <- function() {
 #' @examples
 #' \dontrun{
 #' pullSourceData(pl)
+devtools::test()
 #' pullSourceData(pl, "Kansas Public Employees' Retirement System")
 #' }
 pullSourceData <- 
@@ -227,3 +228,5 @@ selectedData <- function(wide_data) {
       actual_contribution_rates = as.numeric(.data$er_contribution) / as.numeric(.data$payroll)
     )
 }
+library(pensionviewr)
+devtools::test()
