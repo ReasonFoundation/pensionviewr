@@ -2,13 +2,14 @@
 #'
 #'Pulls each data point with all data sources this data point has
 #'
-#' @param plan_name 
+#' @param plan_name
 #'
 #' @return
 #' @export
 #'
 #' @examples
-#' pullSourceData(pl, "New Mexico Educational Retirement Board")
+#' pullSourceData("Employee Retirement System of Hawaii")
+
 pullSourceData <- function(plan_name){
   con <- RPostgres::dbConnect(
     RPostgres::Postgres(),
@@ -20,19 +21,23 @@ pullSourceData <- function(plan_name){
     sslmode = "require")
   # define the query to retrieve the plan data
   
-  if(str_count(plan_name)<6){
-    query <- paste("select * from pull_data_state_only()
-where year > '2001'
-and attribute_name in ('1 Year Investment Return Percentage',
-'1 Year Investment Return Percentage',
-'Investment Return Assumption for GASB Reporting',
-'Actuarially Accrued Liabilities Dollar',
-'Total Normal Cost Percentage',
-'Covered Payroll Dollar',
-'Payroll Growth Assumption',
-'Total Benefits Paid Dollar')")}else{
-  
   plan_id <- pl$id[pl$display_name == plan_name]
   query <- paste("select * from pull_plan_data(",plan_id,")")
-}
+
+###################
+
+result <- RPostgres::dbSendQuery(con, query)
+#RPostgres::dbBind(result, list(1))
+all_data <- RPostgres::dbFetch(result) %>%
+  janitor::clean_names()
+RPostgres::dbClearResult(result)
+RPostgres::dbDisconnect(con)
+
+all_data %>%
+  dplyr::group_by_at(dplyr::vars(-.data$attribute_value)) %>%  # group by everything other than the value column.
+  dplyr::mutate(row_id = 1:dplyr::n()) %>%
+  dplyr::ungroup() %>%  # build group index
+  tidyr::spread(.data$attribute_name, .data$attribute_value, convert = TRUE) %>%    # spread
+  dplyr::select(-.data$row_id) %>%  # drop the index
+  janitor::clean_names()
 }
