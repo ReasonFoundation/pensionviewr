@@ -1,4 +1,4 @@
-use_r("pullSourceData")pullSourceData <- 
+pullSourceData <- 
   function(pl, plan_name) {
     #dw <- get("dw")
     con <- RPostgres::dbConnect(
