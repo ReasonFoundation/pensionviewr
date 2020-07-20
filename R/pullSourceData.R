@@ -1,3 +1,14 @@
+#' Pull data sources
+#'
+#'Pulls each data point with all data sources this data point has
+#'
+#' @param plan_name 
+#'
+#' @return
+#' @export
+#'
+#' @examples
+#' pullSourceData(pl, "New Mexico Educational Retirement Board")
 pullSourceData <- function(plan_name){
   con <- RPostgres::dbConnect(
     RPostgres::Postgres(),
