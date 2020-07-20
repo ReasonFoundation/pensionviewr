@@ -1,14 +1,13 @@
-#' Pull data sources
+#' Pull source data
 #'
-#'Pulls each data point with all data sources this data point has
-#'
-#' @param plan_name
-#'
-#' @return
+#' @param plan_name A string enclosed in quotation marks containing a plan name as it is listed in the Reason pension database.
+#' @return A wide data frame with each year as a row and variables as columns.
 #' @export
-#'
+#' @importFrom rlang .data
 #' @examples
-#' pullSourceData("Employee Retirement System of Hawaii")
+#' \dontrun{
+#' #' pullSourceData("Employee Retirement System of Hawaii")
+#' }
 
 pullSourceData <- function(plan_name){
   con <- RPostgres::dbConnect(
@@ -23,21 +22,20 @@ pullSourceData <- function(plan_name){
   
   plan_id <- pl$id[pl$display_name == plan_name]
   query <- paste("select * from pull_plan_data(",plan_id,")")
-
-###################
-
-result <- RPostgres::dbSendQuery(con, query)
-#RPostgres::dbBind(result, list(1))
-all_data <- RPostgres::dbFetch(result) %>%
-  janitor::clean_names()
-RPostgres::dbClearResult(result)
-RPostgres::dbDisconnect(con)
-
-all_data %>%
-  dplyr::group_by_at(dplyr::vars(-.data$attribute_value)) %>%  # group by everything other than the value column.
-  dplyr::mutate(row_id = 1:dplyr::n()) %>%
-  dplyr::ungroup() %>%  # build group index
-  tidyr::spread(.data$attribute_name, .data$attribute_value, convert = TRUE) %>%    # spread
-  dplyr::select(-.data$row_id) %>%  # drop the index
-  janitor::clean_names()
+  ###################
+  
+  result <- RPostgres::dbSendQuery(con, query)
+  #RPostgres::dbBind(result, list(1))
+  all_data <- RPostgres::dbFetch(result) %>%
+    janitor::clean_names()
+  RPostgres::dbClearResult(result)
+  RPostgres::dbDisconnect(con)
+  
+  all_data %>%
+    dplyr::group_by_at(dplyr::vars(-.data$attribute_value)) %>%  # group by everything other than the value column.
+    dplyr::mutate(row_id = 1:dplyr::n()) %>%
+    dplyr::ungroup() %>%  # build group index
+    tidyr::spread(.data$attribute_name, .data$attribute_value, convert = TRUE) %>%    # spread
+    dplyr::select(-.data$row_id) %>%  # drop the index
+    janitor::clean_names()
 }
