@@ -16,7 +16,7 @@ pullSourceData(plan_name)
 %%     ~~Describe \code{plan_name} here~~
 }
 }
-\details{
+\details{s
 %%  ~~ If necessary, more details than the description above ~~
 }
 \value{
