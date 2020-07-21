@@ -1,16 +1,14 @@
 #' Pull source data
 #'
-#' @param pl A datafram containing the list of plan names, states, and ids in the form produced by the planList() function.
 #' @param plan_name A string enclosed in quotation marks containing a plan name as it is listed in the Reason pension database.
 #' @return A wide data frame with each year as a row and variables as columns.
 #' @export
 #' @importFrom rlang .data
 #' @examples
 #' \dontrun{
-#' pullSourceData(pl)
 #' pullSourceData(pl, "Kansas Public Employees' Retirement System")
 #' }
-pullSourceData <- function(pl, plan_name){
+pullSourceData <- function(plan_name){
   con <- RPostgres::dbConnect(
     RPostgres::Postgres(),
     dbname = "d629vjn37pbl3l",
