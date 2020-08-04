@@ -3,7 +3,7 @@ Type: Package
 Title: Tools for pension data loading and visualization
 Version: 0.1.1
 Authors@R: c(
-           person("Anil", "Niraula", email = "anil.niraula@reason.org", role = c("aut", "cre"),
+           person("Anil", "Niraula", email = "anil.niraula@reason.org", role = c("aut", "cre")),
            person("Andrew", "Abbott", email = "andrew.abbott@reason.org", role = c("aut", "cre")))
 Description: Tools for loading, saving and visualizing pension data from Reason's pension database or external file.
 License: CC0
