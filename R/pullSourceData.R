@@ -9,14 +9,16 @@
 #' pullSourceData(pl, "Kansas Public Employees' Retirement System")
 #' }
 pullSourceData <- function(plan_name){
+  #dw <- get("dw")
   con <- RPostgres::dbConnect(
     RPostgres::Postgres(),
-    dbname = "d629vjn37pbl3l",
-    host = "ec2-3-209-200-73.compute-1.amazonaws.com",
-    port = 5432,
-    user = "reason_readonly",
-    password = "p88088bd28ea68027ee96c65996f7ea3b56db0e27d7c9928c05edc6c23ef2bc27",
-    sslmode = "require")
+    dbname = trimws(dw$path),
+    host = dw$hostname,
+    port = dw$port,
+    user = dw$username,
+    password = dw$password,
+    sslmode = "require"
+  )
   # define the query to retrieve the plan data
   
   plan_id <- pl$id[pl$display_name == plan_name]
