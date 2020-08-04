@@ -1,4 +1,4 @@
-#' Data Filter
+#' Filter data
 #'devtools::document()
 #' @param Data 
 #' @param FY 
@@ -10,7 +10,7 @@
 #' \dontrun{
 #' DataFilter(Data, 2001)
 #' }
-filterData <- function(Data, FY){
+filter <- function(Data, FY){
   #Create vector with column names to generate NA columns later
   columns <- c("total_pension_liability_dollar", "wage_inflation",
                "payroll_growth_assumption", "other_contribution_dollar",
@@ -20,6 +20,7 @@ filterData <- function(Data, FY){
                "statutory_payment_percentage", "discount_rate_assumption", "cost_structure",
                "employer_normal_cost_percentage", "inflation_rate_assumption_for_gasb_reporting",
                "total_number_of_members", "total_projected_actuarial_required_contribution_percentage_of_payroll")
+  
   Data <- data.table(Data)
   Data <- data.table(Data %>%
                        filter(year > FY-1))
