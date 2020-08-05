@@ -20,7 +20,7 @@ filter <- function(data){
                "employer_normal_cost_percentage", "inflation_rate_assumption_for_gasb_reporting",
                "total_number_of_members", "total_projected_actuarial_required_contribution_percentage_of_payroll")
   
-  data <- setDT(data)
+  data <- data.table(data)
   ##Create columns that don't have any data
   for (i in (1:length(columns))){
     if(sum((colnames(data) == columns[i]))==0) {
