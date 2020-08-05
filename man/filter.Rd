@@ -19,6 +19,6 @@ devtools::document()
 }
 \examples{
 \dontrun{
-DataFilter(Data)
+filter(Data)
 }
 }
