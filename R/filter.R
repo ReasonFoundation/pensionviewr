@@ -7,7 +7,7 @@
 #' @importFrom rlang .data
 #' @examples
 #' \dontrun{
-#' DataFilter(Data)
+#' filter(Data)
 #' }
 filter <- function(Data){
   #Create vector with column names to generate NA columns later
