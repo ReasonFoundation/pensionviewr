@@ -10,7 +10,6 @@
 #' DataFilter(Data)
 #' }
 filter <- function(Data){
-  library(data.table)
   #Create vector with column names to generate NA columns later
   columns <- c("total_pension_liability_dollar", "wage_inflation",
                "payroll_growth_assumption", "other_contribution_dollar",
@@ -21,7 +20,7 @@ filter <- function(Data){
                "employer_normal_cost_percentage", "inflation_rate_assumption_for_gasb_reporting",
                "total_number_of_members", "total_projected_actuarial_required_contribution_percentage_of_payroll")
   
-  Data <- data.table(Data)
+  Data <- setDT(Data)
   ##Create columns that don't have any data
   for (i in (1:length(columns))){
     if(sum((colnames(Data) == columns[i]))==0) {
