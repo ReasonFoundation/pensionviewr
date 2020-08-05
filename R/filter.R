@@ -1,15 +1,15 @@
 #' Filter data
 #'devtools::document()
-#' @param Data data file (in data.frame/data.table format)
+#' @param data data file (in data.frame/data.table format)
 #' 
 #' @return A wide data frame with each year as a row and variables as columns.
 #' @export
 #' @importFrom rlang .data
 #' @examples
 #' \dontrun{
-#' filter(Data)
+#' filter(data)
 #' }
-filter <- function(Data){
+filter <- function(data){
   library(data.table)
   #Create vector with column names to generate NA columns later
   columns <- c("total_pension_liability_dollar", "wage_inflation",

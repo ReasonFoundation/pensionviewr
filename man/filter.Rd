@@ -5,10 +5,10 @@
 \title{Filter data
 devtools::document()}
 \usage{
-filter(Data)
+filter(data)
 }
 \arguments{
-\item{Data}{data file (in data.frame/data.table format)}
+\item{data}{data file (in data.frame/data.table format)}
 }
 \value{
 A wide data frame with each year as a row and variables as columns.
@@ -19,6 +19,6 @@ devtools::document()
 }
 \examples{
 \dontrun{
-filter(Data)
+filter(data)
 }
 }
