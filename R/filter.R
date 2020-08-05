@@ -35,6 +35,7 @@ filter <- function(data){
   ####
   data <- data %>%
     select(
+      -plan_id,
       year,
       plan_name = display_name,
       state,
@@ -80,4 +81,5 @@ filter <- function(data){
       unfunded_actuarially_accrued_liabilities_dollar,
       wage_inflation
     )
+  data <- data %>% arrange(state, plan_name, year)
 }
