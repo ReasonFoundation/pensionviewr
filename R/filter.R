@@ -20,18 +20,18 @@ filter <- function(data){
                "employer_normal_cost_percentage", "inflation_rate_assumption_for_gasb_reporting",
                "total_number_of_members", "total_projected_actuarial_required_contribution_percentage_of_payroll")
   
-  Data <- setDT(Data)
+  data <- setDT(data)
   ##Create columns that don't have any data
   for (i in (1:length(columns))){
-    if(sum((colnames(Data) == columns[i]))==0) {
-      Data[,columns[i] := NA]}
+    if(sum((colnames(data) == columns[i]))==0) {
+      data[,columns[i] := NA]}
   }
-  Data <- data.table(Data)
+  data <- data.table(data)
   
-  Data$discount_rate_assumption <- ifelse(is.na(Data$discount_rate_assumption),
-                                          Data$investment_return_assumption_for_gasb_reporting,Data$discount_rate_assumption)
+  data$discount_rate_assumption <- ifelse(is.na(data$discount_rate_assumption),
+  data$investment_return_assumption_for_gasb_reporting,data$discount_rate_assumption)
   ####
-  Data <- Data %>%
+  data <- data %>%
     select(
       year,
       plan_name = display_name,
