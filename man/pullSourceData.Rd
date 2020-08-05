@@ -4,9 +4,11 @@
 \alias{pullSourceData}
 \title{Pull source data}
 \usage{
-pullSourceData(plan_name)
+pullSourceData(pl, plan_name)
 }
 \arguments{
+\item{pl}{A datafram containing the list of plan names, states, and ids in the form produced by the planList() function.}
+
 \item{plan_name}{A string enclosed in quotation marks containing a plan name as it is listed in the Reason pension database.}
 }
 \value{
@@ -17,6 +19,7 @@ Pull source data
 }
 \examples{
 \dontrun{
+pullData(pl)
 pullSourceData(pl, "Kansas Public Employees' Retirement System")
 }
 }

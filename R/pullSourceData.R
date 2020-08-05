@@ -1,14 +1,16 @@
 #' Pull source data
 #'
 #' @param plan_name A string enclosed in quotation marks containing a plan name as it is listed in the Reason pension database.
+#' @param pl A datafram containing the list of plan names, states, and ids in the form produced by the planList() function.
 #' @return A wide data frame with each year as a row and variables as columns.
 #' @export
 #' @importFrom rlang .data
 #' @examples
 #' \dontrun{
+#' pullData(pl)
 #' pullSourceData(pl, "Kansas Public Employees' Retirement System")
 #' }
-pullSourceData <- function(plan_name){
+pullSourceData <- function(pl, plan_name){
   #dw <- get("dw")
   con <- RPostgres::dbConnect(
     RPostgres::Postgres(),
@@ -20,10 +22,9 @@ pullSourceData <- function(plan_name){
     sslmode = "require"
   )
   # define the query to retrieve the plan data
-  
   plan_id <- pl$id[pl$display_name == plan_name]
   query <- paste("select * from pull_plan_data(",plan_id,")")
-  ###################
+  #paste0("select * from pull_plan_data('", str_replace(plan_name,"'", "''"), "')")
   
   result <- RPostgres::dbSendQuery(con, query)
   #RPostgres::dbBind(result, list(1))
@@ -39,4 +40,4 @@ pullSourceData <- function(plan_name){
     tidyr::spread(.data$attribute_name, .data$attribute_value, convert = TRUE) %>%    # spread
     dplyr::select(-.data$row_id) %>%  # drop the index
     janitor::clean_names()
-}
+  }
