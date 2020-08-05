@@ -10,6 +10,7 @@
 #' DataFilter(Data)
 #' }
 filter <- function(Data){
+  library(data.table)
   #Create vector with column names to generate NA columns later
   columns <- c("total_pension_liability_dollar", "wage_inflation",
                "payroll_growth_assumption", "other_contribution_dollar",
