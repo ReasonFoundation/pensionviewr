@@ -8,7 +8,7 @@ devtools::document()}
 filter(Data)
 }
 \arguments{
-\item{Data}{}
+\item{Data}{data file (in data.frame/data.table format)}
 }
 \value{
 A wide data frame with each year as a row and variables as columns.
