@@ -21,7 +21,7 @@ filter <- function(data){
                "total_number_of_members", "total_projected_actuarial_required_contribution_percentage_of_payroll")
   
   data <- data.table(data)
-  is.data.table(x) == TRUE
+  is.data.table(data) == TRUE
   ##Create columns that don't have any data
   for (i in (1:length(columns))){
     if(sum((colnames(data) == columns[i]))==0) {
