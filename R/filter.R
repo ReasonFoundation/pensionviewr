@@ -22,6 +22,7 @@ filter <- function(data){
   
   data <- data.table(data)
   is.data.table(data) == TRUE
+  data <- data.table(data)
   ##Create columns that don't have any data
   for (i in (1:length(columns))){
     if(sum((colnames(data) == columns[i]))==0) {
