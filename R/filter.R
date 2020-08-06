@@ -19,28 +19,29 @@ filter <- function(data, source = FALSE){
                "fiscal_year_of_contribution", "statutory_payment_dollar",
                "statutory_payment_percentage", "discount_rate_assumption", "cost_structure",
                "employer_normal_cost_percentage", "inflation_rate_assumption_for_gasb_reporting",
-               "total_number_of_members", "total_projected_actuarial_required_contribution_percentage_of_payroll")
+               "total_number_of_members", "total_projected_actuarial_required_contribution_percentage_of_payroll"
+               )
   
-  data <- data.table(data)
-  is.data.table(data) == TRUE
   data <- data.table(data)
   ##Create columns that don't have any data
   for (i in (1:length(columns))){
     if(sum((colnames(data) == columns[i]))==0) {
       data[,columns[i] := NA]}
   }
-  data <- data.table(data)
+
+  data <- if(is.data.table(data) == TRUE){data}else{data.table(data)}
   
   data$discount_rate_assumption <- ifelse(is.na(data$discount_rate_assumption),
-  data$investment_return_assumption_for_gasb_reporting,data$discount_rate_assumption)
+          data$investment_return_assumption_for_gasb_reporting,data$discount_rate_assumption)
   ####
+  
+  data <- data %>% arrange(state, display_name, year)
   data <- data %>%
     select(
-      -plan_id,
       year,
       plan_name = display_name,
       state,
-      if(isTRUE(source)){data_source_name},
+      if(isTRUE(source)){"data_source_name"},
       return_1yr = x1_year_investment_return_percentage,
       actuarial_cost_method_in_gasb_reporting,
       funded_ratio = actuarial_funded_ratio_percentage,
@@ -81,6 +82,5 @@ filter <- function(data, source = FALSE){
       type_of_employees_covered,
       unfunded_actuarially_accrued_liabilities_dollar,
       wage_inflation
-    )
-  data <- data %>% arrange(state, plan_name, year)
+    ) 
 }
