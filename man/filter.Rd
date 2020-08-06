@@ -9,6 +9,8 @@ filter(data, source = FALSE)
 }
 \arguments{
 \item{data}{data file (in data.frame/data.table format)}
+
+\item{source}{TRUE/FALSE statement to indicate if "source data" is used}
 }
 \value{
 A wide data frame with each year as a row and variables as columns.
@@ -19,6 +21,6 @@ devtools::document()
 }
 \examples{
 \dontrun{
-filter(data)
+filter(data, source = FALSE)
 }
 }

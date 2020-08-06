@@ -1,13 +1,14 @@
 #' Filter data
 #'devtools::document()
 #' @param data data file (in data.frame/data.table format)
+#' @param source TRUE/FALSE statement to indicate if "source data" is used
 #' 
 #' @return A wide data frame with each year as a row and variables as columns.
 #' @export
 #' @importFrom rlang .data
 #' @examples
 #' \dontrun{
-#' filter(data)
+#' filter(data, source = FALSE)
 #' }
 filter <- function(data, source = FALSE){
   #Create vector with column names to generate NA columns later
