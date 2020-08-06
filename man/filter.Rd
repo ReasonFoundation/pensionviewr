@@ -5,7 +5,7 @@
 \title{Filter data
 devtools::document()}
 \usage{
-filter(data)
+filter(data, source = FALSE)
 }
 \arguments{
 \item{data}{data file (in data.frame/data.table format)}

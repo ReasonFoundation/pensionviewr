@@ -9,7 +9,7 @@
 #' \dontrun{
 #' filter(data)
 #' }
-filter <- function(data){
+filter <- function(data, source = FALSE){
   #Create vector with column names to generate NA columns later
   columns <- c("total_pension_liability_dollar", "wage_inflation",
                "payroll_growth_assumption", "other_contribution_dollar",
@@ -39,7 +39,7 @@ filter <- function(data){
       year,
       plan_name = display_name,
       state,
-      #data_source_name,#Added
+      if(isTRUE(source)){data_source_name},
       return_1yr = x1_year_investment_return_percentage,
       actuarial_cost_method_in_gasb_reporting,
       funded_ratio = actuarial_funded_ratio_percentage,
