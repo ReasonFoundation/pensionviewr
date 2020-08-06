@@ -28,10 +28,6 @@ filter <- function(data, source = FALSE){
     if(sum((colnames(data) == columns[i]))==0) {
       data[,columns[i] := NA]}
   }
-
-  #Populate missing discount_rate_assumption columns with return assumption values
-  data$discount_rate_assumption <- ifelse(is.na(data$discount_rate_assumption),
-  data$investment_return_assumption_for_gasb_reporting,data$discount_rate_assumption)
   ####
   
   data <- data %>% arrange(state, display_name, year)
