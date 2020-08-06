@@ -22,14 +22,14 @@ filter <- function(data, source = FALSE){
                "total_number_of_members", "total_projected_actuarial_required_contribution_percentage_of_payroll"
                )
   #Transform to data.table
-  data <- if(is.data.table(data) == TRUE){data}else{data.table(data)}
+  data <- if(is.data.table(data) == TRUE){data}else{as.data.table(data, keep.rownames=TRUE)}
   ##Create columns that don't have any data
   for (i in (1:length(columns))){
     if(sum((colnames(data) == columns[i]))==0) {
+      data <- if(is.data.table(data) == TRUE){data}else{as.data.table(data, keep.rownames=TRUE)}
       data[,columns[i] := NA]}
   }
   ####
-  
   data <- data %>% arrange(state, display_name, year)
   data <- data %>%
     select(
