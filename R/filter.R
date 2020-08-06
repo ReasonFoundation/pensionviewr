@@ -21,18 +21,17 @@ filter <- function(data, source = FALSE){
                "employer_normal_cost_percentage", "inflation_rate_assumption_for_gasb_reporting",
                "total_number_of_members", "total_projected_actuarial_required_contribution_percentage_of_payroll"
                )
-  
-  data <- data.table(data)
+  #Transform to data.table
+  data <- if(is.data.table(data) == TRUE){data}else{data.table(data)}
   ##Create columns that don't have any data
   for (i in (1:length(columns))){
     if(sum((colnames(data) == columns[i]))==0) {
       data[,columns[i] := NA]}
   }
 
-  data <- if(is.data.table(data) == TRUE){data}else{data.table(data)}
-  
+  #Populate missing discount_rate_assumption columns with return assumption values
   data$discount_rate_assumption <- ifelse(is.na(data$discount_rate_assumption),
-          data$investment_return_assumption_for_gasb_reporting,data$discount_rate_assumption)
+  data$investment_return_assumption_for_gasb_reporting,data$discount_rate_assumption)
   ####
   
   data <- data %>% arrange(state, display_name, year)
