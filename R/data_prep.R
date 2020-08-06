@@ -103,7 +103,6 @@ pullData <-
       janitor::clean_names()
   }
 
-
 #' Load the data for a specified plan from an Excel file.
 #'
 #' @param filename A string enclosed in quotation marks containing a file name with path of a pension plan Excel data file.

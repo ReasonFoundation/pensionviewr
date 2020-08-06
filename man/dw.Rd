@@ -4,7 +4,9 @@
 \name{dw}
 \alias{dw}
 \title{Connection credientials.}
-\format{A list with 9 items.}
+\format{
+A list with 9 items.
+}
 \usage{
 dw
 }

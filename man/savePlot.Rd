@@ -4,8 +4,13 @@
 \alias{savePlot}
 \title{Add a source and save ggplot chart}
 \usage{
-savePlot(plot, source, save_filepath = file.path(Sys.getenv("TMPDIR"),
-  "tmp-nc.png"), width_pixels = 648, height_pixels = 384.48)
+savePlot(
+  plot,
+  source,
+  save_filepath = file.path(Sys.getenv("TMPDIR"), "tmp-nc.png"),
+  width_pixels = 648,
+  height_pixels = 384.48
+)
 }
 \arguments{
 \item{plot}{The variable name of the plot you have created that you want to format and save}
