@@ -23,21 +23,19 @@ filteredData <- function(Data,fy, source = FALSE){
              "inflation_rate_assumption_for_gasb_reporting", "total_number_of_members",
              "total_projected_actuarial_required_contribution_percentage_of_payroll")
 
-Plan <- data.table(Data)
 ##Create missing columns for plans with no data for st 7 variable
 for (i in (1:length(columns))){
-  if(sum((colnames(Plan) == columns[i]))==0) {
-    Plan[,columns[i] := NA]}
+  if(sum((colnames(Data) == columns[i]))==0) {
+    Data %>% mutate(columns[i])}
 }
 
-if(sum(is.na(Plan$discount_rate_assumption))==0){ 
-  Plan$discount_rate_assumption <- Plan$investment_return_assumption_for_gasb_reporting}
+if(sum(is.na(Data$discount_rate_assumption))==0){ 
+  Data$discount_rate_assumption <- Data$investment_return_assumption_for_gasb_reporting}
 ####
 
-Plan <- if(is.data.table(Plan) == TRUE){Plan}else{data.table(Plan)}
-Plan <- Plan %>%
+Data <- Data %>%
   filter(year > fy-1)
-Plan <- Plan %>%
+Data <- Data %>%
   select(
     year,
     plan_name = display_name,
