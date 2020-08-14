@@ -10,6 +10,8 @@ filterData(data, fy, source = FALSE)
 \arguments{
 \item{data}{data file (in data.frame/data.table format)}
 
+\item{fy}{starting fiscal year}
+
 \item{source}{TRUE/FALSE statement to indicate if "source data" is used}
 }
 \value{
@@ -21,6 +23,6 @@ devtools::document()
 }
 \examples{
 \dontrun{
-filter(data, source = FALSE)
+filter(data, 2001, source = FALSE)
 }
 }
