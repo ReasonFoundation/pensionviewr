@@ -26,6 +26,7 @@ filterData <- function(data, source = FALSE){
   ##Create columns that don't have any data
   for (i in (1:length(columns))){
     if(sum((colnames(data) == columns[i]))==0) {
+      data <- data.table(data)
       data[,columns[i] := NA]}
   }
   ####
