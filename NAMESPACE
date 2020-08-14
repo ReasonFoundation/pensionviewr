@@ -3,7 +3,6 @@
 export("%>%")
 export(debtPlot)
 export(debtTable)
-export(filter)
 export(filterData)
 export(glPlot)
 export(linePlot)
