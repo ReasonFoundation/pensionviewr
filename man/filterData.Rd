@@ -2,25 +2,25 @@
 % Please edit documentation in R/filterData.R
 \name{filterData}
 \alias{filterData}
-\title{FilterData filters data
+\title{filterData
 devtools::document()}
 \usage{
-filterData(data, source = FALSE)
+filterData(Data, fy, source = FALSE)
 }
 \arguments{
-\item{data}{data file (in data.frame/data.table format)}
-
 \item{source}{TRUE/FALSE statement to indicate if "source data" is used}
+
+\item{data}{data file (in data.frame/data.table format)}
 }
 \value{
 A wide data frame with each year as a row and variables as columns.
 }
 \description{
-FilterData filters data
+filterData
 devtools::document()
 }
 \examples{
 \dontrun{
-filter(data, source = FALSE)
+filter(data, 2001, source = FALSE)
 }
 }

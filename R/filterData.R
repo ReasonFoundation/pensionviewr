@@ -1,17 +1,20 @@
-#' FilterData filters data
+#' filterData
 #'devtools::document()
 #' @param data data file (in data.frame/data.table format)
 #' @param source TRUE/FALSE statement to indicate if "source data" is used
-#' 
+#' @param fy
 #' @return A wide data frame with each year as a row and variables as columns.
 #' @export
 #' @importFrom rlang .data
 #' @examples
 #' \dontrun{
-#' filter(data, source = FALSE)
+#' filter(data, 2001, source = FALSE)
 #' }
-filterData <- function(data, source = FALSE){
+filterData <- function(Data, fy, source = FALSE){
   #Create vector with column names to generate NA columns later
+  Data <- data.frame(Data)
+  
+  
   columns <- c("total_pension_liability_dollar", "wage_inflation",
                "payroll_growth_assumption", "other_contribution_dollar",
                "other_additions_dollar", "x1_year_investment_return_percentage",
@@ -20,18 +23,21 @@ filterData <- function(data, source = FALSE){
                "statutory_payment_percentage", "discount_rate_assumption", "cost_structure",
                "employer_normal_cost_percentage", "inflation_rate_assumption_for_gasb_reporting",
                "total_number_of_members", "total_projected_actuarial_required_contribution_percentage_of_payroll"
-               )
-  #Transform to data.table
-  data <- setDT(data)
-  ##Create columns that don't have any data
+  )
+  
+  columns2 <- c("test")
   for (i in (1:length(columns))){
-    if(sum((colnames(data) == columns[i]))==0) {
-      data <- data.table(data)
-      data[,columns[i] := NA]}
+    if(sum(colnames(Data) %in% columns[i])==0) {
+      columns2 <- rbind(columns2, columns[i])}
   }
+  columns2 <- as.character(columns2 <- columns2[2:length(columns2)])
+  cols <- matrix(NA,length(Data[,1]),length(columns2))
+  colnames(cols) <- columns2
+  Data <- cbind(Data, cols)
+  
   ####
-  data <- data %>% arrange(state, display_name, year)
-  data <- data %>%
+  Data <- Data %>% arrange(state, display_name, year)
+  Data <- Data %>%
     select(
       year,
       plan_name = display_name,
@@ -78,4 +84,5 @@ filterData <- function(data, source = FALSE){
       unfunded_actuarially_accrued_liabilities_dollar,
       wage_inflation
     ) 
+  Data %>% filter(year >= fy)
 }
