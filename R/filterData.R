@@ -2,16 +2,15 @@
 #'devtools::document()
 #' @param data data file (in data.frame/data.table format)
 #' @param source TRUE/FALSE statement to indicate if "source data" is used
-#' @param fy starting fiscal year
 #' 
 #' @return A wide data frame with each year as a row and variables as columns.
 #' @export
 #' @importFrom rlang .data
 #' @examples
 #' \dontrun{
-#' filter(data, 2001, source = FALSE)
+#' filter(data, source = FALSE)
 #' }
-filterData <- function(data, fy, source = FALSE){
+filterData <- function(data, source = FALSE){
   #Create vector with column names to generate NA columns later
   columns <- c("total_pension_liability_dollar", "wage_inflation",
                "payroll_growth_assumption", "other_contribution_dollar",
@@ -78,5 +77,4 @@ filterData <- function(data, fy, source = FALSE){
       unfunded_actuarially_accrued_liabilities_dollar,
       wage_inflation
     ) 
-  data <- data %>% filter(year >= fy)
 }
