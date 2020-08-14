@@ -1,4 +1,4 @@
-#' Filter data
+#' FilterData filters data
 #'devtools::document()
 #' @param data data file (in data.frame/data.table format)
 #' @param source TRUE/FALSE statement to indicate if "source data" is used
@@ -10,7 +10,7 @@
 #' \dontrun{
 #' filter(data, source = FALSE)
 #' }
-filter <- function(data, fy, source = FALSE){
+filterData <- function(data, fy, source = FALSE){
   #Create vector with column names to generate NA columns later
   columns <- c("total_pension_liability_dollar", "wage_inflation",
                "payroll_growth_assumption", "other_contribution_dollar",
