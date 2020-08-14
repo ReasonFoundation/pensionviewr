@@ -2,7 +2,7 @@
 #'devtools::document()
 #' @param Data data file (in data.frame/data.table format)
 #' @param source TRUE/FALSE statement to indicate if "source data" is used
-#' @param fy
+#' @param fy starting year
 #' @return A wide data frame with each year as a row and variables as columns.
 #' @export
 #' @importFrom rlang .data

@@ -10,6 +10,8 @@ filterData(Data, fy, source = FALSE)
 \arguments{
 \item{Data}{data file (in data.frame/data.table format)}
 
+\item{fy}{starting year}
+
 \item{source}{TRUE/FALSE statement to indicate if "source data" is used}
 }
 \value{
