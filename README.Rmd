@@ -95,7 +95,7 @@ vtsrs_data %>%
   kable() %>%
   kable_styling(full_width = FALSE, position = "left")
 ```
-### `pullData()`
+### `pullStateData()`
 
 3. `pullStateData()`: pulls all state-level pension data in wide format from the Reason pension database. `pullStateData` has single argument:
 `pullStateData(FY)`
@@ -126,7 +126,7 @@ Example how this function is used:
 Kansas.source <- pullSourceData(pl, "Kansas Public Employees' Retirement System", 2001)
 View(Kansas.source[1:8, 1:8])
 ```
-### `pullSourceData()`
+### `filterData()`
 
 5. `filterData()`: filters existing data (data.frame/data.table format) keeping & renaming set of commonly used variables in pension analysis. `filterData` has 3 arguments:
 
