@@ -1713,9 +1713,9 @@ vtsrs_data %>%
 ### `pullStateData()`
 
 3. `pullStateData()`: pulls all state-level pension data in wide format from the Reason pension database. `pullStateData` has single argument:
-`pullStateData(FY)`
+`pullStateData(fy)`
 
-* `FY`: Starting fiscal year for the data pulled from the Reason pension database.
+* `fy`: Starting fiscal year for the data pulled from the Reason pension database.
 
 This could be the initial step for either making state-level pension analysis or then filter pulled data for a specific state plan.
 Example of how it is used in a standard workflow:
@@ -3513,6 +3513,7 @@ Kansas.source %>%
   </tr>
 </tbody>
 </table>
+
 ### `filterData()`
 
 5. `filterData()`: filters existing data (data.frame/data.table format) keeping & renaming set of commonly used variables in pension analysis. `filterData(Data, fy, source = FALSE)` has 3 arguments:
@@ -3854,6 +3855,7 @@ filtered %>%
   </tr>
 </tbody>
 </table>
+
 ### `loadData`
 
 6. `loadData`: loads the data for a specified plan from an Excel file. `loadData` has one argument:
