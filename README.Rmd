@@ -85,7 +85,7 @@ pl %>%
 2. `pullData()`:  pulls the data for a specified plan from the Reason pension database. `pullData` has two arguments:
 `pullData(pl, plan_name)`
 
-* `pl`: A datafram containing the list of plan names, states, and ids in the form produced by the `planList()` function.
+* `pl`: A dataframe containing the list of plan names, states, and ids in the form produced by the `planList()` function.
 * `plan_name`: A string enclosed in quotation marks containing a plan name as it is listed in the Reason pension database.
 
 Example of how it is used in a standard workflow:
@@ -124,6 +124,7 @@ state.data <- pullStateData(2001)
 Kansas.data <- state.data %>% filter(state == 'Kansas')
 Kansas.PERS.data <- state.data %>% filter(display_name == "Kansas Public Employees' Retirement System")
 state.data %>% 
+  filter(unique(display_name)) %>%
   head() %>%
   kable() %>%
   kable_styling(full_width = FALSE, position = "left")
