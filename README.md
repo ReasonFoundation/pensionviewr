@@ -2,7 +2,7 @@
 output: github_document
 always_allow_html: yes
 ---
-knitr::knit("README.Rmd")
+
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 
@@ -28,7 +28,7 @@ The package has seven functions for data pulling and preparation:
 `planList()`, 
 `pullData()`, 
 `pullStateData()`,
-`pullSourceData()`.
+`pullSourceData()`,
 `filterData()`,
 `loadData()`, and 
 `selectedData()`.
@@ -1724,7 +1724,7 @@ Example of how it is used in a standard workflow:
 ```r
 state.data <- pullStateData(2001)
 Kansas.data <- state.data %>% filter(state == 'Kansas')
-Kansas.PERS.data <- state.data %>% filter(state == "Kansas Public Employees' Retirement System")
+Kansas.PERS.data <- state.data %>% filter(display_name == "Kansas Public Employees' Retirement System")
 state.data %>% 
   head() %>%
   kable() %>%
@@ -2020,7 +2020,7 @@ state.data %>%
 
 ### `pullSourceData()`
 
-4. `pullSourceData()`: pulls pension data for a specific plan, along with `data_source_name` column in wide format from the Reason pension database. `pullSourceData` has 3 arguments:
+4. `pullSourceData()`: pulls pension data for a specific plan, along with `data_source_name` column in wide format from the Reason pension database. `pullSourceData(pl,plan_name, fy)` has 3 arguments:
 
 * `pl`: A dataf ram containing the list of plan names, states, and ids in the form produced by the `planList()` function.
 * `plan_name`: A string enclosed in quotation marks containing a plan name as it is listed in the Reason pension database.
@@ -3515,7 +3515,7 @@ Kansas.source %>%
 </table>
 ### `filterData()`
 
-5. `filterData()`: filters existing data (data.frame/data.table format) keeping & renaming set of commonly used variables in pension analysis. `filterData` has 3 arguments:
+5. `filterData()`: filters existing data (data.frame/data.table format) keeping & renaming set of commonly used variables in pension analysis. `filterData(Data, fy, source = FALSE)` has 3 arguments:
 
 * `Data`: A data table already pulled with `pullData`, `pullStateData`, or other ways. 
 * `fy`: Starting fiscal year for the data pulled from the Reason pension database.
