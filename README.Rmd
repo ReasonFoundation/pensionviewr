@@ -95,6 +95,7 @@ vtsrs_data %>%
   kable() %>%
   kable_styling(full_width = FALSE, position = "left")
 ```
+
 ### `pullStateData()`
 
 3. `pullStateData()`: pulls all state-level pension data in wide format from the Reason pension database. `pullStateData` has single argument:
@@ -102,14 +103,17 @@ vtsrs_data %>%
 
 * `FY`: Starting fiscal year for the data pulled from the Reason pension database.
 
-This couls be the initial step for either making state-level pension analysis or then filter pulled data for a specific state plan.
+This could be the initial step for either making state-level pension analysis or then filter pulled data for a specific state plan.
 Example of how it is used in a standard workflow:
 
 ```{r pullStateData}
 state.data <- pullStateData(2001)
 Kansas.data <- state.data %>% filter(state == 'Kansas')
 Kansas.PERS.data <- state.data %>% filter(state == "Kansas Public Employees' Retirement System")
-View(state.data[1:8,1:8])
+state.data %>% 
+  head() %>%
+  kable() %>%
+  kable_styling(full_width = FALSE, position = "left")
 ```
 
 ### `pullSourceData()`
@@ -124,7 +128,10 @@ Example how this function is used:
 
 ```{r pullSourceData}
 Kansas.source <- pullSourceData(pl, "Kansas Public Employees' Retirement System", 2001)
-View(Kansas.source[1:8, 1:8])
+Kansas.source %>% 
+  head() %>%
+  kable() %>%
+  kable_styling(full_width = FALSE, position = "left")
 ```
 ### `filterData()`
 
@@ -139,7 +146,10 @@ Example of the workflow around the filtering function:
 ```{r filterData}
 state.data <- pullStateData(2001)
 filtered <- filterData(state.data, 2010, FALSE)
-View(state.data[1:8,1:8])
+filtered %>% 
+  head() %>%
+  kable() %>%
+  kable_styling(full_width = FALSE, position = "left")
 ```
 ### `loadData`
 
