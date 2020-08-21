@@ -2,7 +2,7 @@
 output: github_document
 always_allow_html: yes
 ---
-
+knitr::knit("README.Rmd")
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 ```{r setup, include = FALSE}
@@ -23,6 +23,19 @@ library(reasontheme)
 
 The goal of `pensionviewr` is to simplify the process of gathering and visualizing public pension plan data from the Reason pension database. This repo contains the functions of the `pensionviewr` package, which once installed locally, provides helpful functions for creating and exporting graphics made in ggplot in the style used by the Reason Pension Integrity Project team.
 
+## Create Token:
+To use devtools you'd need to authenticate yourself by
+creating Personal Access Tokens (PAT):
+
+  - Obtain a PAT by typing `usethis::browse_github_pat()`.
+Click "Generate token" and Copy to Clipboard the displayed string of 40 letters/digits.
+  - Find your .Renviron in your home directory by typing:
+`usethis::edit_r_environ()`
+  - Put your PAT in your .Renviron file. Have a line that looks like this:
+`GITHUB_PAT=8c70fd8419398999c9ac5bacf3192882193cadf2` (but use your own PAT instead)
+  - Save edited .Renviron file, and
+  - Lastly, restart R & check your PAT by typing:
+`Sys.getenv("GITHUB_PAT")`
 ## Installing pensionviewr
 
 `pensionviewr` is not on CRAN, so you will have to install it directly from Github using `devtools`. 
@@ -36,9 +49,12 @@ devtools::install_github("ReasonFoundation/pensionviewr")
 
 ## Using the functions:
 
-The package has four functions for data pulling and preparation: 
+The package has seven functions for data pulling and preparation: 
 `planList()`, 
 `pullData()`, 
+`pullStateData()`,
+`pullSourceData()`,
+`filterData()`,
 `loadData()`, and 
 `selectedData()`.
 
@@ -66,10 +82,10 @@ pl %>%
 
 ### `pullData()`
 
-2. `pullData()`:  pulls the data for a specified plan from the Reason pension databse. `pullData` has two arguments:
+2. `pullData()`:  pulls the data for a specified plan from the Reason pension database. `pullData` has two arguments:
 `pullData(pl, plan_name)`
 
-* `pl`: A datafram containing the list of plan names, states, and ids in the form produced by the `planList()` function.
+* `pl`: A dataframe containing the list of plan names, states, and ids in the form produced by the `planList()` function.
 * `plan_name`: A string enclosed in quotation marks containing a plan name as it is listed in the Reason pension database.
 
 Example of how it is used in a standard workflow:
@@ -93,9 +109,67 @@ vtsrs_data %>%
   kable_styling(full_width = FALSE, position = "left")
 ```
 
+### `pullStateData()`
+
+3. `pullStateData()`: pulls all state-level pension data in wide format from the Reason pension database. `pullStateData` has single argument:
+`pullStateData(fy)`
+
+* `fy`: Starting fiscal year for the data pulled from the Reason pension database.
+
+This could be the initial step for either making state-level pension analysis or then filter pulled data for a specific state plan.
+Example of how it is used in a standard workflow:
+
+```{r pullStateData}
+state.data <- pullStateData(2001)
+New_Mexico.data <- state.data %>% filter(state == 'New Mexico')
+NMERB.data <- state.data %>% filter(display_name == "New Mexico Educational Retirement Board")
+state.data <- state.data %>% filter(year == 2019)#filter for 2019 for display
+state.data %>% 
+  head() %>%
+  kable() %>%
+  kable_styling(full_width = FALSE, position = "left")
+```
+
+### `pullSourceData()`
+
+4. `pullSourceData()`: pulls pension data for a specific plan, along with `data_source_name` column in wide format from the Reason pension database. `pullSourceData(pl,plan_name, fy)` has 3 arguments:
+
+* `pl`: A dataf ram containing the list of plan names, states, and ids in the form produced by the `planList()` function.
+* `plan_name`: A string enclosed in quotation marks containing a plan name as it is listed in the Reason pension database.
+* `fy`: Starting fiscal year for the data pulled from the Reason pension database.
+
+Example how this function is used:
+
+```{r pullSourceData}
+NMERB.source <- pullSourceData(pl, "New Mexico Educational Retirement Board", 2001)
+NMERB.source %>% 
+  head() %>%
+  kable() %>%
+  kable_styling(full_width = FALSE, position = "left")
+```
+
+### `filterData()`
+
+5. `filterData()`: filters existing data (data.frame/data.table format) keeping & renaming set of commonly used variables in pension analysis. `filterData(Data, fy, source = FALSE)` has 3 arguments:
+
+* `Data`: A data table already pulled with `pullData`, `pullStateData`, or other ways. 
+* `fy`: Starting fiscal year for the data pulled from the Reason pension database.
+* `source`: Set to `FALSE`. It should be set to `source = TRUE` if you filter data pulled with `pullSourceData` function.
+
+Example of the workflow around the filtering function:
+
+```{r filterData}
+state.data <- pullStateData(2001)
+filtered <- filterData(state.data, 2010, FALSE)
+filtered %>% 
+  head() %>%
+  kable() %>%
+  kable_styling(full_width = FALSE, position = "left")
+```
+
 ### `loadData`
 
-3. `loadData`: loads the data for a specified plan from an Excel file. `loadData` has one argument:
+6. `loadData`: loads the data for a specified plan from an Excel file. `loadData` has one argument:
 
 `loadData(file_name)`
 
@@ -107,7 +181,7 @@ data_from_file <- loadData('data/NorthCarolina_PensionDatabase_TSERS.xlsx')
 
 ### `selectedData()`
 
-4. `selectedData()`: selects the only the variables used in historical analyses. `selectedData` has one argument, `wide_data`, that is required:
+7. `selectedData()`: selects the only the variables used in historical analyses. `selectedData` has one argument, `wide_data`, that is required:
 
 `selectedData(wide_data)`
 
@@ -125,7 +199,7 @@ df %>%
 
 ### `glPlot()`
 
-5. `glPlot()`: creates the 'Gain/Loss' plot using a CSV file as an input. glPlot has two arguments:
+8. `glPlot()`: creates the 'Gain/Loss' plot using a CSV file as an input. glPlot has two arguments:
 
 `glPlot(filename, ylab_unit)`
 
@@ -141,7 +215,7 @@ glPlot(filename)
 
 ### `linePlot()`
 
-6. `linePlot()`: creates a plot comparing two variables, such as ADEC vs. Actual contributions. `linePlot()` has six arguments, with `data` being required:
+9. `linePlot()`: creates a plot comparing two variables, such as ADEC vs. Actual contributions. `linePlot()` has six arguments, with `data` being required:
 
 `linePlot(data, .var1, .var2, labelY, label1, label2)`
 
@@ -158,7 +232,7 @@ linePlot(df)
 
 ### `debtPlot()`
 
-8. `debtPlot()`: creates the "History of Volatile Solvency" or "Mountain of Debt" chart. `debtPlot` takes one argument:
+10. `debtPlot()`: creates the "History of Volatile Solvency" or "Mountain of Debt" chart. `debtPlot` takes one argument:
 
 `debtPlot(data)`
 
@@ -170,7 +244,7 @@ debtPlot(df)
 
 ### `savePlot()`
 
-9. `savePlot()`: adds a source and save ggplot chart. `savePlot` takes five arguments:
+11. `savePlot()`: adds a source and save ggplot chart. `savePlot` takes five arguments:
 `savePlot(plot = myplot, source = "The source for my data", save_filepath = "filename_that_my_plot_should_be_saved_to.png", width_pixels = 648, height_pixels = 384.48)`
 
 * `plot`: The variable name of the plot you have created that you want to format and save
