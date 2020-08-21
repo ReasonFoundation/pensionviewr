@@ -121,9 +121,8 @@ Example of how it is used in a standard workflow:
 
 ```{r pullStateData}
 state.data <- pullStateData(2001)
-state.data <- state.data %>% filter(unique(display_name))
-Kansas.data <- state.data %>% filter(state == 'Kansas')
-Kansas.PERS.data <- state.data %>% filter(display_name == "Kansas Public Employees' Retirement System")
+New_Mexico.data <- state.data %>% filter(state == 'New Mexico')
+NMERB.data <- state.data %>% filter(display_name == "New Mexico Educational Retirement Board")
 state.data <- state.data %>% filter(year == 2019)#filter for 2019 for display
 state.data %>% 
   head() %>%
@@ -142,8 +141,8 @@ state.data %>%
 Example how this function is used:
 
 ```{r pullSourceData}
-Kansas.source <- pullSourceData(pl, "Kansas Public Employees' Retirement System", 2001)
-Kansas.source %>% 
+NMERB.source <- pullSourceData(pl, "New Mexico Educational Retirement Board", 2001)
+NMERB.source %>% 
   head() %>%
   kable() %>%
   kable_styling(full_width = FALSE, position = "left")
