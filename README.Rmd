@@ -121,10 +121,11 @@ Example of how it is used in a standard workflow:
 
 ```{r pullStateData}
 state.data <- pullStateData(2001)
+state.data <- state.data %>% filter(unique(display_name))
 Kansas.data <- state.data %>% filter(state == 'Kansas')
 Kansas.PERS.data <- state.data %>% filter(display_name == "Kansas Public Employees' Retirement System")
+state.data <- state.data %>% filter(year == 2019)#filter for 2019 for display
 state.data %>% 
-  filter(unique(display_name)) %>%
   head() %>%
   kable() %>%
   kable_styling(full_width = FALSE, position = "left")

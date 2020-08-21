@@ -1736,17 +1736,305 @@ Example of how it is used in a standard workflow:
 
 ```r
 state.data <- pullStateData(2001)
-Kansas.data <- state.data %>% filter(state == 'Kansas')
-Kansas.PERS.data <- state.data %>% filter(display_name == "Kansas Public Employees' Retirement System")
-state.data %>% 
-  filter(unique(display_name)) %>%
-  head() %>%
-  kable() %>%
-  kable_styling(full_width = FALSE, position = "left")
+state.data <- state.data %>% filter(unique(display_name))
 #> Error: Problem with `filter()` input `..1`.
 #> x Input `..1` must be of size 2179 or 1, not size 117.
 #> ℹ Input `..1` is `unique(display_name)`.
+Kansas.data <- state.data %>% filter(state == 'Kansas')
+Kansas.PERS.data <- state.data %>% filter(display_name == "Kansas Public Employees' Retirement System")
+state.data <- state.data %>% filter(year == 2019)#filter for 2019 for display
+state.data %>% 
+  head() %>%
+  kable() %>%
+  kable_styling(full_width = FALSE, position = "left")
 ```
+
+<table class="table" style="width: auto !important; ">
+ <thead>
+  <tr>
+   <th style="text-align:left;"> year </th>
+   <th style="text-align:right;"> plan_id </th>
+   <th style="text-align:left;"> display_name </th>
+   <th style="text-align:left;"> state </th>
+   <th style="text-align:left;"> investment_return_assumption_for_gasb_reporting </th>
+   <th style="text-align:left;"> actuarial_funded_ratio_percentage </th>
+   <th style="text-align:left;"> actuarially_required_contribution_dollar </th>
+   <th style="text-align:left;"> total_amortization_payment_percentage </th>
+   <th style="text-align:left;"> administrative_expense_dollar </th>
+   <th style="text-align:left;"> x1_year_investment_return_percentage </th>
+   <th style="text-align:left;"> employer_state_contribution_dollar </th>
+   <th style="text-align:left;"> type_of_employees_covered </th>
+   <th style="text-align:left;"> covered_payroll_dollar </th>
+   <th style="text-align:left;"> actuarial_cost_method_in_gasb_reporting </th>
+   <th style="text-align:left;"> actuarially_accrued_liabilities_dollar </th>
+   <th style="text-align:left;"> number_of_years_remaining_on_amortization_schedule </th>
+   <th style="text-align:left;"> total_benefits_paid_dollar </th>
+   <th style="text-align:left;"> benefit_payments_dollar </th>
+   <th style="text-align:left;"> other_contribution_dollar </th>
+   <th style="text-align:left;"> employer_contribution_regular_dollar </th>
+   <th style="text-align:left;"> refunds_dollar </th>
+   <th style="text-align:left;"> total_normal_cost_percentage </th>
+   <th style="text-align:left;"> unfunded_actuarially_accrued_liabilities_dollar </th>
+   <th style="text-align:left;"> employee_normal_cost_percentage </th>
+   <th style="text-align:left;"> payroll_growth_assumption </th>
+   <th style="text-align:left;"> market_value_of_assets_dollar </th>
+   <th style="text-align:left;"> actuarially_required_contribution_paid_percentage </th>
+   <th style="text-align:left;"> actuarial_value_of_assets_gasb_dollar </th>
+   <th style="text-align:left;"> amortizaton_method </th>
+   <th style="text-align:left;"> total_contribution_dollar </th>
+   <th style="text-align:left;"> wage_inflation </th>
+   <th style="text-align:left;"> total_pension_liability_dollar </th>
+   <th style="text-align:left;"> employers_projected_actuarial_required_contribution_percentage_of_payroll </th>
+   <th style="text-align:left;"> statutory_payment_percentage </th>
+   <th style="text-align:left;"> employee_contribution_dollar </th>
+   <th style="text-align:left;"> statutory_payment_dollar </th>
+   <th style="text-align:left;"> discount_rate_assumption </th>
+   <th style="text-align:left;"> employer_normal_cost_dollar </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> 2019 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> Alabama Employees' Retirement System (ERS) </td>
+   <td style="text-align:left;"> Alabama </td>
+   <td style="text-align:left;"> 0.077 </td>
+   <td style="text-align:left;"> 0.687 </td>
+   <td style="text-align:left;"> 467553000 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> -12934000 </td>
+   <td style="text-align:left;"> 0.0278 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> Plan covers state and local employees </td>
+   <td style="text-align:left;"> 3789556000 </td>
+   <td style="text-align:left;"> Entry Age Normal </td>
+   <td style="text-align:left;"> 17829735000 </td>
+   <td style="text-align:left;"> 28.0 </td>
+   <td style="text-align:left;"> -1171825000 </td>
+   <td style="text-align:left;"> 1084915300 </td>
+   <td style="text-align:left;"> 4187000 </td>
+   <td style="text-align:left;"> 467553000 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> 5589138000 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> 12568473000 </td>
+   <td style="text-align:left;"> 1.0 </td>
+   <td style="text-align:left;"> 12240597000 </td>
+   <td style="text-align:left;"> Level Percent Closed </td>
+   <td style="text-align:left;"> 721993000 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> 18353891000 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> 250253000 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2019 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:left;"> Alabama Teachers' Retirement System (TRS) </td>
+   <td style="text-align:left;"> Alabama </td>
+   <td style="text-align:left;"> 0.077 </td>
+   <td style="text-align:left;"> 0.702 </td>
+   <td style="text-align:left;"> 869336000 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> -20583000 </td>
+   <td style="text-align:left;"> 0.0263 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> Plan covers teachers </td>
+   <td style="text-align:left;"> 7160923000 </td>
+   <td style="text-align:left;"> Entry Age Normal </td>
+   <td style="text-align:left;"> 35628398000 </td>
+   <td style="text-align:left;"> 28.0 </td>
+   <td style="text-align:left;"> -2290375000 </td>
+   <td style="text-align:left;"> 2191704800 </td>
+   <td style="text-align:left;"> 6234000 </td>
+   <td style="text-align:left;"> 869336000 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> 0.09866 </td>
+   <td style="text-align:left;"> 10621979000 </td>
+   <td style="text-align:left;"> 0.07137 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> 25619448000 </td>
+   <td style="text-align:left;"> 1.0 </td>
+   <td style="text-align:left;"> 25006419000 </td>
+   <td style="text-align:left;"> Level Percent Closed </td>
+   <td style="text-align:left;"> 1392245000 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> 36676350000 </td>
+   <td style="text-align:left;"> 0.12084 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> 516675000 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2019 </td>
+   <td style="text-align:right;"> 25 </td>
+   <td style="text-align:left;"> Alaska Public Employees Retirement System </td>
+   <td style="text-align:left;"> Alaska </td>
+   <td style="text-align:left;"> 0.0738 </td>
+   <td style="text-align:left;"> 0.646 </td>
+   <td style="text-align:left;"> 414243000 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> -7429000 </td>
+   <td style="text-align:left;"> 0.064 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> Plan covers state and local employees </td>
+   <td style="text-align:left;"> 1049152000 </td>
+   <td style="text-align:left;"> Entry Age Normal </td>
+   <td style="text-align:left;"> 14606033000 </td>
+   <td style="text-align:left;"> 25.0 </td>
+   <td style="text-align:left;"> -837381000 </td>
+   <td style="text-align:left;"> 822390940 </td>
+   <td style="text-align:left;"> 0 </td>
+   <td style="text-align:left;"> 350601000 </td>
+   <td style="text-align:left;"> -10638000 </td>
+   <td style="text-align:left;"> 0.1495 </td>
+   <td style="text-align:left;"> 5175841000 </td>
+   <td style="text-align:left;"> 0.06937 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> 9489405000 </td>
+   <td style="text-align:left;"> 1.0101799999999999 </td>
+   <td style="text-align:left;"> 9430192000 </td>
+   <td style="text-align:left;"> Level Percent Closed </td>
+   <td style="text-align:left;"> 498067000 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> 14963635000 </td>
+   <td style="text-align:left;"> 0.42887 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> 79609000 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> 84080453 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2019 </td>
+   <td style="text-align:right;"> 24 </td>
+   <td style="text-align:left;"> Alaska Teachers Retirement System </td>
+   <td style="text-align:left;"> Alaska </td>
+   <td style="text-align:left;"> 0.0738 </td>
+   <td style="text-align:left;"> 0.762 </td>
+   <td style="text-align:left;"> 154083000 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> -3018000 </td>
+   <td style="text-align:left;"> 0.0639 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> Plan covers teachers </td>
+   <td style="text-align:left;"> 392609000 </td>
+   <td style="text-align:left;"> Entry Age Normal </td>
+   <td style="text-align:left;"> 7276290000 </td>
+   <td style="text-align:left;"> 25.0 </td>
+   <td style="text-align:left;"> -470414000 </td>
+   <td style="text-align:left;"> 470498280 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> 36805000 </td>
+   <td style="text-align:left;"> -2303000 </td>
+   <td style="text-align:left;"> 0.1463 </td>
+   <td style="text-align:left;"> 1734690000 </td>
+   <td style="text-align:left;"> 0.046 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> 5511929000 </td>
+   <td style="text-align:left;"> 1.0654700000000001 </td>
+   <td style="text-align:left;"> 5541600000 </td>
+   <td style="text-align:left;"> Level Percent Closed </td>
+   <td style="text-align:left;"> 199933000 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> 7380472000 </td>
+   <td style="text-align:left;"> 1.9817200000000001 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> 35763000 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> 0.0738 </td>
+   <td style="text-align:left;"> 39386984 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2019 </td>
+   <td style="text-align:right;"> 33 </td>
+   <td style="text-align:left;"> Arizona Corrections Officers Retirement Plan </td>
+   <td style="text-align:left;"> Arizona </td>
+   <td style="text-align:left;"> 0.073 </td>
+   <td style="text-align:left;"> 0.5312345499377694 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> 0.24026 </td>
+   <td style="text-align:left;"> -1448000 </td>
+   <td style="text-align:left;"> 0.0545 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> Plan covers police and/or fire </td>
+   <td style="text-align:left;"> 547363066 </td>
+   <td style="text-align:left;"> Entry Age Normal </td>
+   <td style="text-align:left;"> 3884070116 </td>
+   <td style="text-align:left;"> 17.0 </td>
+   <td style="text-align:left;"> -125481000 </td>
+   <td style="text-align:left;"> 160313590 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> 137441000 </td>
+   <td style="text-align:left;"> -28530000 </td>
+   <td style="text-align:left;"> 0.15108 </td>
+   <td style="text-align:left;"> 1820717876 </td>
+   <td style="text-align:left;"> 0.08398 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> 1996513000 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> 2063352240 </td>
+   <td style="text-align:left;"> Level Percent Closed </td>
+   <td style="text-align:left;"> 176123000 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> 0.30738000000000004 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> 38278000 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> 0.073 </td>
+   <td style="text-align:left;"> 36968238 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2019 </td>
+   <td style="text-align:right;"> 30 </td>
+   <td style="text-align:left;"> Arizona Public Safety Personnel Retirement System </td>
+   <td style="text-align:left;"> Arizona </td>
+   <td style="text-align:left;"> 0.073 </td>
+   <td style="text-align:left;"> 0.46399999999999997 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> 0.37037 </td>
+   <td style="text-align:left;"> -7251000 </td>
+   <td style="text-align:left;"> 0.0545 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> Plan covers police and/or fire </td>
+   <td style="text-align:left;"> 1419642895 </td>
+   <td style="text-align:left;"> Entry Age Normal </td>
+   <td style="text-align:left;"> 17393828992 </td>
+   <td style="text-align:left;"> 17.0 </td>
+   <td style="text-align:left;"> -818430000 </td>
+   <td style="text-align:left;"> 850051750 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> 832026000 </td>
+   <td style="text-align:left;"> -15633000 </td>
+   <td style="text-align:left;"> 0.22053000000000003 </td>
+   <td style="text-align:left;"> 9311271913 </td>
+   <td style="text-align:left;"> 0.07769 </td>
+   <td style="text-align:left;"> 0.035 </td>
+   <td style="text-align:left;"> 7829913000 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> 8097785858 </td>
+   <td style="text-align:left;"> Level Percent Closed </td>
+   <td style="text-align:left;"> 980958000 </td>
+   <td style="text-align:left;"> 0.035 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> 0.5132 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> 121556582 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> 0.073 </td>
+   <td style="text-align:left;"> 217577090 </td>
+  </tr>
+</tbody>
+</table>
 
 ### `pullSourceData()`
 
