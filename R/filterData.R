@@ -21,7 +21,7 @@ filterData <- function(Data, fy, source = FALSE){
                "statutory_payment_percentage", "discount_rate_assumption", 
                "cost_structure", "employer_normal_cost_percentage", "asset_valuation_method_for_gasb_reporting",
                "inflation_rate_assumption_for_gasb_reporting", "total_number_of_members", 
-               "total_projected_actuarial_required_contribution_percentage_of_payroll", "mktassets_smooth")
+               "total_projected_actuarial_required_contribution_percentage_of_payroll", "market_assets_reported_for_asset_smoothing")
   columns2 <- c("test")
   for (i in (1:length(columns))) {
     if (sum(colnames(Data) %in% columns[i]) == 0) {
