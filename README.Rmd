@@ -134,7 +134,7 @@ state.data %>%
 
 4. `pullSourceData()`: pulls pension data for a specific plan, along with `data_source_name` column in wide format from the Reason pension database. `pullSourceData(pl,plan_name, fy)` has 3 arguments:
 
-* `pl`: A dataf ram containing the list of plan names, states, and ids in the form produced by the `planList()` function.
+* `pl`: A dataframe containing the list of plan names, states, and ids in the form produced by the `planList()` function.
 * `plan_name`: A string enclosed in quotation marks containing a plan name as it is listed in the Reason pension database.
 * `fy`: Starting fiscal year for the data pulled from the Reason pension database.
 
