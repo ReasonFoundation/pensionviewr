@@ -32,6 +32,7 @@ filterData <- function(Data, fy, source = FALSE){
   cols <- matrix(NA, length(Data[, 1]), length(columns2))
   colnames(cols) <- columns2
   Data <- cbind(Data, cols)
+  Data <- data.frame(Data)
   Data <- Data %>% arrange(state, display_name, year)
   Data <- Data %>% select(year, plan_name = display_name, 
                           state, if (isTRUE(source)) {
