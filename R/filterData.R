@@ -18,7 +18,7 @@ filterData <- function(Data, fy, source = FALSE){
                "other_additions_dollar", "x1_year_investment_return_percentage", 
                "amortizaton_method", "number_of_years_remaining_on_amortization_schedule", 
                "fiscal_year_of_contribution", "statutory_payment_dollar", 
-               "statutory_payment_percentage", "discount_rate_assumption", 
+               "statutory_payment_percentage", "discount_rate_assumption", "market_investment_return_mva_basis",
                "cost_structure", "employer_normal_cost_percentage", "asset_valuation_method_for_gasb_reporting",
                "inflation_rate_assumption_for_gasb_reporting", "total_number_of_members", 
                "total_projected_actuarial_required_contribution_percentage_of_payroll", "market_assets_reported_for_asset_smoothing")
@@ -37,7 +37,7 @@ filterData <- function(Data, fy, source = FALSE){
   Data <- Data %>% select(year, plan_name = display_name, 
                           state, if (isTRUE(source)) {
                             "data_source_name"
-                          }, return_1yr = x1_year_investment_return_percentage, 
+                          }, return_1yr = x1_year_investment_return_percentage, ava_return = market_investment_return_mva_basis,
                           actuarial_cost_method_in_gasb_reporting, funded_ratio = actuarial_funded_ratio_percentage, 
                           ava = actuarial_value_of_assets_gasb_dollar, mva = market_value_of_assets_dollar, mva_smooth = market_assets_reported_for_asset_smoothing,
                           aal = actuarially_accrued_liabilities_dollar, tpl = total_pension_liability_dollar, 
