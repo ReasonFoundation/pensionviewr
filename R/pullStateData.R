@@ -25,6 +25,7 @@ where year > '", paste(FY-1), "'
 and attribute_name in ('1 Year Investment Return Percentage',
 'Actuarial Cost Method in GASB Reporting',
 'Actuarial Funded Ratio Percentage',
+'Market Investment Return (MVA Basis)',
 'Actuarial Value of Assets GASB Dollar',
 'Market Value of Assets Dollar',
 'Market Assets Reported for Asset Smoothing',
