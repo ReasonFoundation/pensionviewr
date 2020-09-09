@@ -16,7 +16,7 @@ filterData <- function(Data, fy, source = FALSE){
   columns <- c("total_pension_liability_dollar", "wage_inflation", 
                "payroll_growth_assumption", "other_contribution_dollar", 
                "other_additions_dollar", "x1_year_investment_return_percentage", 
-               "amortizaton_method", "number_of_years_remaining_on_amortization_schedule", 
+               "amortizaton_method", "number_of_years_remaining_on_amortization_schedule", "total_normal_cost_dollar",
                "fiscal_year_of_contribution", "statutory_payment_dollar", 
                "statutory_payment_percentage", "discount_rate_assumption", "market_investment_return_mva_basis",
                "cost_structure", "employer_normal_cost_percentage", "asset_valuation_method_for_gasb_reporting",
@@ -55,7 +55,7 @@ filterData <- function(Data, fy, source = FALSE){
                           arr = investment_return_assumption_for_gasb_reporting, 
                           dr = discount_rate_assumption, number_of_years_remaining_on_amortization_schedule, 
                           payroll_growth_assumption, total_amortization_payment_pct = total_amortization_payment_percentage, 
-                          total_contribution = total_contribution_dollar, total_nc_pct = total_normal_cost_percentage, 
+                          total_contribution = total_contribution_dollar, total_nc_pct = total_normal_cost_percentage, total_nc_dollar = total_normal_cost_dollar,
                           total_number_of_members, total_proj_adec_pct = total_projected_actuarial_required_contribution_percentage_of_payroll, 
                           type_of_employees_covered, unfunded_actuarially_accrued_liabilities_dollar, 
                           wage_inflation)

@@ -24,6 +24,7 @@ pullStateData <- function(FY){
 where year > '", paste(FY-1), "'
 and attribute_name in ('1 Year Investment Return Percentage',
 'Actuarial Cost Method in GASB Reporting',
+'Total Normal Cost Dollar',
 'Actuarial Funded Ratio Percentage',
 'Market Investment Return (MVA Basis)',
 'Actuarial Value of Assets GASB Dollar',
