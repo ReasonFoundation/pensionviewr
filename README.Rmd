@@ -49,7 +49,7 @@ devtools::install_github("ReasonFoundation/pensionviewr")
 
 ## Using the functions:
 
-The package has seven functions for data pulling and preparation: 
+* The package has seven functions for data pulling and preparation: 
 `planList()`, 
 `pullData()`, 
 `pullStateData()`,
@@ -58,13 +58,13 @@ The package has seven functions for data pulling and preparation:
 `loadData()`, and 
 `selectedData()`.
 
-The package has four functions for plots: 
+* The package has four functions for plots: 
 `glPlot()`, 
 `linePlot()`, 
 `debtPlot()`, and 
 `savePlot()`.
 
-The package has Reason color palette: 
+* The package has Reason color palette: 
 `palette_reason` (e.g. `palette_reason$Orange`))
 
 A basic explanation and summary here:
