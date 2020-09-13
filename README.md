@@ -53,7 +53,7 @@ devtools::install_github("ReasonFoundation/pensionviewr")
 `savePlot()`.
 
 * The package has Reason color palette: 
-`palette_reason` (e.g. `palette_reason$Orange`))
+`palette_reason` (e.g. `palette_reason$Orange`)
 
 A basic explanation and summary here:
 
