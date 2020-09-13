@@ -64,6 +64,9 @@ The package has four functions for plots:
 `debtPlot()`, and 
 `savePlot()`.
 
+The package has Reason color palette: 
+`palette_reason` (e.g. `palette_reason$Orange`))
+
 A basic explanation and summary here:
 
 ### `planList()`
