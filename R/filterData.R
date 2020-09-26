@@ -59,6 +59,8 @@ filterData <- function(Data, fy, source = FALSE){
                           total_number_of_members, total_proj_adec_pct = total_projected_actuarial_required_contribution_percentage_of_payroll, 
                           type_of_employees_covered, unfunded_actuarially_accrued_liabilities_dollar, 
                           wage_inflation)
+  Data$fy_contribution <- as.numeric(Data$fy_contribution)
+  Data$fy_contribution <- round(Data$fy_contribution, 0)
   Data %>% filter(year >= fy)
 }
 
