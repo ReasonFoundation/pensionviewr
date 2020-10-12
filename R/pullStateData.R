@@ -8,6 +8,7 @@
 #' \dontrun{
 #' pullStateData(2001)
 #' }
+#' @author Anil Niraula <anil.niraula@reason.org>
 pullStateData <- function(FY){
   #dw <- get("dw")
   con <- RPostgres::dbConnect(

@@ -11,6 +11,8 @@
 #' pullData(pl)
 #' pullSourceData(pl, "Kansas Public Employees' Retirement System", fy)
 #' }
+#' @author Anil Niraula <anil.niraula@reason.org>
+
 pullSourceData <- function(pl, plan_name, fy){
   #dw <- get("dw")
   con <- RPostgres::dbConnect(

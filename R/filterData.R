@@ -10,6 +10,8 @@
 #' \dontrun{
 #' filterData(Data, 2001, source = FALSE)
 #' }
+#' @author Anil Niraula <anil.niraula@reason.org>
+
 filterData <- function(Data, fy, source = FALSE){
   #Create vector with column names to generate NA columns later
   Data <- data.frame(Data)
