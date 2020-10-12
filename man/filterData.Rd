@@ -26,3 +26,6 @@ devtools::document()
 filterData(Data, 2001, source = FALSE)
 }
 }
+\author{
+Anil Niraula <anil.niraula@reason.org>
+}
