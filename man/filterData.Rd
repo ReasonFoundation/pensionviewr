@@ -2,8 +2,7 @@
 % Please edit documentation in R/filterData.R
 \name{filterData}
 \alias{filterData}
-\title{filterData
-devtools::document()}
+\title{filterData}
 \usage{
 filterData(Data, fy, source = FALSE)
 }
@@ -19,7 +18,6 @@ A wide data frame with each year as a row and variables as columns.
 }
 \description{
 filterData
-devtools::document()
 }
 \examples{
 \dontrun{
