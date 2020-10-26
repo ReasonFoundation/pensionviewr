@@ -2,7 +2,8 @@
 % Please edit documentation in R/filterData.R
 \name{filterData}
 \alias{filterData}
-\title{filterData}
+\title{filterData selects less than 50 of the original columns (& recreates missing columns), 
+while also renaming column names}
 \usage{
 filterData(Data, fy, source = FALSE)
 }
@@ -17,7 +18,8 @@ filterData(Data, fy, source = FALSE)
 A wide data frame with each year as a row and variables as columns.
 }
 \description{
-filterData
+filterData selects less than 50 of the original columns (& recreates missing columns), 
+while also renaming column names
 }
 \examples{
 \dontrun{
