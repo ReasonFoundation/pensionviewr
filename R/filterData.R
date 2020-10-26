@@ -1,4 +1,5 @@
-#' filterData
+#' filterData selects less than 50 of the original columns (& recreates missing columns), 
+#' while also renaming column names
 #'
 #' @param Data data file (in data.frame/data.table format)
 #' @param source TRUE/FALSE statement to indicate if "source data" is used
