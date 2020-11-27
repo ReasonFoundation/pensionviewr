@@ -15,7 +15,7 @@
 #' }
 #' @author Anil Niraula <anil.niraula@reason.org>
 
-filterData <- function(Data, fy, employee = NULL, source = FALSE){
+filterData <- function(Data, fy = 2001, employee = NULL, source = FALSE){
   #Create vector with column names to generate NA columns later
   Data <- data.frame(Data)
   columns <- c("total_pension_liability_dollar", "wage_inflation", 
@@ -64,10 +64,12 @@ filterData <- function(Data, fy, employee = NULL, source = FALSE){
                           total_number_of_members, total_proj_adec_pct = total_projected_actuarial_required_contribution_percentage_of_payroll, 
                           type_of_employees_covered, unfunded_actuarially_accrued_liabilities_dollar, 
                           wage_inflation)
-  Data$fy_contribution <- as.numeric(Data$fy_contribution)
-  Data$fy_contribution <- round(Data$fy_contribution, 0)
-  Data %>% filter(year >= fy)
   
+  Data$fy_contribution <- as.numeric(Data$fy_contribution)
+  Data$year <- as.numeric(Data$year)
+  Data$fy_contribution <- round(Data$fy_contribution, 0)
+  Data <- Data %>% filter(year >= fy)
+    
   #Rename inputs to database naming for employeef filter
   if(is_null(employee)){
     employee <- employee
@@ -84,9 +86,10 @@ filterData <- function(Data, fy, employee = NULL, source = FALSE){
   }
   
   #Filter by type of employees covered
-  if(!is_null(employee)){
-  Data %>% filter(type_of_employees_covered == paste(employee))
-  }
+  if(is_null(employee)){
+    Data <- data.frame(Data)
+  } else {Data %>% filter(type_of_employees_covered == paste(employee))
+   }
   
 }
 

@@ -5,7 +5,7 @@
 \title{filterData selects around 50 of the original columns, recreates any of the missing columns, 
 renames column headers for simplicity, and allows to filter plans by type of employees covered}
 \usage{
-filterData(Data, fy, employee = NULL, source = FALSE)
+filterData(Data, fy = 2001, employee = NULL, source = FALSE)
 }
 \arguments{
 \item{Data}{data file (in data.frame/data.table format)}
