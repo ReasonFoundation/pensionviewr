@@ -2,15 +2,18 @@
 % Please edit documentation in R/filterData.R
 \name{filterData}
 \alias{filterData}
-\title{filterData selects less than 50 of the original columns (& recreates missing columns), 
-while also renaming column names}
+\title{filterData selects around 50 of the original columns, recreates any of the missing columns, 
+renames column headers for simplicity, and allows to filter plans by type of employees covered}
 \usage{
-filterData(Data, fy, source = FALSE)
+filterData(Data, fy = 2001, employee = NULL, source = FALSE)
 }
 \arguments{
 \item{Data}{data file (in data.frame/data.table format)}
 
 \item{fy}{starting year}
+
+\item{employee}{character parameter designating filter for 
+type of employees covered (e.g. "teacher", "state", "local", "state and local", "police and fire").}
 
 \item{source}{TRUE/FALSE statement to indicate if "source data" is used}
 }
@@ -18,12 +21,12 @@ filterData(Data, fy, source = FALSE)
 A wide data frame with each year as a row and variables as columns.
 }
 \description{
-filterData selects less than 50 of the original columns (& recreates missing columns), 
-while also renaming column names
+filterData selects around 50 of the original columns, recreates any of the missing columns, 
+renames column headers for simplicity, and allows to filter plans by type of employees covered
 }
 \examples{
 \dontrun{
-filterData(Data, 2001, source = FALSE)
+filterData(Data, 2001, employee = "teacher", source = FALSE)
 }
 }
 \author{
