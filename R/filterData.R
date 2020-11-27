@@ -1,19 +1,21 @@
-#' filterData selects less than 50 of the original columns (& recreates missing columns), 
-#' while also renaming column names
+#' filterData selects around 50 of the original columns, recreates any of the missing columns, 
+#' renames column headers for simplicity, and allows to filter plans by type of employees covered
 #'
 #' @param Data data file (in data.frame/data.table format)
 #' @param source TRUE/FALSE statement to indicate if "source data" is used
 #' @param fy starting year
+#' @param employee character parameter designating filter for 
+#' type of employees covered (e.g. "teacher", "state", "local", "state and local", "police and fire").
 #' @return A wide data frame with each year as a row and variables as columns.
 #' @export
 #' @importFrom rlang .data
 #' @examples
 #' \dontrun{
-#' filterData(Data, 2001, source = FALSE)
+#' filterData(Data, 2001, employee = "teacher", source = FALSE)
 #' }
 #' @author Anil Niraula <anil.niraula@reason.org>
 
-filterData <- function(Data, fy, source = FALSE){
+filterData <- function(Data, fy, employee = NULL, source = FALSE){
   #Create vector with column names to generate NA columns later
   Data <- data.frame(Data)
   columns <- c("total_pension_liability_dollar", "wage_inflation", 
@@ -65,5 +67,26 @@ filterData <- function(Data, fy, source = FALSE){
   Data$fy_contribution <- as.numeric(Data$fy_contribution)
   Data$fy_contribution <- round(Data$fy_contribution, 0)
   Data %>% filter(year >= fy)
+  
+  #Rename inputs to database naming for employeef filter
+  if(is_null(employee)){
+    employee <- employee
+  } else if(employee == "teacher"){
+    employee <- c("Plan covers teachers")
+  } else if(employee == "state and local"){
+    employee <- c("Plan covers state and local employees")
+  } else if(employee == "police and fire"){
+    employee <- c("Plan covers police and/or fire")
+  } else if(employee == "state"){
+    employee <- c("Plan covers state employees")
+  } else if(employee == "local"){
+    employee <- c("Plan covers local employees")
+  }
+  
+  #Filter by type of employees covered
+  if(!is_null(employee)){
+  Data %>% filter(type_of_employees_covered == paste(employee))
+  }
+  
 }
 

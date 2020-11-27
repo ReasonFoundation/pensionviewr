@@ -10,6 +10,7 @@
 #' }
 #' @author Anil Niraula <anil.niraula@reason.org>
 pullStateData <- function(FY){
+
   #dw <- get("dw")
   con <- RPostgres::dbConnect(
     RPostgres::Postgres(),
@@ -74,13 +75,17 @@ and attribute_name in ('1 Year Investment Return Percentage',
     janitor::clean_names()
   RPostgres::dbClearResult(result)
   RPostgres::dbDisconnect(con)
-  
+    
   all_data %>%
     dplyr::group_by_at(dplyr::vars(-.data$attribute_value)) %>%  # group by everything other than the value column.
     dplyr::mutate(row_id = 1:dplyr::n()) %>%
     dplyr::ungroup() %>%  # build group index
     tidyr::pivot_wider(names_from = attribute_name, values_from = attribute_value) %>%# CHANGED to pivot
-    dplyr::select(-.data$row_id) %>%  # drop the index
+    dplyr::select(-.data$row_id) %>% # drop the index
+    #filter for type of employees covered
     dplyr::arrange(display_name, year) %>%
     janitor::clean_names()
+    
+    
+    
 }
