@@ -12,6 +12,7 @@
 #' @author Anil Niraula <anil.niraula@reason.org>
 
 masterView <- function(source = NULL, expand = FALSE){
+  
   con <- RPostgres::dbConnect(
     RPostgres::Postgres(),
     dbname = "d629vjn37pbl3l",
@@ -20,6 +21,7 @@ masterView <- function(source = NULL, expand = FALSE){
     user = "reason_readonly",
     password = "p88088bd28ea68027ee96c65996f7ea3b56db0e27d7c9928c05edc6c23ef2bc27",
     sslmode = "require")
+  
   
   query <- paste("select * from", 
                  if(isTRUE(expand)){paste("plan_attribute")}
@@ -33,16 +35,18 @@ masterView <- function(source = NULL, expand = FALSE){
   RPostgres::dbClearResult(result)
   RPostgres::dbDisconnect(con)
   
-  all_data <- data.frame(all_data)
-  
   if(is.null(source)){
     all_data <- data.frame(all_data)
     
   }else if(!is.null(source) & !isTRUE(expand)){
-    all_data <- data.frame(all_data %>% filter(data_source_name == source))
+    all_data <- data.frame(all_data %>% 
+                           dplyr::filter(data_source_name == source)) %>%
+                           janitor::clean_names()
     
   }else if(!is.null(source) & source == "Reason" & isTRUE(expand)){
-    all_data <- data.frame(all_data %>% filter(data_source_id == 3))}
+    all_data <- data.frame(all_data %>% 
+                           dplyr::filter(data_source_id == 3)) %>%
+                           janitor::clean_names()}
   
   else{all_data <- data.frame(all_data)
   }
