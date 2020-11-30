@@ -182,7 +182,7 @@ filtered %>%
 
 Example of how to use this function:
 
-```{r filterData}
+```{r masterView}
 view.reason <- masterView("Reason", FALSE)
 view.reason %>% 
   head() %>%

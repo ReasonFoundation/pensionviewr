@@ -43,6 +43,7 @@ devtools::install_github("ReasonFoundation/pensionviewr")
 `pullStateData()`,
 `pullSourceData()`,
 `filterData()`,
+`masterView()`,
 `loadData()`, and 
 `selectedData()`.
 
@@ -53,7 +54,7 @@ devtools::install_github("ReasonFoundation/pensionviewr")
 `savePlot()`.
 
 * The package has Reason color palette: 
-`palette_reason` (e.g. `palette_reason$Orange`)
+`palette_reason` (e.g. `palette_reason$Orange`))
 
 A basic explanation and summary here:
 
@@ -338,7 +339,12 @@ vtsrs_data %>%
    <th style="text-align:right;"> market_investment_return_mva_basis </th>
    <th style="text-align:right;"> market_value_of_assets_dollar </th>
    <th style="text-align:right;"> market_value_of_assets_net_of_fees_dollar </th>
+   <th style="text-align:left;"> measurment_date_md </th>
    <th style="text-align:right;"> members_covered_by_social_security </th>
+   <th style="text-align:right;"> membership_data_active </th>
+   <th style="text-align:right;"> membership_data_inactive_vested </th>
+   <th style="text-align:right;"> membership_data_retirees_and_beneficiaries </th>
+   <th style="text-align:right;"> membership_data_total </th>
    <th style="text-align:right;"> monthly_lump_sum_payments_to_members_dollar </th>
    <th style="text-align:right;"> monthly_lump_sum_payments_to_survivors_dollar </th>
    <th style="text-align:right;"> monthly_payments_to_disabled_dollar </th>
@@ -350,6 +356,8 @@ vtsrs_data %>%
    <th style="text-align:left;"> multiple_discount_rates </th>
    <th style="text-align:right;"> net_expenses_dollar </th>
    <th style="text-align:right;"> net_flows_reported_for_asset_smoothing </th>
+   <th style="text-align:right;"> net_pension_liability_assuming_1_percent_decrease_in_discount_rate </th>
+   <th style="text-align:right;"> net_pension_liability_assuming_1_percent_increase_in_discount_rate </th>
    <th style="text-align:right;"> net_pension_liability_dollar </th>
    <th style="text-align:right;"> net_position_dollar </th>
    <th style="text-align:right;"> new_entrant_experience_dollar </th>
@@ -374,6 +382,7 @@ vtsrs_data %>%
    <th style="text-align:right;"> plan_type </th>
    <th style="text-align:right;"> present_value_of_future_benefits_for_active_members_dollar </th>
    <th style="text-align:right;"> present_value_of_future_benefits_for_retired_members_dollar </th>
+   <th style="text-align:left;"> prior_measurment_date </th>
    <th style="text-align:right;"> real_estate_investments_dollar </th>
    <th style="text-align:right;"> receipts_for_transmittal_to_federal_social_security_system_dollar </th>
    <th style="text-align:right;"> refunds_dollar </th>
@@ -558,6 +567,11 @@ vtsrs_data %>%
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
@@ -589,11 +603,14 @@ vtsrs_data %>%
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
+   <td style="text-align:left;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> 159000 </td>
@@ -776,6 +793,11 @@ vtsrs_data %>%
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
@@ -807,11 +829,14 @@ vtsrs_data %>%
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
+   <td style="text-align:left;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> 1035000 </td>
@@ -994,6 +1019,11 @@ vtsrs_data %>%
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
@@ -1025,11 +1055,14 @@ vtsrs_data %>%
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
+   <td style="text-align:left;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> 245000 </td>
@@ -1212,6 +1245,11 @@ vtsrs_data %>%
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
@@ -1243,11 +1281,14 @@ vtsrs_data %>%
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
+   <td style="text-align:left;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> 225000 </td>
@@ -1430,6 +1471,11 @@ vtsrs_data %>%
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
@@ -1461,11 +1507,14 @@ vtsrs_data %>%
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
+   <td style="text-align:left;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> 503000 </td>
@@ -1648,6 +1697,11 @@ vtsrs_data %>%
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
@@ -1679,11 +1733,14 @@ vtsrs_data %>%
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
+   <td style="text-align:left;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> 239000 </td>
@@ -1777,12 +1834,14 @@ state.data %>%
    <th style="text-align:left;"> x1_year_investment_return_percentage </th>
    <th style="text-align:left;"> employer_state_contribution_dollar </th>
    <th style="text-align:left;"> type_of_employees_covered </th>
+   <th style="text-align:left;"> discount_rate_assumption </th>
    <th style="text-align:left;"> covered_payroll_dollar </th>
    <th style="text-align:left;"> actuarial_cost_method_in_gasb_reporting </th>
    <th style="text-align:left;"> actuarially_accrued_liabilities_dollar </th>
    <th style="text-align:left;"> number_of_years_remaining_on_amortization_schedule </th>
    <th style="text-align:left;"> market_assets_reported_for_asset_smoothing </th>
    <th style="text-align:left;"> total_benefits_paid_dollar </th>
+   <th style="text-align:left;"> fiscal_year_of_contribution </th>
    <th style="text-align:left;"> benefit_payments_dollar </th>
    <th style="text-align:left;"> other_contribution_dollar </th>
    <th style="text-align:left;"> asset_valuation_method_for_gasb_reporting </th>
@@ -1795,17 +1854,16 @@ state.data %>%
    <th style="text-align:left;"> statutory_payment_dollar </th>
    <th style="text-align:left;"> payroll_growth_assumption </th>
    <th style="text-align:left;"> market_value_of_assets_dollar </th>
-   <th style="text-align:left;"> actuarially_required_contribution_paid_percentage </th>
    <th style="text-align:left;"> actuarial_value_of_assets_gasb_dollar </th>
    <th style="text-align:left;"> amortizaton_method </th>
    <th style="text-align:left;"> total_contribution_dollar </th>
    <th style="text-align:left;"> wage_inflation </th>
+   <th style="text-align:left;"> market_investment_return_mva_basis </th>
+   <th style="text-align:left;"> actuarially_required_contribution_paid_percentage </th>
    <th style="text-align:left;"> total_pension_liability_dollar </th>
    <th style="text-align:left;"> employers_projected_actuarial_required_contribution_percentage_of_payroll </th>
    <th style="text-align:left;"> statutory_payment_percentage </th>
-   <th style="text-align:left;"> market_investment_return_mva_basis </th>
    <th style="text-align:left;"> employee_contribution_dollar </th>
-   <th style="text-align:left;"> discount_rate_assumption </th>
    <th style="text-align:left;"> employer_normal_cost_dollar </th>
   </tr>
  </thead>
@@ -1816,42 +1874,43 @@ state.data %>%
    <td style="text-align:left;"> Alabama Employees' Retirement System (ERS) </td>
    <td style="text-align:left;"> Alabama </td>
    <td style="text-align:left;"> 0.077 </td>
-   <td style="text-align:left;"> 0.687 </td>
+   <td style="text-align:left;"> 0.682 </td>
    <td style="text-align:left;"> 467553000 </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> -12934000 </td>
    <td style="text-align:left;"> 0.0278 </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> Plan covers state and local employees </td>
-   <td style="text-align:left;"> 3789556000 </td>
+   <td style="text-align:left;"> 0.077 </td>
+   <td style="text-align:left;"> 3793957000 </td>
    <td style="text-align:left;"> Entry Age Normal </td>
-   <td style="text-align:left;"> 17829735000 </td>
+   <td style="text-align:left;"> 18543542000 </td>
    <td style="text-align:left;"> 28.0 </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> -1171825000 </td>
+   <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> 1084915300 </td>
    <td style="text-align:left;"> 4187000 </td>
    <td style="text-align:left;"> 5-year smoothed market </td>
    <td style="text-align:left;"> 467553000 </td>
+   <td style="text-align:left;"> 47683000 </td>
    <td style="text-align:left;"> NA </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:left;"> 5589138000 </td>
+   <td style="text-align:left;"> 5897753000 </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> 12568473000 </td>
-   <td style="text-align:left;"> 1.0 </td>
    <td style="text-align:left;"> 12240597000 </td>
    <td style="text-align:left;"> Level Percent Closed </td>
    <td style="text-align:left;"> 721993000 </td>
    <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> 1.0 </td>
    <td style="text-align:left;"> 18353891000 </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> NA </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:left;"> 250253000 </td>
-   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> 254439719 </td>
    <td style="text-align:left;"> NA </td>
   </tr>
   <tr>
@@ -1860,42 +1919,43 @@ state.data %>%
    <td style="text-align:left;"> Alabama Teachers' Retirement System (TRS) </td>
    <td style="text-align:left;"> Alabama </td>
    <td style="text-align:left;"> 0.077 </td>
-   <td style="text-align:left;"> 0.702 </td>
+   <td style="text-align:left;"> 0.694 </td>
    <td style="text-align:left;"> 869336000 </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> -20583000 </td>
    <td style="text-align:left;"> 0.0263 </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> Plan covers teachers </td>
-   <td style="text-align:left;"> 7160923000 </td>
+   <td style="text-align:left;"> 0.077 </td>
+   <td style="text-align:left;"> 7193832000 </td>
    <td style="text-align:left;"> Entry Age Normal </td>
-   <td style="text-align:left;"> 35628398000 </td>
+   <td style="text-align:left;"> 37215470000 </td>
    <td style="text-align:left;"> 28.0 </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> -2290375000 </td>
+   <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> 2191704800 </td>
    <td style="text-align:left;"> 6234000 </td>
    <td style="text-align:left;"> 5-year smoothed market related value. </td>
    <td style="text-align:left;"> 869336000 </td>
-   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> 58538000 </td>
    <td style="text-align:left;"> 0.09866 </td>
-   <td style="text-align:left;"> 10621979000 </td>
+   <td style="text-align:left;"> 11394144000 </td>
    <td style="text-align:left;"> 0.07137 </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> 25619448000 </td>
-   <td style="text-align:left;"> 1.0 </td>
    <td style="text-align:left;"> 25006419000 </td>
    <td style="text-align:left;"> Level Percent Closed </td>
    <td style="text-align:left;"> 1392245000 </td>
    <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> 1.0 </td>
    <td style="text-align:left;"> 36676350000 </td>
    <td style="text-align:left;"> 0.12084 </td>
    <td style="text-align:left;"> NA </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:left;"> 516675000 </td>
-   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> 522908600 </td>
    <td style="text-align:left;"> NA </td>
   </tr>
   <tr>
@@ -1911,35 +1971,36 @@ state.data %>%
    <td style="text-align:left;"> 0.059 </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> Plan covers state and local employees </td>
+   <td style="text-align:left;"> 0.0738 </td>
    <td style="text-align:left;"> 1049152000 </td>
    <td style="text-align:left;"> Entry Age Normal </td>
    <td style="text-align:left;"> 15039180000 </td>
    <td style="text-align:left;"> 25.0 </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> -837381000 </td>
+   <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> 822390940 </td>
    <td style="text-align:left;"> 0 </td>
    <td style="text-align:left;"> 5-year smoothed market </td>
    <td style="text-align:left;"> 350601000 </td>
    <td style="text-align:left;"> -10638000 </td>
    <td style="text-align:left;"> 0.1495 </td>
-   <td style="text-align:left;"> 5175841000 </td>
+   <td style="text-align:left;"> 5462487000 </td>
    <td style="text-align:left;"> 0.06937 </td>
    <td style="text-align:left;"> 156862000 </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> 9489405000 </td>
-   <td style="text-align:left;"> 1.0101799999999999 </td>
    <td style="text-align:left;"> 9430192000 </td>
    <td style="text-align:left;"> Level Percent Closed </td>
    <td style="text-align:left;"> 498067000 </td>
    <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> 0.054 </td>
+   <td style="text-align:left;"> 1.0101799999999999 </td>
    <td style="text-align:left;"> 14963635000 </td>
    <td style="text-align:left;"> 0.42887 </td>
    <td style="text-align:left;"> NA </td>
-   <td style="text-align:left;"> 0.054 </td>
    <td style="text-align:left;"> 79609000 </td>
-   <td style="text-align:left;"> 0.0738 </td>
    <td style="text-align:left;"> 84080453 </td>
   </tr>
   <tr>
@@ -1955,12 +2016,14 @@ state.data %>%
    <td style="text-align:left;"> 0.0639 </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> Plan covers teachers </td>
+   <td style="text-align:left;"> 0.0738 </td>
    <td style="text-align:left;"> 392609000 </td>
    <td style="text-align:left;"> Entry Age Normal </td>
    <td style="text-align:left;"> 7276290000 </td>
    <td style="text-align:left;"> 25.0 </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> -470414000 </td>
+   <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> 470498280 </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> 5-year smoothed market </td>
@@ -1973,17 +2036,16 @@ state.data %>%
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> 5511929000 </td>
-   <td style="text-align:left;"> 1.0654700000000001 </td>
    <td style="text-align:left;"> 5541600000 </td>
    <td style="text-align:left;"> Level Percent Closed </td>
    <td style="text-align:left;"> 199933000 </td>
    <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> 1.0654700000000001 </td>
    <td style="text-align:left;"> 7380472000 </td>
    <td style="text-align:left;"> 1.9817200000000001 </td>
    <td style="text-align:left;"> NA </td>
-   <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> 35763000 </td>
-   <td style="text-align:left;"> 0.0738 </td>
    <td style="text-align:left;"> 39386984 </td>
   </tr>
   <tr>
@@ -1999,12 +2061,14 @@ state.data %>%
    <td style="text-align:left;"> 0.0545 </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> Plan covers police and/or fire </td>
+   <td style="text-align:left;"> 0.073 </td>
    <td style="text-align:left;"> 547363066 </td>
    <td style="text-align:left;"> Entry Age Normal </td>
    <td style="text-align:left;"> 3884070116 </td>
    <td style="text-align:left;"> 17.0 </td>
    <td style="text-align:left;"> 1996273344 </td>
    <td style="text-align:left;"> -125481000 </td>
+   <td style="text-align:left;"> 2021.0 </td>
    <td style="text-align:left;"> 160313590 </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> 7-year smoothed market:; subject to a 20% corridor. </td>
@@ -2017,17 +2081,16 @@ state.data %>%
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> 1996513000 </td>
-   <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> 2063352240 </td>
    <td style="text-align:left;"> Level Percent Closed </td>
    <td style="text-align:left;"> 176123000 </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> 0.30738000000000004 </td>
    <td style="text-align:left;"> NA </td>
-   <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> 48549598 </td>
-   <td style="text-align:left;"> 0.073 </td>
    <td style="text-align:left;"> 36968238 </td>
   </tr>
   <tr>
@@ -2043,35 +2106,36 @@ state.data %>%
    <td style="text-align:left;"> 0.054 </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> Plan covers police and/or fire </td>
+   <td style="text-align:left;"> 0.073 </td>
    <td style="text-align:left;"> 1419642895 </td>
    <td style="text-align:left;"> Entry Age Normal </td>
    <td style="text-align:left;"> 17393828992 </td>
    <td style="text-align:left;"> 17.0 </td>
    <td style="text-align:left;"> 7810990750 </td>
    <td style="text-align:left;"> -818430000 </td>
+   <td style="text-align:left;"> 2021.0 </td>
    <td style="text-align:left;"> 850051750 </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> 7-year smoothed market value. 20% corridor. </td>
    <td style="text-align:left;"> 832026000 </td>
    <td style="text-align:left;"> -15633000 </td>
    <td style="text-align:left;"> 0.22053000000000003 </td>
-   <td style="text-align:left;"> 9311271913 </td>
+   <td style="text-align:left;"> 9314789253 </td>
    <td style="text-align:left;"> 0.07769 </td>
    <td style="text-align:left;"> 335921280 </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> 0.035 </td>
    <td style="text-align:left;"> 7829913000 </td>
-   <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> 8097785858 </td>
    <td style="text-align:left;"> Level Percent Closed </td>
    <td style="text-align:left;"> 980958000 </td>
    <td style="text-align:left;"> 0.035 </td>
+   <td style="text-align:left;"> 0.067 </td>
+   <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> 0.5132 </td>
    <td style="text-align:left;"> NA </td>
-   <td style="text-align:left;"> 0.067 </td>
    <td style="text-align:left;"> 121556582 </td>
-   <td style="text-align:left;"> 0.073 </td>
    <td style="text-align:left;"> 217577090 </td>
   </tr>
 </tbody>
@@ -2231,7 +2295,12 @@ NMERB.source %>%
    <th style="text-align:right;"> market_investment_return_mva_basis </th>
    <th style="text-align:right;"> market_value_of_assets_dollar </th>
    <th style="text-align:right;"> market_value_of_assets_net_of_fees_dollar </th>
+   <th style="text-align:left;"> measurment_date_md </th>
    <th style="text-align:right;"> members_covered_by_social_security </th>
+   <th style="text-align:right;"> membership_data_active </th>
+   <th style="text-align:right;"> membership_data_inactive_vested </th>
+   <th style="text-align:right;"> membership_data_retirees_and_beneficiaries </th>
+   <th style="text-align:right;"> membership_data_total </th>
    <th style="text-align:right;"> monthly_lump_sum_payments_to_members_dollar </th>
    <th style="text-align:right;"> monthly_lump_sum_payments_to_survivors_dollar </th>
    <th style="text-align:right;"> monthly_payments_to_disabled_dollar </th>
@@ -2240,6 +2309,8 @@ NMERB.source %>%
    <th style="text-align:right;"> mortgage_investments_dollar </th>
    <th style="text-align:right;"> net_expenses_dollar </th>
    <th style="text-align:right;"> net_flows_reported_for_asset_smoothing </th>
+   <th style="text-align:right;"> net_pension_liability_assuming_1_percent_decrease_in_discount_rate </th>
+   <th style="text-align:right;"> net_pension_liability_assuming_1_percent_increase_in_discount_rate </th>
    <th style="text-align:right;"> net_pension_liability_dollar </th>
    <th style="text-align:right;"> net_position_dollar </th>
    <th style="text-align:right;"> non_investment_actuarial_experience_dollar </th>
@@ -2265,6 +2336,7 @@ NMERB.source %>%
    <th style="text-align:right;"> present_value_of_future_benefits_for_active_members_dollar </th>
    <th style="text-align:right;"> present_value_of_future_benefits_for_inactive_vested_members_dollar </th>
    <th style="text-align:right;"> present_value_of_future_benefits_for_retired_members_dollar </th>
+   <th style="text-align:left;"> prior_measurment_date </th>
    <th style="text-align:right;"> real_estate_investments_dollar </th>
    <th style="text-align:right;"> receipts_for_transmittal_to_federal_social_security_system_dollar </th>
    <th style="text-align:right;"> refunds_dollar </th>
@@ -2455,13 +2527,20 @@ NMERB.source %>%
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
+   <td style="text-align:left;"> NA </td>
    <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 27929602000 </td>
    <td style="text-align:right;"> 453371000 </td>
    <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
@@ -2489,6 +2568,7 @@ NMERB.source %>%
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
+   <td style="text-align:left;"> NA </td>
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> NA </td>
@@ -2677,6 +2757,11 @@ NMERB.source %>%
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> 6667001941 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
@@ -2685,6 +2770,8 @@ NMERB.source %>%
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> -380747394 </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
@@ -2711,6 +2798,7 @@ NMERB.source %>%
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> 3604455500 </td>
+   <td style="text-align:left;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> -23684106 </td>
@@ -2761,7 +2849,7 @@ NMERB.source %>%
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> 0.1625 </td>
    <td style="text-align:left;"> Plan covers teachers </td>
-   <td style="text-align:right;"> 652000000 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> 0.045 </td>
    <td style="text-align:right;"> 1937 </td>
@@ -2899,6 +2987,13 @@ NMERB.source %>%
    <td style="text-align:right;"> 0.095 </td>
    <td style="text-align:right;"> 6667000000 </td>
    <td style="text-align:right;"> NA </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
@@ -2933,6 +3028,7 @@ NMERB.source %>%
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
+   <td style="text-align:left;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
@@ -2983,7 +3079,7 @@ NMERB.source %>%
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> 652000000 </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
@@ -3121,13 +3217,20 @@ NMERB.source %>%
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
+   <td style="text-align:left;"> NA </td>
    <td style="text-align:right;"> 61091 </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> 28508035000 </td>
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 3412081000 </td>
    <td style="text-align:right;"> 27482492000 </td>
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
@@ -3155,6 +3258,7 @@ NMERB.source %>%
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
+   <td style="text-align:left;"> NA </td>
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> NA </td>
@@ -3343,6 +3447,11 @@ NMERB.source %>%
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> 6013355928 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
@@ -3351,6 +3460,8 @@ NMERB.source %>%
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> -399625267 </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
@@ -3377,6 +3488,7 @@ NMERB.source %>%
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> 3860532000 </td>
+   <td style="text-align:left;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> -20103972 </td>
@@ -3427,7 +3539,7 @@ NMERB.source %>%
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> 0.1625 </td>
    <td style="text-align:left;"> Plan covers teachers </td>
-   <td style="text-align:right;"> 1152900000 </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> 0.045 </td>
    <td style="text-align:right;"> 1937 </td>
@@ -3565,6 +3677,13 @@ NMERB.source %>%
    <td style="text-align:right;"> 0.033 </td>
    <td style="text-align:right;"> 6013400000 </td>
    <td style="text-align:right;"> NA </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
@@ -3599,6 +3718,7 @@ NMERB.source %>%
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
+   <td style="text-align:left;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
@@ -3649,7 +3769,7 @@ NMERB.source %>%
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> NA </td>
-   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> 1152900000 </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
@@ -3659,10 +3779,11 @@ NMERB.source %>%
 
 ### `filterData()`
 
-5. `filterData()`: filters existing data (data.frame/data.table format) keeping & renaming set of commonly used variables in pension analysis. `filterData(Data, fy, source = FALSE)` has 3 arguments:
+5. `filterData()`: filters existing data (data.frame/data.table format) keeping & renaming set of commonly used variables in pension analysis. `filterData(Data, fy, source = FALSE)` has 4 arguments:
 
 * `Data`: A data table already pulled with `pullData`, `pullStateData`, or other ways. 
 * `fy`: Starting fiscal year for the data pulled from the Reason pension database.
+* `employee`: Character designating type of employees covered (e.g. "teacher", "state", "local", "state and local", "police and fire").
 * `source`: Set to `FALSE`. It should be set to `source = TRUE` if you filter data pulled with `pullSourceData` function.
 
 Example of the workflow around the filtering function:
@@ -3670,7 +3791,7 @@ Example of the workflow around the filtering function:
 
 ```r
 state.data <- pullStateData(2001)
-filtered <- filterData(state.data, 2010, FALSE)
+filtered <- filterData(state.data, 2010, NULL, FALSE)
 filtered %>% 
   head() %>%
   kable() %>%
@@ -3680,7 +3801,7 @@ filtered %>%
 <table class="table" style="width: auto !important; ">
  <thead>
   <tr>
-   <th style="text-align:left;"> year </th>
+   <th style="text-align:right;"> year </th>
    <th style="text-align:left;"> plan_name </th>
    <th style="text-align:left;"> state </th>
    <th style="text-align:left;"> return_1yr </th>
@@ -3712,7 +3833,7 @@ filtered %>%
    <th style="text-align:left;"> er_proj_adec_pct </th>
    <th style="text-align:left;"> other_contribution </th>
    <th style="text-align:left;"> other_additions </th>
-   <th style="text-align:left;"> fy_contribution </th>
+   <th style="text-align:right;"> fy_contribution </th>
    <th style="text-align:left;"> inflation_assum </th>
    <th style="text-align:left;"> arr </th>
    <th style="text-align:left;"> dr </th>
@@ -3731,7 +3852,7 @@ filtered %>%
  </thead>
 <tbody>
   <tr>
-   <td style="text-align:left;"> 2010 </td>
+   <td style="text-align:right;"> 2010 </td>
    <td style="text-align:left;"> Alabama Employees' Retirement System (ERS) </td>
    <td style="text-align:left;"> Alabama </td>
    <td style="text-align:left;"> 0.0847 </td>
@@ -3744,7 +3865,7 @@ filtered %>%
    <td style="text-align:left;"> 14284119000 </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> 377898000 </td>
-   <td style="text-align:left;"> 1.0 </td>
+   <td style="text-align:left;"> 1 </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> Level Percent Open </td>
@@ -3755,7 +3876,7 @@ filtered %>%
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> 5-year smoothed market related value. </td>
    <td style="text-align:left;"> 3619670000 </td>
-   <td style="text-align:left;"> 194968000 </td>
+   <td style="text-align:left;"> 196757338 </td>
    <td style="text-align:left;"> 0.0502 </td>
    <td style="text-align:left;"> 377898000 </td>
    <td style="text-align:left;"> NA </td>
@@ -3763,10 +3884,10 @@ filtered %>%
    <td style="text-align:left;"> 0.0795 </td>
    <td style="text-align:left;"> 1790000 </td>
    <td style="text-align:left;"> NA </td>
-   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> 2013 </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> 0.08 </td>
-   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> 0.08 </td>
    <td style="text-align:left;"> 29.0 </td>
    <td style="text-align:left;"> 0.045 </td>
    <td style="text-align:left;"> 0.0491 </td>
@@ -3780,7 +3901,7 @@ filtered %>%
    <td style="text-align:left;"> NA </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 2011 </td>
+   <td style="text-align:right;"> 2011 </td>
    <td style="text-align:left;"> Alabama Employees' Retirement System (ERS) </td>
    <td style="text-align:left;"> Alabama </td>
    <td style="text-align:left;"> 0.0221 </td>
@@ -3793,7 +3914,7 @@ filtered %>%
    <td style="text-align:left;"> 14366796000 </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> 394998000 </td>
-   <td style="text-align:left;"> 1.0 </td>
+   <td style="text-align:left;"> 1 </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> Level Percent Open </td>
@@ -3804,7 +3925,7 @@ filtered %>%
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> 5-year smoothed market related value. </td>
    <td style="text-align:left;"> 3540681000 </td>
-   <td style="text-align:left;"> 193697000 </td>
+   <td style="text-align:left;"> 195709253 </td>
    <td style="text-align:left;"> 0.0501 </td>
    <td style="text-align:left;"> 394998000 </td>
    <td style="text-align:left;"> NA </td>
@@ -3812,10 +3933,10 @@ filtered %>%
    <td style="text-align:left;"> 0.1126 </td>
    <td style="text-align:left;"> 2012000 </td>
    <td style="text-align:left;"> NA </td>
-   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> 2014 </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> 0.08 </td>
-   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> 0.08 </td>
    <td style="text-align:left;"> 29.0 </td>
    <td style="text-align:left;"> 0.0325 </td>
    <td style="text-align:left;"> 0.0849 </td>
@@ -3829,7 +3950,7 @@ filtered %>%
    <td style="text-align:left;"> 0.0325 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 2012 </td>
+   <td style="text-align:right;"> 2012 </td>
    <td style="text-align:left;"> Alabama Employees' Retirement System (ERS) </td>
    <td style="text-align:left;"> Alabama </td>
    <td style="text-align:left;"> 0.1801 </td>
@@ -3842,7 +3963,7 @@ filtered %>%
    <td style="text-align:left;"> 13884995000 </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> 317520000 </td>
-   <td style="text-align:left;"> 1.0 </td>
+   <td style="text-align:left;"> 1 </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> Level Percent Open </td>
@@ -3853,7 +3974,7 @@ filtered %>%
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> Market Value. </td>
    <td style="text-align:left;"> 3252003000 </td>
-   <td style="text-align:left;"> 214933000 </td>
+   <td style="text-align:left;"> 216870614 </td>
    <td style="text-align:left;"> 0.0726 </td>
    <td style="text-align:left;"> 317520000 </td>
    <td style="text-align:left;"> NA </td>
@@ -3861,10 +3982,10 @@ filtered %>%
    <td style="text-align:left;"> 0.1198 </td>
    <td style="text-align:left;"> 1937000 </td>
    <td style="text-align:left;"> NA </td>
-   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> 2015 </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> 0.08 </td>
-   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> 0.08 </td>
    <td style="text-align:left;"> 28.0 </td>
    <td style="text-align:left;"> 0.0325 </td>
    <td style="text-align:left;"> 0.096 </td>
@@ -3878,7 +3999,7 @@ filtered %>%
    <td style="text-align:left;"> 0.0325 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 2013 </td>
+   <td style="text-align:right;"> 2013 </td>
    <td style="text-align:left;"> Alabama Employees' Retirement System (ERS) </td>
    <td style="text-align:left;"> Alabama </td>
    <td style="text-align:left;"> 0.146 </td>
@@ -3891,7 +4012,7 @@ filtered %>%
    <td style="text-align:left;"> 14536600000 </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> 338819000 </td>
-   <td style="text-align:left;"> 1.0 </td>
+   <td style="text-align:left;"> 1 </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> Level Percent Closed </td>
@@ -3902,7 +4023,7 @@ filtered %>%
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> Market Value. </td>
    <td style="text-align:left;"> 3400596000 </td>
-   <td style="text-align:left;"> 221823000 </td>
+   <td style="text-align:left;"> 223646119 </td>
    <td style="text-align:left;"> 0.0748 </td>
    <td style="text-align:left;"> 338819000 </td>
    <td style="text-align:left;"> NA </td>
@@ -3910,10 +4031,10 @@ filtered %>%
    <td style="text-align:left;"> 0.1222 </td>
    <td style="text-align:left;"> 1823000 </td>
    <td style="text-align:left;"> NA </td>
-   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> 2016 </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> 0.08 </td>
-   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> 0.08 </td>
    <td style="text-align:left;"> 28.0 </td>
    <td style="text-align:left;"> 0.0325 </td>
    <td style="text-align:left;"> 0.0971 </td>
@@ -3927,7 +4048,7 @@ filtered %>%
    <td style="text-align:left;"> 0.0325 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 2014 </td>
+   <td style="text-align:right;"> 2014 </td>
    <td style="text-align:left;"> Alabama Employees' Retirement System (ERS) </td>
    <td style="text-align:left;"> Alabama </td>
    <td style="text-align:left;"> 0.1202 </td>
@@ -3951,7 +4072,7 @@ filtered %>%
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> 5-year market related value. </td>
    <td style="text-align:left;"> 3444341000 </td>
-   <td style="text-align:left;"> 223135000 </td>
+   <td style="text-align:left;"> 226014854 </td>
    <td style="text-align:left;"> 0.0746 </td>
    <td style="text-align:left;"> 391181000 </td>
    <td style="text-align:left;"> NA </td>
@@ -3959,10 +4080,10 @@ filtered %>%
    <td style="text-align:left;"> 0.1195 </td>
    <td style="text-align:left;"> 2881000 </td>
    <td style="text-align:left;"> NA </td>
-   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> 2017 </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> 0.08 </td>
-   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> 0.08 </td>
    <td style="text-align:left;"> 28.0 </td>
    <td style="text-align:left;"> 0.0325 </td>
    <td style="text-align:left;"> 0.0943 </td>
@@ -3976,7 +4097,7 @@ filtered %>%
    <td style="text-align:left;"> 0.0325 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> 2015 </td>
+   <td style="text-align:right;"> 2015 </td>
    <td style="text-align:left;"> Alabama Employees' Retirement System (ERS) </td>
    <td style="text-align:left;"> Alabama </td>
    <td style="text-align:left;"> 0.0105 </td>
@@ -3987,7 +4108,7 @@ filtered %>%
    <td style="text-align:left;"> 10551904000 </td>
    <td style="text-align:left;"> 10485255746 </td>
    <td style="text-align:left;"> 15723720000 </td>
-   <td style="text-align:left;"> 15961667000 </td>
+   <td style="text-align:left;"> 15960732000 </td>
    <td style="text-align:left;"> 411087000 </td>
    <td style="text-align:left;"> 1.0 </td>
    <td style="text-align:left;"> NA </td>
@@ -4000,7 +4121,7 @@ filtered %>%
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> 5-year market related value. </td>
    <td style="text-align:left;"> 3488017000 </td>
-   <td style="text-align:left;"> 225767000 </td>
+   <td style="text-align:left;"> 229253696 </td>
    <td style="text-align:left;"> 0.0744 </td>
    <td style="text-align:left;"> 410932000 </td>
    <td style="text-align:left;"> NA </td>
@@ -4008,10 +4129,10 @@ filtered %>%
    <td style="text-align:left;"> 0.117 </td>
    <td style="text-align:left;"> 3487000 </td>
    <td style="text-align:left;"> NA </td>
-   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> 2018 </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> 0.08 </td>
-   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> 0.08 </td>
    <td style="text-align:left;"> 28.0 </td>
    <td style="text-align:left;"> 0.0325 </td>
    <td style="text-align:left;"> 0.0921 </td>
@@ -4027,9 +4148,98 @@ filtered %>%
 </tbody>
 </table>
 
+### `masterView()`
+
+6. `masterView()`: Allows to view already mapped & unmapped columns/variables per data source.
+`masterView(source = NULL, expand = FALSE)` has 2 arguments:
+
+* `source`: Name of the main data sources: "Reason", "Public Plans Database", "Census".
+* `expand`: Set to `FALSE` (default) to see mapped variables. Change to `TRUE` if you want to see all unmapped variables.
+
+Example of how to use this function:
+
+
+```r
+view.reason <- masterView("Reason", FALSE)
+view.reason %>% 
+  head() %>%
+  kable() %>%
+  kable_styling(full_width = FALSE, position = "left")
+```
+
+<table class="table" style="width: auto !important; ">
+ <thead>
+  <tr>
+   <th style="text-align:right;"> master_attribute_id </th>
+   <th style="text-align:left;"> master_attribute_name </th>
+   <th style="text-align:right;"> priority </th>
+   <th style="text-align:right;"> plan_attribute_id </th>
+   <th style="text-align:left;"> attribute_name </th>
+   <th style="text-align:left;"> attribute_column_name </th>
+   <th style="text-align:left;"> data_source_name </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> Market Value of Assets Dollar </td>
+   <td style="text-align:right;"> 100 </td>
+   <td style="text-align:right;"> 10996 </td>
+   <td style="text-align:left;"> Market Value of Assets </td>
+   <td style="text-align:left;"> mva </td>
+   <td style="text-align:left;"> Reason </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:left;"> Actuarially Accrued Liabilities Dollar </td>
+   <td style="text-align:right;"> 100 </td>
+   <td style="text-align:right;"> 10990 </td>
+   <td style="text-align:left;"> Actuarial Acrrued Liability </td>
+   <td style="text-align:left;"> aal </td>
+   <td style="text-align:left;"> Reason </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:left;"> Covered Payroll Dollar </td>
+   <td style="text-align:right;"> 100 </td>
+   <td style="text-align:right;"> 10993 </td>
+   <td style="text-align:left;"> Covered Payroll </td>
+   <td style="text-align:left;"> payroll </td>
+   <td style="text-align:left;"> Reason </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:left;"> 1 Year Investment Return Percentage </td>
+   <td style="text-align:right;"> 100 </td>
+   <td style="text-align:right;"> 10981 </td>
+   <td style="text-align:left;"> Market Investment Return (MVA Basis) </td>
+   <td style="text-align:left;"> market_return </td>
+   <td style="text-align:left;"> Reason </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 25 </td>
+   <td style="text-align:left;"> Actuarial Funded Ratio Percentage </td>
+   <td style="text-align:right;"> 100 </td>
+   <td style="text-align:right;"> 10992 </td>
+   <td style="text-align:left;"> GASB 25 Funded Ratio </td>
+   <td style="text-align:left;"> fundedratio_old </td>
+   <td style="text-align:left;"> Reason </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 30 </td>
+   <td style="text-align:left;"> Actuarial Value of Assets Dollar </td>
+   <td style="text-align:right;"> 100 </td>
+   <td style="text-align:right;"> 10989 </td>
+   <td style="text-align:left;"> Actuarial Value of Assets </td>
+   <td style="text-align:left;"> ava </td>
+   <td style="text-align:left;"> Reason </td>
+  </tr>
+</tbody>
+</table>
+
 ### `loadData`
 
-6. `loadData`: loads the data for a specified plan from an Excel file. `loadData` has one argument:
+7. `loadData`: loads the data for a specified plan from an Excel file. `loadData` has one argument:
 
 `loadData(file_name)`
 
@@ -4041,7 +4251,7 @@ data_from_file <- loadData('data/NorthCarolina_PensionDatabase_TSERS.xlsx')
 
 ### `selectedData()`
 
-7. `selectedData()`: selects the only the variables used in historical analyses. `selectedData` has one argument, `wide_data`, that is required:
+8. `selectedData()`: selects the only the variables used in historical analyses. `selectedData` has one argument, `wide_data`, that is required:
 
 `selectedData(wide_data)`
 
@@ -4053,7 +4263,7 @@ Back to the Kansas Public Employees' example. That is a lot of variables. The `s
 ```r
 df <- selectedData(vtsrs_data)
 #> Error: Can't subset columns that don't exist.
-#> [31mx[39m Column `actuarial_valuation_date_for_gasb_schedules` doesn't exist.
+#> [31mx[39m Column `actuarial_valuation_date_for_gasb_schedules` doesn't exist.
 df %>% 
   head() %>%
   kable() %>%
@@ -4090,7 +4300,7 @@ df %>%
 
 ### `glPlot()`
 
-8. `glPlot()`: creates the 'Gain/Loss' plot using a CSV file as an input. glPlot has two arguments:
+9. `glPlot()`: creates the 'Gain/Loss' plot using a CSV file as an input. glPlot has two arguments:
 
 `glPlot(filename, ylab_unit)`
 
@@ -4106,7 +4316,7 @@ glPlot(filename)
 
 ### `linePlot()`
 
-9. `linePlot()`: creates a plot comparing two variables, such as ADEC vs. Actual contributions. `linePlot()` has six arguments, with `data` being required:
+10. `linePlot()`: creates a plot comparing two variables, such as ADEC vs. Actual contributions. `linePlot()` has six arguments, with `data` being required:
 
 `linePlot(data, .var1, .var2, labelY, label1, label2)`
 
@@ -4125,7 +4335,7 @@ linePlot(df)
 
 ### `debtPlot()`
 
-10. `debtPlot()`: creates the "History of Volatile Solvency" or "Mountain of Debt" chart. `debtPlot` takes one argument:
+11. `debtPlot()`: creates the "History of Volatile Solvency" or "Mountain of Debt" chart. `debtPlot` takes one argument:
 
 `debtPlot(data)`
 
@@ -4139,7 +4349,7 @@ debtPlot(df)
 
 ### `savePlot()`
 
-11. `savePlot()`: adds a source and save ggplot chart. `savePlot` takes five arguments:
+12. `savePlot()`: adds a source and save ggplot chart. `savePlot` takes five arguments:
 `savePlot(plot = myplot, source = "The source for my data", save_filepath = "filename_that_my_plot_should_be_saved_to.png", width_pixels = 648, height_pixels = 384.48)`
 
 * `plot`: The variable name of the plot you have created that you want to format and save
