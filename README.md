@@ -4263,7 +4263,7 @@ Back to the Kansas Public Employees' example. That is a lot of variables. The `s
 ```r
 df <- selectedData(vtsrs_data)
 #> Error: Can't subset columns that don't exist.
-#> [31mx[39m Column `actuarial_valuation_date_for_gasb_schedules` doesn't exist.
+#> [31mx[39m Column `actuarial_valuation_date_for_gasb_schedules` doesn't exist.
 df %>% 
   head() %>%
   kable() %>%
