@@ -5,22 +5,21 @@
 #' @param yaxisMax Value that sets Y-axis maximum. 
 #' @param yaxisSeq  Value that sets space between Major breaks.
 #' @param yaxisScale Value that sets Y-axis scale. Example: 100 for percentages or 1/1000 for thousands.
-#' @param format Format of Y-axis scale -- either "%", "$", or something else.
-#' @param str Value that sets number of strings at which to cut legend text at. Default is 20.
+#' @param format Format of Y-axis scale. Examples: "%", "$", or something else.
+#' @param str Value that sets number of strings at which to cut legend text at -- Default is 20.
 #' @param labelY Title of the Y-axis.
 #' @param lab1 Text label for the 1st variable -- optional.
 #' @param lab2 Text label for the 2nd variable -- optional.
 #' @param lab3 Text label for the 3rd variable -- optional.
 #' @param lab4 Text label for the 4th variable -- optional.
 #' @param lab5 Text label for the 5th variable -- optional.
-#' @importFrom rlang .data
+#' @export
 #' @examples
 #' \dontrun{
 #' linePlot(data, yaxisMin = -20, yaxisMax = 30, yaxisSeq = 5, yaxisScale = 100, format = "%", str = 20, labelY = NULL, lab1 = "Market Valued Return", lab2 = "Assumed Rate of Return",lab3 = "",lab4 = "",lab5 = "")
 #' }
-#' @author Anil Niraula <anil.niraula@reason.org>
-#' @author Swaroop Bhagavatula <swaroop.bhagavatula@reason.org>
-#' @author Jen Sidorova <jen.sidorova@reason.org>
+#' @importFrom rlang .data
+#' @author Anil Niraula <anil.niraula@reason.org>, Swaroop Bhagavatula <swaroop.bhagavatula@reason.org>, Jen Sidorova <jen.sidorova@reason.org>
 
 linePlot <- function(data, yaxisMin = 0, yaxisMax = NULL, yaxisSeq = 5,
                      yaxisScale = 100, format = NULL, str = 20,
