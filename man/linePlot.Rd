@@ -6,10 +6,10 @@
 \usage{
 linePlot(
   data,
-  Min = 0,
-  Max = NULL,
-  Seq = 5,
-  Scale = 100,
+  yaxisMin = 0,
+  yaxisMax = NULL,
+  yaxisSeq = 5,
+  yaxisScale = 100,
   format = NULL,
   str = 20,
   labelY = NULL,
@@ -23,17 +23,17 @@ linePlot(
 \arguments{
 \item{data}{a dataframe/data.table produced by pullData, pullStateData, or other ways that produces the same format.}
 
-\item{Min}{Value that sets Y-axis minimum.}
+\item{yaxisMin}{Value that sets Y-axis minimum.}
 
-\item{Max}{Value that sets Y-axis maximum.}
+\item{yaxisMax}{Value that sets Y-axis maximum.}
 
-\item{Seq}{Value that sets space between Major breaks.}
+\item{yaxisSeq}{Value that sets space between Major breaks.}
 
-\item{Scale}{Value that sets Y-axis scale. Example: 100 for percentages or 1/1000 for thousands.}
+\item{yaxisScale}{Value that sets Y-axis scale. Example: 100 for percentages or 1/1000 for thousands.}
 
-\item{format}{Format of Y-axis scale -- either "%", "$", or something else.}
+\item{format}{Format of Y-axis scale. Examples: "%", "$", or something else.}
 
-\item{str}{Value that sets number of strings at which to cut legend text at. Default is 20.}
+\item{str}{Value that sets number of strings at which to cut legend text at -- Default is 20.}
 
 \item{labelY}{Title of the Y-axis.}
 
@@ -50,10 +50,11 @@ linePlot(
 \description{
 Create a line plot to visualize up to 5 variables, such as ADEC vs. Actual contributions.
 }
+\examples{
+\dontrun{
+linePlot(data, yaxisMin = -20, yaxisMax = 30, yaxisSeq = 5, yaxisScale = 100, format = "\%", str = 20, labelY = NULL, lab1 = "Market Valued Return", lab2 = "Assumed Rate of Return",lab3 = "",lab4 = "",lab5 = "")
+}
+}
 \author{
-Anil Niraula <anil.niraula@reason.org>
-
-Swaroop Bhagavatula <swaroop.bhagavatula@reason.org>
-
-Jen Sidorova <jen.sidorova@reason.org>
+Anil Niraula <anil.niraula@reason.org>, Swaroop Bhagavatula <swaroop.bhagavatula@reason.org>, Jen Sidorova <jen.sidorova@reason.org>
 }
