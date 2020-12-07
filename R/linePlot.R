@@ -8,11 +8,11 @@
 #' @param format Format of Y-axis scale. Examples: "%", "$", or something else.
 #' @param str Value that sets number of strings at which to cut legend text at -- Default is 20.
 #' @param labelY Title of the Y-axis.
-#' @param lab1 Text label for the 1st variable -- optional.
-#' @param lab2 Text label for the 2nd variable -- optional.
-#' @param lab3 Text label for the 3rd variable -- optional.
-#' @param lab4 Text label for the 4th variable -- optional.
-#' @param lab5 Text label for the 5th variable -- optional.
+#' @param lab1 Text label for the 1st variable - optional.
+#' @param lab2 Text label for the 2nd variable - optional.
+#' @param lab3 Text label for the 3rd variable - optional.
+#' @param lab4 Text label for the 4th variable - optional.
+#' @param lab5 Text label for the 5th variable - optional.
 #' @export
 #' @examples
 #' \dontrun{
@@ -27,7 +27,7 @@ linePlot <- function (data, yaxisMin = 0, yaxisMax = NULL, yaxisSeq = 5,
 {
   reasontheme::set_reason_theme(style = "slide")
   
-  data <- data.table(data) %>% dplyr::mutate_all(dplyr::funs(as.numeric))
+  data <- data.frame(data) %>% dplyr::mutate_all(dplyr::funs(as.numeric))
   
   #Geomean
   if (sum(data$return_1yr) > 0) {
@@ -47,7 +47,7 @@ linePlot <- function (data, yaxisMin = 0, yaxisMax = NULL, yaxisSeq = 5,
     rolling <- data.table(rolling)
     data <- data.table(rbind.fill(rolling, data))
     x <- data[!is.na(return_1yr), .N]
-    data[(x + 1):(x + rolling[, .N]),]$V1 <- data[(1:rolling[, .N]),]$V1
+    data[(x + 1):(x + rolling[, .N])]$V1 <- data[(1:rolling[, .N])]$V1
     data <- data[!(1:rolling[, .N])]
     data$year <- as.numeric(data$year)
   }
