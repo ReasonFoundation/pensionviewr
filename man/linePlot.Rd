@@ -37,15 +37,15 @@ linePlot(
 
 \item{labelY}{Title of the Y-axis.}
 
-\item{lab1}{Text label for the 1st variable -- optional.}
+\item{lab1}{Text label for the 1st variable - optional.}
 
-\item{lab2}{Text label for the 2nd variable -- optional.}
+\item{lab2}{Text label for the 2nd variable - optional.}
 
-\item{lab3}{Text label for the 3rd variable -- optional.}
+\item{lab3}{Text label for the 3rd variable - optional.}
 
-\item{lab4}{Text label for the 4th variable -- optional.}
+\item{lab4}{Text label for the 4th variable - optional.}
 
-\item{lab5}{Text label for the 5th variable -- optional.}
+\item{lab5}{Text label for the 5th variable - optional.}
 }
 \description{
 Create a line plot to visualize up to 5 variables, such as ADEC vs. Actual contributions.

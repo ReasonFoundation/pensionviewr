@@ -8,11 +8,11 @@
 #' @param format Format of Y-axis scale. Examples: "%", "$", or something else.
 #' @param str Value that sets number of strings at which to cut legend text at -- Default is 20.
 #' @param labelY Title of the Y-axis.
-#' @param lab1 Text label for the 1st variable -- optional.
-#' @param lab2 Text label for the 2nd variable -- optional.
-#' @param lab3 Text label for the 3rd variable -- optional.
-#' @param lab4 Text label for the 4th variable -- optional.
-#' @param lab5 Text label for the 5th variable -- optional.
+#' @param lab1 Text label for the 1st variable - optional.
+#' @param lab2 Text label for the 2nd variable - optional.
+#' @param lab3 Text label for the 3rd variable - optional.
+#' @param lab4 Text label for the 4th variable - optional.
+#' @param lab5 Text label for the 5th variable - optional.
 #' @export
 #' @examples
 #' \dontrun{
