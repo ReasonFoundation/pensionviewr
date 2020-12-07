@@ -27,7 +27,7 @@ linePlot <- function (data, yaxisMin = 0, yaxisMax = NULL, yaxisSeq = 5,
 {
   reasontheme::set_reason_theme(style = "slide")
   
-  data <- data.table(data) %>% dplyr::mutate_all(dplyr::funs(as.numeric))
+  data <- data.frame(data) %>% dplyr::mutate_all(dplyr::funs(as.numeric))
   
   #Geomean
   if (sum(data$return_1yr) > 0) {
@@ -47,7 +47,7 @@ linePlot <- function (data, yaxisMin = 0, yaxisMax = NULL, yaxisSeq = 5,
     rolling <- data.table(rolling)
     data <- data.table(rbind.fill(rolling, data))
     x <- data[!is.na(return_1yr), .N]
-    data[(x + 1):(x + rolling[, .N]),]$V1 <- data[(1:rolling[, .N]),]$V1
+    data[(x + 1):(x + rolling[, .N])]$V1 <- data[(1:rolling[, .N])]$V1
     data <- data[!(1:rolling[, .N])]
     data$year <- as.numeric(data$year)
   }
