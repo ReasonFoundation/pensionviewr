@@ -27,7 +27,7 @@ linePlot <- function (data, yaxisMin = 0, yaxisMax = NULL, yaxisSeq = 5,
 {
   reasontheme::set_reason_theme(style = "slide")
   
-  if (sum(!is.na(PERSI.data$return_1yr)) > 0) {
+  if (sum(!is.na(data$return_1yr)) > 0) {
     
     geomean <- function(x) {
       x <- as.vector(na.omit(x))
