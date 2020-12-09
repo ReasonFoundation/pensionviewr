@@ -27,42 +27,37 @@ linePlot <- function (data, yaxisMin = 0, yaxisMax = NULL, yaxisSeq = 5,
 {
   reasontheme::set_reason_theme(style = "slide")
   
+  #Geomean function
+  geomean <- function(x) {
+    x <- as.vector(na.omit(x))
+    x <- x + 1
+    exp(mean(log(x))) - 1
+  }
+  
   if (sum(!is.na(data$return_1yr)) > 0) {
-    
-    geomean <- function(x) {
-      x <- as.vector(na.omit(x))
-      x <- x + 1
-      exp(mean(log(x))) - 1
-    }
     
     returns <- as.numeric(data$return_1yr)
     nyear <- 10
     rolling <- geomean(returns[1:nyear])
     n <- length(na.omit(returns)) - nyear
     for (i in 1:n) {
-      rolling <- rbind(rolling, geomean(returns[(i + 1):(i + 
-                                                           nyear)]))
+      rolling <- rbind(rolling, geomean(returns[(i + 1):(i + nyear)]))
     }
-    
     data <- data.frame(data) %>% dplyr::mutate_all(dplyr::funs(as.numeric))
     rolling <- data.table(rolling)
     data <- data.table(rbind.fill(rolling, data))
     x <- data[!is.na(return_1yr), .N]
-    data[(x + 1):(x + rolling[, .N])]$V1 <- data[(1:rolling[, 
-                                                            .N])]$V1
+    data[(x + 1):(x + rolling[, .N])]$V1 <- data[(1:rolling[, .N])]$V1
     data <- data[!(1:rolling[, .N])]
     data$year <- as.numeric(data$year)
-  }
-  else {
-    NULL
-  }
-  if (sum(data$return_1yr) > 0) {
+    
     data <- data %>% select(year, return_1yr, ava_return, 
                             arr, V1)
   }
   else {
-    NULL
+    data <- data.frame(data) %>% dplyr::mutate_all(dplyr::funs(as.numeric))
   }
+  
   colnames(data) <- c("year", if (!is_null(lab1)) {
     paste(lab1)
   }, if (!is_null(lab2)) {
