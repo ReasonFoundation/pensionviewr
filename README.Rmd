@@ -262,36 +262,8 @@ Example of how it is used in a standard workflow:
 * `font` directly paste name of a font (e.g. "Calibri") to change the default font of the text
 
 Example of how it is used in a standard workflow:
-```{r}
-library(reasontheme)
-library(pensionviewr)
-library(ggplot2)
-library(tidyverse)
-library(tseries)
-library(data.table)
-library(readr)
-library(rsconnect)
-library(dplyr)
-library(plyr)
-
-###
-##Pull PERSI data
-##Load list of plans
-pl <- planList()
-
-#PULL DATA
-Data <- pullStateData(2001)
-Data <- filterData(Data,2001)
-#View(Data)
-PERSI.debt <- Data %>% filter(plan_name == "Idaho Public Employee Retirement System")
-PERSI.debt$year <- as.numeric(PERSI.debt$year)
-PERSI.debt$ava <- as.numeric(PERSI.debt$ava)
-PERSI.debt$aal <- as.numeric(PERSI.debt$aal)
-
-
-debt <- areaPlot (PERSI.debt, caption = F, grid = F, ticks = F, sp500 = F, font = "Calibri")
-
-debt
+```
+`debt <- areaPlot(PERSI.debt, caption = F, grid = F, ticks = F, sp500 = F, font = "Calibri")`
 ```
 
 ### `savePlot()`
