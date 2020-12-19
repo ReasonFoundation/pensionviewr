@@ -4340,85 +4340,9 @@ Example of how it is used in a standard workflow:
 * `font` directly paste name of a font (e.g. "Calibri") to change the default font of the text
 
 Example of how it is used in a standard workflow:
-
-```r
-library(reasontheme)
-library(pensionviewr)
-library(ggplot2)
-library(tidyverse)
-library(tseries)
-#> Registered S3 method overwritten by 'quantmod':
-#>   method            from
-#>   as.zoo.data.frame zoo
-#> 
-#>     'tseries' version: 0.10-47
-#> 
-#>     'tseries' is a package for time series analysis and computational finance.
-#> 
-#>     See 'library(help="tseries")' for details.
-library(data.table)
-#> data.table 1.13.2 using 1 threads (see ?getDTthreads).  Latest news: r-datatable.com
-#> **********
-#> This installation of data.table has not detected OpenMP support. It should still work but in single-threaded mode.
-#> This is a Mac. Please read https://mac.r-project.org/openmp/. Please engage with Apple and ask them for support. Check r-datatable.com for updates, and our Mac instructions here: https://github.com/Rdatatable/data.table/wiki/Installation. After several years of many reports of installation problems on Mac, it's time to gingerly point out that there have been no similar problems on Windows or Linux.
-#> **********
-#> 
-#> Attaching package: 'data.table'
-#> The following object is masked _by_ '.GlobalEnv':
-#> 
-#>     .N
-#> The following objects are masked from 'package:dplyr':
-#> 
-#>     between, first, last
-#> The following object is masked from 'package:purrr':
-#> 
-#>     transpose
-library(readr)
-library(rsconnect)
-library(dplyr)
-library(plyr)
-#> ------------------------------------------------------------------------------------------------------------------------------------------
-#> You have loaded plyr after dplyr - this is likely to cause problems.
-#> If you need functions from both plyr and dplyr, please load plyr first, then dplyr:
-#> library(plyr); library(dplyr)
-#> ------------------------------------------------------------------------------------------------------------------------------------------
-#> 
-#> Attaching package: 'plyr'
-#> The following objects are masked from 'package:dplyr':
-#> 
-#>     arrange, count, desc, failwith, id, mutate, rename, summarise, summarize
-#> The following object is masked from 'package:purrr':
-#> 
-#>     compact
-
-###
-##Pull PERSI data
-##Load list of plans
-pl <- planList()
-
-#PULL DATA
-Data <- pullStateData(2001)
-Data <- filterData(Data,2001)
-#View(Data)
-PERSI.debt <- Data %>% filter(plan_name == "Idaho Public Employee Retirement System")
-PERSI.debt$year <- as.numeric(PERSI.debt$year)
-PERSI.debt$ava <- as.numeric(PERSI.debt$ava)
-PERSI.debt$aal <- as.numeric(PERSI.debt$aal)
-
-
-debt <- areaPlot (PERSI.debt, caption = F, grid = F, ticks = F, sp500 = F, font = "Calibri")
-
-debt
-#> Warning: Use of `graph$uaal` is discouraged. Use `uaal` instead.
-#> Warning: Use of `graph$SP500` is discouraged. Use `SP500` instead.
-#> Warning: Use of `graph$sign` is discouraged. Use `sign` instead.
-#> Warning: Use of `graph$year` is discouraged. Use `year` instead.
-#> Warning: Use of `graph$funded_ratio` is discouraged. Use `funded_ratio` instead.
-#> Warning: Use of `graph$year` is discouraged. Use `year` instead.
-#> Error: Insufficient values in manual scale. 2 needed but only 0 provided.
 ```
-
-<img src="man/figures/README-unnamed-chunk-1-1.png" title="plot of chunk unnamed-chunk-1" alt="plot of chunk unnamed-chunk-1" width="100%" />
+`debt <- areaPlot(PERSI.debt, caption = F, grid = F, ticks = F, sp500 = F, font = "Calibri")`
+```
 
 ### `savePlot()`
 
