@@ -4341,7 +4341,7 @@ Example of how it is used in a standard workflow:
 
 Example of how it is used in a standard workflow:
 ```
-`debt <- areaPlot(PERSI.debt, caption = F, grid = F, ticks = F, sp500 = F, font = "Calibri")`
+debt <- areaPlot(PERSI.debt, caption = F, grid = F, ticks = F, sp500 = F, font = "Calibri")
 ```
 
 ### `savePlot()`
