@@ -231,10 +231,8 @@ df %>%
 
 Example of how it is used in a standard workflow:
 
-```
-filename <- "data/GainLoss_data.csv"
-glPlot(filename)
-```
+`filename <- "data/GainLoss_data.csv"`
+`glPlot(filename)`
 
 ### `linePlot()`
 
@@ -249,10 +247,6 @@ glPlot(filename)
 * `label1` A label for the first variable.
 * `label2` A label for the second variable.
 
-```{r contributions, fig.width = 9, fig.height = 5.33}
-linePlot(df)
-```
-
 ### `areaPlot()`
 
 11. `areaPlot()`: creates the "Mountain of Debt" chart or S&P500 chart. `areaPlot` has six arguments, with `data` being required:
@@ -266,10 +260,8 @@ linePlot(df)
 * `ticks` Set to FALSE to remove ticks
 * `font` directly paste name of a font (e.g. "Calibri") to change the default font of the text
 
-```
-debt <- areaPlot (PERSI.debt, caption = F, grid = F, ticks = F, sp500 = F, font = "Calibri")
-debt
-```
+Example of how it is used in a standard workflow:
+`debt <- areaPlot(PERSI.debt, caption = F, grid = F, ticks = F, sp500 = F, font = "Calibri")`
 
 ### `savePlot()`
 
