@@ -34,6 +34,8 @@ linePlot <- function (data, yaxisMin = 0, yaxisMax = NULL, yaxisSeq = 5,
     exp(mean(log(x))) - 1
   }
   
+  data <- as.data.table(data)
+  
   if (sum(!is.na(data$return_1yr)) > 0) {
     
     returns <- as.numeric(data$return_1yr)
@@ -53,10 +55,11 @@ linePlot <- function (data, yaxisMin = 0, yaxisMax = NULL, yaxisSeq = 5,
     
     data <- data %>% select(year, return_1yr, ava_return, 
                             arr, V1)
-  }
-  else {
+  } else {
     data <- data.frame(data) %>% dplyr::mutate_all(dplyr::funs(as.numeric))
   }
+  
+  (data)
   
   colnames(data) <- c("year", if (!is_null(lab1)) {
     paste(lab1)
@@ -70,6 +73,7 @@ linePlot <- function (data, yaxisMin = 0, yaxisMax = NULL, yaxisSeq = 5,
     paste(lab5)
   })
   graph <- data.table(melt(data, id.vars = "year"))
+  
   lineColors <- c(palette_reason$Orange, palette_reason$Yellow, 
                   palette_reason$SatBlue, palette_reason$LightGrey)
   options(repr.plot.width = 1, repr.plot.height = 0.75)
