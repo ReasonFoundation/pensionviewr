@@ -48,14 +48,14 @@ linePlot <- function (data, yaxisMin = 0, yaxisMax = NULL, yaxisSeq = 5,
     data <- data.frame(data) %>% dplyr::mutate_all(dplyr::funs(as.numeric))
     rolling <- data.table(rolling)
     data <- data.table(rbind.fill(rolling, data))
-    x <- length(na.omit(data$return_1yr))
+    x <- length(na.omit(data[,2]))
     data[(x + 1):(x + rolling[, .N])]$V1 <- data[(1:rolling[, .N])]$V1
     data <- data[!(1:rolling[, .N])]
     data$year <- as.numeric(data$year)
     
     data <- data %>% select(year, return_1yr, ava_return, 
                             arr, V1)
-  } 
+  }else{data <- data.frame(data) %>% dplyr::mutate_all(dplyr::funs(as.numeric))}
   
   colnames(data) <- c("year", if (!is_null(lab1)) {
     paste(lab1)
