@@ -249,7 +249,7 @@ Example of how it is used in a standard workflow:
 
 ### `areaPlot()`
 
-11. `areaPlot()`: creates the "Mountain of Debt" chart or S&P500 chart. `areaPlot` has six arguments, with `data` being required:
+11. `areaPlot()`: creates the "Mountain of Debt" chart or S&P500 chart. `areaPlot` has seven arguments, with `data` being required:
 
 `areaPlot(data, title, caption, grid, ticks, sp500, font)`
 
@@ -258,10 +258,41 @@ Example of how it is used in a standard workflow:
 * `caption` set to TRUE to add "reason.org/pensions" caption at the bottom right corner
 * `grid` set to TRUE to add major gridlines
 * `ticks` Set to FALSE to remove ticks
+* `sp500` default is FALSE ti create Mounain of Debt chart. Set sp500 to TRUE to visualize annual S&P500 Index values on the secondary Y-axis
 * `font` directly paste name of a font (e.g. "Calibri") to change the default font of the text
 
 Example of how it is used in a standard workflow:
-`debt <- areaPlot(PERSI.debt, caption = F, grid = F, ticks = F, sp500 = F, font = "Calibri")`
+```{r}
+library(reasontheme)
+library(pensionviewr)
+library(ggplot2)
+library(tidyverse)
+library(tseries)
+library(data.table)
+library(readr)
+library(rsconnect)
+library(dplyr)
+library(plyr)
+
+###
+##Pull PERSI data
+##Load list of plans
+pl <- planList()
+
+#PULL DATA
+Data <- pullStateData(2001)
+Data <- filterData(Data,2001)
+#View(Data)
+PERSI.debt <- Data %>% filter(plan_name == "Idaho Public Employee Retirement System")
+PERSI.debt$year <- as.numeric(PERSI.debt$year)
+PERSI.debt$ava <- as.numeric(PERSI.debt$ava)
+PERSI.debt$aal <- as.numeric(PERSI.debt$aal)
+
+
+debt <- areaPlot (PERSI.debt, caption = F, grid = F, ticks = F, sp500 = F, font = "Calibri")
+
+debt
+```
 
 ### `savePlot()`
 
