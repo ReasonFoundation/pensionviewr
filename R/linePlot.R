@@ -35,7 +35,7 @@ linePlot <- function (data, yaxisMin = 0, yaxisMax = NULL, yaxisSeq = 5,
   }
   
   data <- as.data.table(data)
-  
+  data$return_1yr <- as.numeric(data$return_1yr)
   if (sum(!is.na(data$return_1yr)) > 0) {
     
     returns <- as.numeric(data$return_1yr)
@@ -48,7 +48,7 @@ linePlot <- function (data, yaxisMin = 0, yaxisMax = NULL, yaxisSeq = 5,
     data <- data.frame(data) %>% dplyr::mutate_all(dplyr::funs(as.numeric))
     rolling <- data.table(rolling)
     data <- data.table(rbind.fill(rolling, data))
-    x <- data[!is.na(return_1yr), .N]
+    x <- length(na.omit(data$return_1yr))
     data[(x + 1):(x + rolling[, .N])]$V1 <- data[(1:rolling[, .N])]$V1
     data <- data[!(1:rolling[, .N])]
     data$year <- as.numeric(data$year)
