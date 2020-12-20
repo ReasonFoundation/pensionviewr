@@ -62,7 +62,7 @@ devtools::install_github("ReasonFoundation/pensionviewr")
 * The package has four functions for plots: 
 `glPlot()`, 
 `linePlot()`, 
-`debtPlot()`, and 
+`areaPlot()`, and 
 `savePlot()`.
 
 * The package has Reason color palette: 
@@ -231,10 +231,8 @@ df %>%
 
 Example of how it is used in a standard workflow:
 
-```
-filename <- "data/GainLoss_data.csv"
-glPlot(filename)
-```
+`filename <- "data/GainLoss_data.csv"`
+`glPlot(filename)`
 
 ### `linePlot()`
 
@@ -249,20 +247,23 @@ glPlot(filename)
 * `label1` A label for the first variable.
 * `label2` A label for the second variable.
 
-```{r contributions, fig.width = 9, fig.height = 5.33}
-linePlot(df)
+### `areaPlot()`
+
+11. `areaPlot()`: creates the "Mountain of Debt" chart or S&P500 chart. `areaPlot` has seven arguments, with `data` being required:
+
+`areaPlot(data, title, caption, grid, ticks, sp500, font)`
+
+* `data` a dataframe or data.table produced by the pullStateData function or in the same format.
+* `title` naming the chart (e.g. "Unfunded Liability Growth").
+* `caption` set to TRUE to add "reason.org/pensions" caption at the bottom right corner
+* `grid` set to TRUE to add major gridlines
+* `ticks` Set to FALSE to remove ticks
+* `sp500` default is FALSE ti create Mounain of Debt chart. Set sp500 to TRUE to visualize annual S&P500 Index values on the secondary Y-axis
+* `font` directly paste name of a font (e.g. "Calibri") to change the default font of the text
+
+Example of how it is used in a standard workflow:
 ```
-
-### `debtPlot()`
-
-11. `debtPlot()`: creates the "History of Volatile Solvency" or "Mountain of Debt" chart. `debtPlot` takes one argument:
-
-`debtPlot(data)`
-
-* `data`: a dataframe produced by the `selectedData()` function or in the same format containing year, uaal, funded ratio columns.
-
-```{r plot1, fig.width=9, fig.height = 5.33}
-debtPlot(df)
+debt <- areaPlot(PERSI.debt, caption = F, grid = F, ticks = F, sp500 = F, font = "Calibri")
 ```
 
 ### `savePlot()`

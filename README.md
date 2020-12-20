@@ -50,7 +50,7 @@ devtools::install_github("ReasonFoundation/pensionviewr")
 * The package has four functions for plots: 
 `glPlot()`, 
 `linePlot()`, 
-`debtPlot()`, and 
+`areaPlot()`, and 
 `savePlot()`.
 
 * The package has Reason color palette: 
@@ -1831,7 +1831,6 @@ state.data %>%
    <th style="text-align:left;"> actuarially_required_contribution_dollar </th>
    <th style="text-align:left;"> total_amortization_payment_percentage </th>
    <th style="text-align:left;"> administrative_expense_dollar </th>
-   <th style="text-align:left;"> x1_year_investment_return_percentage </th>
    <th style="text-align:left;"> employer_state_contribution_dollar </th>
    <th style="text-align:left;"> type_of_employees_covered </th>
    <th style="text-align:left;"> discount_rate_assumption </th>
@@ -1841,6 +1840,7 @@ state.data %>%
    <th style="text-align:left;"> number_of_years_remaining_on_amortization_schedule </th>
    <th style="text-align:left;"> market_assets_reported_for_asset_smoothing </th>
    <th style="text-align:left;"> total_benefits_paid_dollar </th>
+   <th style="text-align:left;"> x1_year_investment_return_percentage </th>
    <th style="text-align:left;"> fiscal_year_of_contribution </th>
    <th style="text-align:left;"> benefit_payments_dollar </th>
    <th style="text-align:left;"> other_contribution_dollar </th>
@@ -1878,7 +1878,6 @@ state.data %>%
    <td style="text-align:left;"> 467553000 </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> -12934000 </td>
-   <td style="text-align:left;"> 0.0278 </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> Plan covers state and local employees </td>
    <td style="text-align:left;"> 0.077 </td>
@@ -1888,6 +1887,7 @@ state.data %>%
    <td style="text-align:left;"> 28.0 </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> -1171825000 </td>
+   <td style="text-align:left;"> 0.0278 </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> 1084915300 </td>
    <td style="text-align:left;"> 4187000 </td>
@@ -1923,7 +1923,6 @@ state.data %>%
    <td style="text-align:left;"> 869336000 </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> -20583000 </td>
-   <td style="text-align:left;"> 0.0263 </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> Plan covers teachers </td>
    <td style="text-align:left;"> 0.077 </td>
@@ -1933,6 +1932,7 @@ state.data %>%
    <td style="text-align:left;"> 28.0 </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> -2290375000 </td>
+   <td style="text-align:left;"> 0.0263 </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> 2191704800 </td>
    <td style="text-align:left;"> 6234000 </td>
@@ -1968,7 +1968,6 @@ state.data %>%
    <td style="text-align:left;"> 414243000 </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> -7429000 </td>
-   <td style="text-align:left;"> 0.059 </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> Plan covers state and local employees </td>
    <td style="text-align:left;"> 0.0738 </td>
@@ -1978,6 +1977,7 @@ state.data %>%
    <td style="text-align:left;"> 25.0 </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> -837381000 </td>
+   <td style="text-align:left;"> 0.059 </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> 822390940 </td>
    <td style="text-align:left;"> 0 </td>
@@ -2013,7 +2013,6 @@ state.data %>%
    <td style="text-align:left;"> 154083000 </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> -3018000 </td>
-   <td style="text-align:left;"> 0.0639 </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> Plan covers teachers </td>
    <td style="text-align:left;"> 0.0738 </td>
@@ -2023,6 +2022,7 @@ state.data %>%
    <td style="text-align:left;"> 25.0 </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> -470414000 </td>
+   <td style="text-align:left;"> 0.0639 </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> 470498280 </td>
    <td style="text-align:left;"> NA </td>
@@ -2058,7 +2058,6 @@ state.data %>%
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> 0.24026 </td>
    <td style="text-align:left;"> -1448000 </td>
-   <td style="text-align:left;"> 0.0545 </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> Plan covers police and/or fire </td>
    <td style="text-align:left;"> 0.073 </td>
@@ -2068,6 +2067,7 @@ state.data %>%
    <td style="text-align:left;"> 17.0 </td>
    <td style="text-align:left;"> 1996273344 </td>
    <td style="text-align:left;"> -125481000 </td>
+   <td style="text-align:left;"> 0.0545 </td>
    <td style="text-align:left;"> 2021.0 </td>
    <td style="text-align:left;"> 160313590 </td>
    <td style="text-align:left;"> NA </td>
@@ -2103,7 +2103,6 @@ state.data %>%
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> 0.37037 </td>
    <td style="text-align:left;"> -7251000 </td>
-   <td style="text-align:left;"> 0.054 </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> Plan covers police and/or fire </td>
    <td style="text-align:left;"> 0.073 </td>
@@ -2113,6 +2112,7 @@ state.data %>%
    <td style="text-align:left;"> 17.0 </td>
    <td style="text-align:left;"> 7810990750 </td>
    <td style="text-align:left;"> -818430000 </td>
+   <td style="text-align:left;"> 0.054 </td>
    <td style="text-align:left;"> 2021.0 </td>
    <td style="text-align:left;"> 850051750 </td>
    <td style="text-align:left;"> NA </td>
@@ -4263,7 +4263,7 @@ Back to the Kansas Public Employees' example. That is a lot of variables. The `s
 ```r
 df <- selectedData(vtsrs_data)
 #> Error: Can't subset columns that don't exist.
-#> [31mx[39m Column `actuarial_valuation_date_for_gasb_schedules` doesn't exist.
+#> [31mx[39m Column `actuarial_valuation_date_for_gasb_schedules` doesn't exist.
 df %>% 
   head() %>%
   kable() %>%
@@ -4309,10 +4309,8 @@ df %>%
 
 Example of how it is used in a standard workflow:
 
-```
-filename <- "data/GainLoss_data.csv"
-glPlot(filename)
-```
+`filename <- "data/GainLoss_data.csv"`
+`glPlot(filename)`
 
 ### `linePlot()`
 
@@ -4327,24 +4325,23 @@ glPlot(filename)
 * `label1` A label for the first variable.
 * `label2` A label for the second variable.
 
+### `areaPlot()`
 
-```r
-linePlot(df)
-#> Error in UseMethod("select_"): no applicable method for 'select_' applied to an object of class "function"
+11. `areaPlot()`: creates the "Mountain of Debt" chart or S&P500 chart. `areaPlot` has seven arguments, with `data` being required:
+
+`areaPlot(data, title, caption, grid, ticks, sp500, font)`
+
+* `data` a dataframe or data.table produced by the pullStateData function or in the same format.
+* `title` naming the chart (e.g. "Unfunded Liability Growth").
+* `caption` set to TRUE to add "reason.org/pensions" caption at the bottom right corner
+* `grid` set to TRUE to add major gridlines
+* `ticks` Set to FALSE to remove ticks
+* `sp500` default is FALSE ti create Mounain of Debt chart. Set sp500 to TRUE to visualize annual S&P500 Index values on the secondary Y-axis
+* `font` directly paste name of a font (e.g. "Calibri") to change the default font of the text
+
+Example of how it is used in a standard workflow:
 ```
-
-### `debtPlot()`
-
-11. `debtPlot()`: creates the "History of Volatile Solvency" or "Mountain of Debt" chart. `debtPlot` takes one argument:
-
-`debtPlot(data)`
-
-* `data`: a dataframe produced by the `selectedData()` function or in the same format containing year, uaal, funded ratio columns.
-
-
-```r
-debtPlot(df)
-#> Error in UseMethod("filter_"): no applicable method for 'filter_' applied to an object of class "function"
+debt <- areaPlot(PERSI.debt, caption = F, grid = F, ticks = F, sp500 = F, font = "Calibri")
 ```
 
 ### `savePlot()`
