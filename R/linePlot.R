@@ -59,9 +59,8 @@ linePlot <- function (data, title = NULL, caption = FALSE, grid = FALSE, ticks =
     rolling <- data.table(rolling)
     data <- data.table(rbind.fill(rolling, data))
     data[(x + 1):(x + rolling[, .N])]$V1 <- data[(1:rolling[, .N])]$V1
-    data <- data[!(1:rolling[, .N])]
-    data$year <- as.numeric(data$year)
     data <- data.table(data)
+    data <- data[!(1:rolling[, .N])]
     
     data <- data %>% select(year, return_1yr, ava_return, 
                             arr, V1)
@@ -112,9 +111,9 @@ linePlot <- function (data, title = NULL, caption = FALSE, grid = FALSE, ticks =
                                                                                                                        y = labelY) + theme(legend.text = element_text(size = 13)) + 
     theme(legend.direction = "vertical", legend.box = "horizontal", 
           legend.position = c(0.33, 0.09))+
-  labs(title = paste(title), 
-       caption = ifelse(isTRUE(caption),paste("reason.org/pensions"),paste(""))
-  )+
+    labs(title = paste(title), 
+         caption = ifelse(isTRUE(caption),paste("reason.org/pensions"),paste(""))
+    )+
     ggplot2::theme(axis.ticks = if(isFALSE(ticks)){ggplot2::element_blank()}else{ggplot2::element_line()}
     )+
     ggplot2::theme(axis.ticks.x = element_line(size = 0.5, color="black"))+
@@ -125,7 +124,7 @@ linePlot <- function (data, title = NULL, caption = FALSE, grid = FALSE, ticks =
     ggplot2::theme(text = element_text(family = if(!is_null(font)){paste(font)}else{paste("Arial")}, size = 9))+ 
     ##Adding Gridlines
     ggplot2::theme(panel.grid.major.y = element_line(colour= ifelse(isTRUE(grid), 
-                          paste(palette_reason$SpaceGrey),"white"),size = (1))) 
+                                                                    paste(palette_reason$SpaceGrey),"white"),size = (1))) 
   
-    # 
+  # 
 }
