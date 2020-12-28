@@ -10,7 +10,7 @@ linePlot(
   caption = FALSE,
   grid = FALSE,
   ticks = TRUE,
-  font,
+  font = NULL,
   yaxisMin = 0,
   yaxisMax = NULL,
   yaxisSeq = 5,

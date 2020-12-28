@@ -29,13 +29,16 @@
 #' @importFrom rlang .data
 #' @author Anil Niraula <anil.niraula@reason.org>, Swaroop Bhagavatula <swaroop.bhagavatula@reason.org>, Jen Sidorova <jen.sidorova@reason.org>
 
-linePlot <- function (data, title = NULL, caption = FALSE, grid = FALSE, ticks = TRUE, font,
+linePlot <- function (data, title = NULL, caption = FALSE, grid = FALSE, ticks = TRUE, font = NULL,
                       yaxisMin = 0, yaxisMax = NULL, yaxisSeq = 5, 
                       yaxisScale = 100, format = NULL, str = 20, labelY = NULL, 
                       lab1 = NULL, lab2 = NULL, lab3 = NULL, lab4 = NULL, lab5 = NULL) 
 {
   reasontheme::set_reason_theme(style = "slide")
   
+  x <- length(data$year)
+  data <- data.frame(data) %>% dplyr::mutate_all(dplyr::funs(as.numeric))
+  data <- data.table(data)
   #Geomean function
   geomean <- function(x) {
     x <- as.vector(na.omit(x))
@@ -43,9 +46,7 @@ linePlot <- function (data, title = NULL, caption = FALSE, grid = FALSE, ticks =
     exp(mean(log(x))) - 1
   }
   
-  data <- as.data.table(data)
   if (sum(colnames(data) == "return_1yr") > 0) {
-    data <- data.table(data)
     data$return_1yr <- as.numeric(data$return_1yr)
     returns <- as.numeric(data$return_1yr)
     nyear <- 10
@@ -54,18 +55,17 @@ linePlot <- function (data, title = NULL, caption = FALSE, grid = FALSE, ticks =
     for (i in 1:n) {
       rolling <- rbind(rolling, geomean(returns[(i + 1):(i + nyear)]))
     }
-    data <- data.frame(data) %>% dplyr::mutate_all(dplyr::funs(as.numeric))
     data <- data.table(data)
     rolling <- data.table(rolling)
     data <- data.table(rbind.fill(rolling, data))
-    x <- data[!is.na(return_1yr), .N]
     data[(x + 1):(x + rolling[, .N])]$V1 <- data[(1:rolling[, .N])]$V1
     data <- data[!(1:rolling[, .N])]
     data$year <- as.numeric(data$year)
+    data <- data.table(data)
     
     data <- data %>% select(year, return_1yr, ava_return, 
                             arr, V1)
-  }else{data <- data.frame(data) %>% dplyr::mutate_all(dplyr::funs(as.numeric))}
+  }
   
   colnames(data) <- c("year", if (!is_null(lab1)) {
     paste(lab1)
@@ -82,7 +82,7 @@ linePlot <- function (data, title = NULL, caption = FALSE, grid = FALSE, ticks =
   graph <- data.table(melt(data, id.vars = "year"))
   
   lineColors <- c(palette_reason$Orange, palette_reason$Yellow, 
-                  palette_reason$SatBlue, palette_reason$LightGrey)
+                  palette_reason$SatBlue, palette_reason$LightGrey, palette_reason$LightGreen)
   options(repr.plot.width = 1, repr.plot.height = 0.75)
   ggplot2::ggplot(graph, ggplot2::aes(x = year, y = yaxisScale * 
                                         value, group = variable)) + ggplot2::geom_line(ggplot2::aes(colour = str_wrap(factor(variable), 
@@ -122,7 +122,7 @@ linePlot <- function (data, title = NULL, caption = FALSE, grid = FALSE, ticks =
     ggplot2::theme(axis.text=element_text(size=12),
                    axis.title=element_text(size=12,face="bold"))+
     ggplot2::theme(legend.position = "none")+
-    ggplot2::theme(text = element_text(family = paste(font), size = 9))+ 
+    ggplot2::theme(text = element_text(family = if(!is_null(font)){paste(font)}else{paste("Arial")}, size = 9))+ 
     ##Adding Gridlines
     ggplot2::theme(panel.grid.major.y = element_line(colour= ifelse(isTRUE(grid), 
                           paste(palette_reason$SpaceGrey),"white"),size = (1))) 
