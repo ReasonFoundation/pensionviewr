@@ -1,6 +1,11 @@
 #' Create a line plot to visualize up to 5 variables, such as ADEC vs. Actual contributions.
 #'
 #' @param data a dataframe/data.table produced by pullData, pullStateData, or other ways that produces the same format.
+#' @param title Naming the chart (e.g. "Unfunded Liability Growth").
+#' @param caption Set to TRUE to add "reason.org/pension" caption at the bottom right corner
+#' @param grid Set to TRUE to add major gridlines
+#' @param ticks Set to FALSE to remove ticks#'
+#' @param font Directly paste name of a font (e.g. "Calibri") to change the default font of the text
 #' @param yaxisMin Value that sets Y-axis minimum. 
 #' @param yaxisMax Value that sets Y-axis maximum. 
 #' @param yaxisSeq  Value that sets space between Major breaks.
@@ -16,12 +21,16 @@
 #' @export
 #' @examples
 #' \dontrun{
-#' linePlot(data, yaxisMin = -20, yaxisMax = 30, yaxisSeq = 5, yaxisScale = 100, format = "%", str = 20, labelY = NULL, lab1 = "Market Valued Return", lab2 = "Assumed Rate of Return",lab3 = "",lab4 = "",lab5 = "")
+#' linePlot(data, title = NULL, caption = FALSE, grid = FALSE, ticks = TRUE, font = "Calibri",
+#' yaxisMin = -20, yaxisMax = 30, yaxisSeq = 5, yaxisScale = 100, 
+#' format = "%", str = 20, labelY = NULL, lab1 = "Market Valued Return", 
+#' lab2 = "Assumed Rate of Return",lab3 = "",lab4 = "",lab5 = "")
 #' }
 #' @importFrom rlang .data
 #' @author Anil Niraula <anil.niraula@reason.org>, Swaroop Bhagavatula <swaroop.bhagavatula@reason.org>, Jen Sidorova <jen.sidorova@reason.org>
 
-linePlot <- function (data, yaxisMin = 0, yaxisMax = NULL, yaxisSeq = 5, 
+linePlot <- function (data, title = NULL, caption = FALSE, grid = FALSE, ticks = TRUE, font,
+                      yaxisMin = 0, yaxisMax = NULL, yaxisSeq = 5, 
                       yaxisScale = 100, format = NULL, str = 20, labelY = NULL, 
                       lab1 = NULL, lab2 = NULL, lab3 = NULL, lab4 = NULL, lab5 = NULL) 
 {
@@ -35,9 +44,9 @@ linePlot <- function (data, yaxisMin = 0, yaxisMax = NULL, yaxisSeq = 5,
   }
   
   data <- as.data.table(data)
-  data$return_1yr <- as.numeric(data$return_1yr)
-  if (sum(!is.na(data$return_1yr)) > 0) {
-    
+  if (sum(colnames(data) == "return_1yr") > 0) {
+    data <- data.table(data)
+    data$return_1yr <- as.numeric(data$return_1yr)
     returns <- as.numeric(data$return_1yr)
     nyear <- 10
     rolling <- geomean(returns[1:nyear])
@@ -46,6 +55,7 @@ linePlot <- function (data, yaxisMin = 0, yaxisMax = NULL, yaxisSeq = 5,
       rolling <- rbind(rolling, geomean(returns[(i + 1):(i + nyear)]))
     }
     data <- data.frame(data) %>% dplyr::mutate_all(dplyr::funs(as.numeric))
+    data <- data.table(data)
     rolling <- data.table(rolling)
     data <- data.table(rbind.fill(rolling, data))
     x <- data[!is.na(return_1yr), .N]
@@ -101,5 +111,21 @@ linePlot <- function (data, yaxisMin = 0, yaxisMax = NULL, yaxisSeq = 5,
                                                                     max(graph$year), by = 2), expand = c(0, 0)) + labs(x = element_blank(), 
                                                                                                                        y = labelY) + theme(legend.text = element_text(size = 13)) + 
     theme(legend.direction = "vertical", legend.box = "horizontal", 
-          legend.position = c(0.33, 0.09))
+          legend.position = c(0.33, 0.09))+
+  labs(title = paste(title), 
+       caption = ifelse(isTRUE(caption),paste("reason.org/pensions"),paste(""))
+  )+
+    ggplot2::theme(axis.ticks = if(isFALSE(ticks)){ggplot2::element_blank()}else{ggplot2::element_line()}
+    )+
+    ggplot2::theme(axis.ticks.x = element_line(size = 0.5, color="black"))+
+    ggplot2::theme(axis.ticks.y = element_line(size = 0.5, color="black"))+
+    ggplot2::theme(axis.text=element_text(size=12),
+                   axis.title=element_text(size=12,face="bold"))+
+    ggplot2::theme(legend.position = "none")+
+    ggplot2::theme(text = element_text(family = paste(font), size = 9))+ 
+    ##Adding Gridlines
+    ggplot2::theme(panel.grid.major.y = element_line(colour= ifelse(isTRUE(grid), 
+                          paste(palette_reason$SpaceGrey),"white"),size = (1))) 
+  
+    # 
 }

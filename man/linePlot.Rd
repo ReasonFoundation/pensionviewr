@@ -6,6 +6,11 @@
 \usage{
 linePlot(
   data,
+  title = NULL,
+  caption = FALSE,
+  grid = FALSE,
+  ticks = TRUE,
+  font,
   yaxisMin = 0,
   yaxisMax = NULL,
   yaxisSeq = 5,
@@ -22,6 +27,16 @@ linePlot(
 }
 \arguments{
 \item{data}{a dataframe/data.table produced by pullData, pullStateData, or other ways that produces the same format.}
+
+\item{title}{Naming the chart (e.g. "Unfunded Liability Growth").}
+
+\item{caption}{Set to TRUE to add "reason.org/pension" caption at the bottom right corner}
+
+\item{grid}{Set to TRUE to add major gridlines}
+
+\item{ticks}{Set to FALSE to remove ticks#'}
+
+\item{font}{Directly paste name of a font (e.g. "Calibri") to change the default font of the text}
 
 \item{yaxisMin}{Value that sets Y-axis minimum.}
 
@@ -52,7 +67,10 @@ Create a line plot to visualize up to 5 variables, such as ADEC vs. Actual contr
 }
 \examples{
 \dontrun{
-linePlot(data, yaxisMin = -20, yaxisMax = 30, yaxisSeq = 5, yaxisScale = 100, format = "\%", str = 20, labelY = NULL, lab1 = "Market Valued Return", lab2 = "Assumed Rate of Return",lab3 = "",lab4 = "",lab5 = "")
+linePlot(data, title = NULL, caption = FALSE, grid = FALSE, ticks = TRUE, font = "Calibri",
+yaxisMin = -20, yaxisMax = 30, yaxisSeq = 5, yaxisScale = 100, 
+format = "\%", str = 20, labelY = NULL, lab1 = "Market Valued Return", 
+lab2 = "Assumed Rate of Return",lab3 = "",lab4 = "",lab5 = "")
 }
 }
 \author{
