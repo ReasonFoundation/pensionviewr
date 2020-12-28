@@ -44,9 +44,9 @@ linePlot <- function (data, title = NULL, caption = FALSE, grid = FALSE, ticks =
   }
   
   data <- as.data.table(data)
-  data$return_1yr <- as.numeric(data$return_1yr)
   if (sum(!is.na(data$return_1yr)) > 0) {
     
+    data$return_1yr <- as.numeric(data$return_1yr)
     returns <- as.numeric(data$return_1yr)
     nyear <- 10
     rolling <- geomean(returns[1:nyear])
