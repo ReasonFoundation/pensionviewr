@@ -9,8 +9,10 @@ linePlot(
   title = NULL,
   caption = FALSE,
   grid = FALSE,
+  treasury = FALSE,
+  inv.returns = TRUE,
   ticks = TRUE,
-  font,
+  font = NULL,
   yaxisMin = 0,
   yaxisMax = NULL,
   yaxisSeq = 5,
@@ -33,6 +35,10 @@ linePlot(
 \item{caption}{Set to TRUE to add "reason.org/pension" caption at the bottom right corner}
 
 \item{grid}{Set to TRUE to add major gridlines}
+
+\item{treasury}{= Set to TRUE to show 30-Year treasury Yeilds on the secondary Y-axis}
+
+\item{inv.returns}{= Set to FALSE to graph anything other than Investsment Return graph}
 
 \item{ticks}{Set to FALSE to remove ticks#'}
 
