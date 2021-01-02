@@ -6,6 +6,8 @@
 #' @param grid Set to TRUE to add major gridlines
 #' @param ticks Set to FALSE to remove ticks#'
 #' @param font Directly paste name of a font (e.g. "Calibri") to change the default font of the text
+#' @param treasury = Set to TRUE to show 30-Year treasury Yeilds on the secondary Y-axis
+#' @param inv.returns = Set to FALSE to graph anything other than Investsment Return graph 
 #' @param yaxisMin Value that sets Y-axis minimum. 
 #' @param yaxisMax Value that sets Y-axis maximum. 
 #' @param yaxisSeq  Value that sets space between Major breaks.
@@ -18,6 +20,7 @@
 #' @param lab3 Text label for the 3rd variable - optional.
 #' @param lab4 Text label for the 4th variable - optional.
 #' @param lab5 Text label for the 5th variable - optional.
+#' 
 #' @export
 #' @examples
 #' \dontrun{
@@ -29,16 +32,34 @@
 #' @importFrom rlang .data
 #' @author Anil Niraula <anil.niraula@reason.org>, Swaroop Bhagavatula <swaroop.bhagavatula@reason.org>, Jen Sidorova <jen.sidorova@reason.org>
 
-linePlot <- function (data, title = NULL, caption = FALSE, grid = FALSE, ticks = TRUE, font = NULL,
+linePlot <- function (data, title = NULL, caption = FALSE, grid = FALSE, 
+                      treasury = FALSE, inv.returns = TRUE, ticks = TRUE, font = NULL,
                       yaxisMin = 0, yaxisMax = NULL, yaxisSeq = 5, 
                       yaxisScale = 100, format = NULL, str = 20, labelY = NULL, 
                       lab1 = NULL, lab2 = NULL, lab3 = NULL, lab4 = NULL, lab5 = NULL) 
 {
   reasontheme::set_reason_theme(style = "slide")
-  
   x <- length(data$year)
   data <- data.frame(data) %>% dplyr::mutate_all(dplyr::funs(as.numeric))
-  data <- data.table(data)
+  
+  ###TREASURY
+  
+  if(isTRUE(treasury)){
+    urlfile <- "https://raw.githubusercontent.com/ReasonFoundation/databaseR/master/files/treasury.csv"
+    treasury <- read_csv(url(urlfile), col_names = TRUE, na = c(""), skip_empty_rows = TRUE, col_types = NULL)
+    treasury <- data.table(
+      treasury %>% filter(year >= min(data$year)))
+    data <- data %>% select(year, dr)
+    
+    data <- data.table(data)
+    data <- cbind(data, treasury[,2])
+    data <- data.frame(data) %>% dplyr::mutate_all(dplyr::funs(as.numeric))
+    data <- as.data.table(data)
+    data[,alt.discount := NA]
+    diff <- (data[year == min(data$year)]$dr - data[year == min(data$year)]$`X30.treasury`)
+    data$alt.discount <- data$`X30.treasury` + diff
+  }
+  
   #Geomean function
   geomean <- function(x) {
     x <- as.vector(na.omit(x))
@@ -46,22 +67,23 @@ linePlot <- function (data, title = NULL, caption = FALSE, grid = FALSE, ticks =
     exp(mean(log(x))) - 1
   }
   
-  if (sum(colnames(data) == "return_1yr") > 0) {
+  if (isTRUE(inv.returns)) {
+  
     data$return_1yr <- as.numeric(data$return_1yr)
-    returns <- as.numeric(data$return_1yr)
-    nyear <- 10
-    rolling <- geomean(returns[1:nyear])
-    n <- length(na.omit(returns)) - nyear
-    for (i in 1:n) {
-      rolling <- rbind(rolling, geomean(returns[(i + 1):(i + nyear)]))
+    returns <- data$return_1yr
+    last <- length(returns)
+    #View(returns)
+    rolling <- matrix(NA,last,1)
+    rolling[last] <- as.numeric(geomean(returns[(last-9):last]))
+    #as.numeric(geomean(returns[(last-10):(last-1)]))
+    for (i in 1:(last-10)) {
+      rolling[last-i] <- geomean(returns[(last-9-i):(last-i)])
     }
-    data <- data.table(data)
     rolling <- data.table(rolling)
-    data <- data.table(rbind.fill(rolling, data))
-    data[(x + 1):(x + rolling[, .N])]$V1 <- data[(1:rolling[, .N])]$V1
-    data <- data.table(data)
-    data <- data[!(1:rolling[, .N])]
+    returns[(last-9):last]
+    returns[(last-9+1):(last-1)]
     
+    data <- data.table(cbind(data, rolling))
     data <- data %>% select(year, return_1yr, ava_return, 
                             arr, V1)
   }
@@ -110,7 +132,7 @@ linePlot <- function (data, title = NULL, caption = FALSE, grid = FALSE, ticks =
                                                                     max(graph$year), by = 2), expand = c(0, 0)) + labs(x = element_blank(), 
                                                                                                                        y = labelY) + theme(legend.text = element_text(size = 13)) + 
     theme(legend.direction = "vertical", legend.box = "horizontal", 
-          legend.position = c(0.33, 0.09))+
+          legend.position = if(isTRUE(treasury)){c(0.1, 0.5)}else{c(0.33, 0.09)})+
     labs(title = paste(title), 
          caption = ifelse(isTRUE(caption),paste("reason.org/pensions"),paste(""))
     )+
@@ -120,7 +142,6 @@ linePlot <- function (data, title = NULL, caption = FALSE, grid = FALSE, ticks =
     ggplot2::theme(axis.ticks.y = element_line(size = 0.5, color="black"))+
     ggplot2::theme(axis.text=element_text(size=12),
                    axis.title=element_text(size=12,face="bold"))+
-    ggplot2::theme(legend.position = "none")+
     ggplot2::theme(text = element_text(family = if(!is_null(font)){paste(font)}else{paste("Arial")}, size = 9))+ 
     ##Adding Gridlines
     ggplot2::theme(panel.grid.major.y = element_line(colour= ifelse(isTRUE(grid), 
