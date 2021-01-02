@@ -40,7 +40,7 @@ linePlot <- function (data, title = NULL, caption = FALSE, grid = FALSE,
 {
   reasontheme::set_reason_theme(style = "slide")
   x <- length(data$year)
-  data <- data.frame(data) %>% dplyr::mutate_all(dplyr::funs(as.numeric))
+  data <- data.frame(data) %>% dplyr::mutate_all(as.numeric)
   
   ###TREASURY
   
@@ -53,9 +53,9 @@ linePlot <- function (data, title = NULL, caption = FALSE, grid = FALSE,
     
     data <- data.table(data)
     data <- cbind(data, treasury[,2])
-    data <- data.frame(data) %>% dplyr::mutate_all(dplyr::funs(as.numeric))
+    data <- data.frame(data) %>% dplyr::mutate_all(as.numeric)
     data <- as.data.table(data)
-    data[,alt.discount := NA]
+    data$alt.discount <- NA
     diff <- (data[year == min(data$year)]$dr - data[year == min(data$year)]$`X30.treasury`)
     data$alt.discount <- data$`X30.treasury` + diff
   }
