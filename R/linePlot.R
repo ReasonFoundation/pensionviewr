@@ -47,6 +47,7 @@ linePlot <- function (data, title = NULL, caption = FALSE, grid = FALSE,
   if(isTRUE(treasury)){
     urlfile <- "https://raw.githubusercontent.com/ReasonFoundation/databaseR/master/files/treasury.csv"
     treasury <- read_csv(url(urlfile), col_names = TRUE, na = c(""), skip_empty_rows = TRUE, col_types = NULL)
+    treasury$year <- as.numeric(treasury$year)
     treasury <- data.table(
       treasury %>% filter(year >= min(data$year)))
     data <- data %>% select(year, dr)
@@ -132,7 +133,7 @@ linePlot <- function (data, title = NULL, caption = FALSE, grid = FALSE,
                                                                     max(graph$year), by = 2), expand = c(0, 0)) + labs(x = element_blank(), 
                                                                                                                        y = labelY) + theme(legend.text = element_text(size = 13)) + 
     theme(legend.direction = "vertical", legend.box = "horizontal", 
-          legend.position = if(isTRUE(treasury)){c(0.1, 0.5)}else{c(0.33, 0.09)})+
+          legend.position = if(isTRUE(treasury)){c(0.1, 1)}else{c(0.33, 0.09)})+
     labs(title = paste(title), 
          caption = ifelse(isTRUE(caption),paste("reason.org/pensions"),paste(""))
     )+
