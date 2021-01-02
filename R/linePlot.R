@@ -48,6 +48,7 @@ linePlot <- function (data, title = NULL, caption = FALSE, grid = FALSE,
     urlfile <- "https://raw.githubusercontent.com/ReasonFoundation/databaseR/master/files/treasury.csv"
     treasury <- read_csv(url(urlfile), col_names = TRUE, na = c(""), skip_empty_rows = TRUE, col_types = NULL)
     treasury$year <- as.numeric(treasury$year)
+    data$year <- as.numeric(data$year)
     treasury <- data.table(
       treasury %>% filter(year >= min(data$year)))
     data <- data %>% select(year, dr)
