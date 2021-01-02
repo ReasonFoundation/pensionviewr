@@ -50,7 +50,7 @@ linePlot <- function (data, title = NULL, caption = FALSE, grid = FALSE,
     treasury$year <- as.numeric(treasury$year)
     data$year <- as.numeric(data$year)
     treasury <- data.table(
-      treasury %>% filter(year >= min(data$year)))
+      treasury %>% filter(year > min(data$year-1)))
     data <- data %>% select(year, dr)
     
     data <- data.table(data)
