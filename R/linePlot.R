@@ -60,6 +60,8 @@ linePlot <- function (data, title = NULL, caption = FALSE, grid = FALSE,
     data$alt.discount <- NA
     diff <- (data[year == min(data$year)]$dr - data[year == min(data$year)]$`X30.treasury`)
     data$alt.discount <- data$`X30.treasury` + diff
+    data <- data.table(data)
+    data$year <- as.numeric(data$year)
   }
   
   #Geomean function
