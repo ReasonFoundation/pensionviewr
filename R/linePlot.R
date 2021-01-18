@@ -58,6 +58,7 @@ linePlot <- function (data, title = NULL, caption = FALSE, grid = FALSE,
     data <- data.frame(data) %>% dplyr::mutate_all(as.numeric)
     data <- as.data.table(data)
     data$alt.discount <- NA
+    data$year <- as.numeric(data$year)
     diff <- (data[year == min(data$year)]$dr - data[year == min(data$year)]$`X30.treasury`)
     data$alt.discount <- data$`X30.treasury` + diff
     data <- data.table(data)
