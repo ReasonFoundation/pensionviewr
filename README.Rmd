@@ -236,16 +236,39 @@ Example of how it is used in a standard workflow:
 
 ### `linePlot()`
 
-10. `linePlot()`: creates a plot comparing two variables, such as ADEC vs. Actual contributions. `linePlot()` has six arguments, with `data` being required:
+10. `linePlot()`: creates a plot comparing two variables, such as ADEC vs. Actual contributions. `linePlot()` has 20 arguments, with `data` being required:
 
-`linePlot(data, .var1, .var2, labelY, label1, label2)`
+`linePlot(data, title, caption, grid, treasury, inv.returns, ticks, font, yaxisMin, yaxisMax, yaxisSeq, yaxisScale, format, str, labelY, lab1, lab2, lab3, lab4, lab5)`
 
 * `data` a dataframe produced by the selectedData function or in the same format.
-* `.var1` The name of the first variable to plat, default is adec_contribution_rates.
-* `.var2` The name of the second variable to plot, default if actual_contribution_rates.
-* `labelY` A label for the Y-axis.
-* `label1` A label for the first variable.
-* `label2` A label for the second variable.
+* `title` naming the chart (e.g. "Unfunded Liability Growth").
+* `caption` set to TRUE to add "reason.org/pensions" caption at the bottom right corner
+* `grid` set to TRUE to add major gridlines
+* `ticks` set to FALSE to remove ticks
+* `treasury` if set to TRUE shows 30-Year treasury Yields on the secondary Y-axis
+* `inv.returns` if set to FALSE allows to graph anything other than Investment Return graph 
+* `yaxisMin` value that sets Y-axis minimum. 
+* `yaxisMax` value that sets Y-axis maximum. 
+* `yaxisSeq`  value that sets space between Major breaks.
+* `yaxisScale` value that sets Y-axis scale. Example: 100 for percentages or 1/1000 for thousands.
+* `format` format of Y-axis scale. Examples: "%", "$", or something else.
+* `str` value that sets number of strings at which to cut legend text at -- Default is 20.
+* `labelY` title of the Y-axis.
+* `lab1` text label for the 1st variable - optional.
+* `lab2` text label for the 2nd variable - optional.
+* `lab3` text label for the 3rd variable - optional.
+* `lab4` text label for the 4th variable - optional.
+* `lab5` text label for the 5th variable - optional.
+
+Example of how it is used in a standard workflow:
+```
+graph <- linePlot(data = PERSI.data, title = "", inv.returns = TRUE, treasury = FALSE,
+                  font = "Calibri", yaxisMin = -21, yaxisMax = 21, yaxisSeq = 3,
+                  yaxisScale = 100, format = "%", str = 60,
+                  labelY = "", lab1 = "Market Valued Returns (Actual)", 
+                  lab2 = "Actuarially Valued Investment Return (Smoothed by Plan)", 
+                  lab3 = "Assumed Rate of Return", lab4 = "10-Year Geometric Rolling Average")
+```
 
 ### `areaPlot()`
 

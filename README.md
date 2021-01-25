@@ -1826,44 +1826,44 @@ state.data %>%
    <th style="text-align:right;"> plan_id </th>
    <th style="text-align:left;"> display_name </th>
    <th style="text-align:left;"> state </th>
+   <th style="text-align:left;"> employee_contribution_dollar </th>
    <th style="text-align:left;"> investment_return_assumption_for_gasb_reporting </th>
    <th style="text-align:left;"> actuarial_funded_ratio_percentage </th>
    <th style="text-align:left;"> actuarially_required_contribution_dollar </th>
-   <th style="text-align:left;"> total_amortization_payment_percentage </th>
-   <th style="text-align:left;"> administrative_expense_dollar </th>
+   <th style="text-align:left;"> actuarially_accrued_liabilities_dollar </th>
    <th style="text-align:left;"> employer_state_contribution_dollar </th>
    <th style="text-align:left;"> type_of_employees_covered </th>
    <th style="text-align:left;"> discount_rate_assumption </th>
    <th style="text-align:left;"> covered_payroll_dollar </th>
    <th style="text-align:left;"> actuarial_cost_method_in_gasb_reporting </th>
-   <th style="text-align:left;"> actuarially_accrued_liabilities_dollar </th>
    <th style="text-align:left;"> number_of_years_remaining_on_amortization_schedule </th>
    <th style="text-align:left;"> market_assets_reported_for_asset_smoothing </th>
+   <th style="text-align:left;"> total_amortization_payment_percentage </th>
    <th style="text-align:left;"> total_benefits_paid_dollar </th>
-   <th style="text-align:left;"> x1_year_investment_return_percentage </th>
    <th style="text-align:left;"> fiscal_year_of_contribution </th>
-   <th style="text-align:left;"> benefit_payments_dollar </th>
-   <th style="text-align:left;"> other_contribution_dollar </th>
    <th style="text-align:left;"> asset_valuation_method_for_gasb_reporting </th>
    <th style="text-align:left;"> employer_contribution_regular_dollar </th>
-   <th style="text-align:left;"> refunds_dollar </th>
    <th style="text-align:left;"> total_normal_cost_percentage </th>
    <th style="text-align:left;"> unfunded_actuarially_accrued_liabilities_dollar </th>
    <th style="text-align:left;"> employee_normal_cost_percentage </th>
    <th style="text-align:left;"> total_normal_cost_dollar </th>
    <th style="text-align:left;"> statutory_payment_dollar </th>
    <th style="text-align:left;"> payroll_growth_assumption </th>
-   <th style="text-align:left;"> market_value_of_assets_dollar </th>
-   <th style="text-align:left;"> actuarial_value_of_assets_gasb_dollar </th>
    <th style="text-align:left;"> amortizaton_method </th>
-   <th style="text-align:left;"> total_contribution_dollar </th>
    <th style="text-align:left;"> wage_inflation </th>
-   <th style="text-align:left;"> market_investment_return_mva_basis </th>
    <th style="text-align:left;"> actuarially_required_contribution_paid_percentage </th>
-   <th style="text-align:left;"> total_pension_liability_dollar </th>
-   <th style="text-align:left;"> employers_projected_actuarial_required_contribution_percentage_of_payroll </th>
+   <th style="text-align:left;"> refunds_dollar </th>
+   <th style="text-align:left;"> market_investment_return_mva_basis </th>
+   <th style="text-align:left;"> market_value_of_assets_dollar </th>
    <th style="text-align:left;"> statutory_payment_percentage </th>
-   <th style="text-align:left;"> employee_contribution_dollar </th>
+   <th style="text-align:left;"> employers_projected_actuarial_required_contribution_percentage_of_payroll </th>
+   <th style="text-align:left;"> actuarial_value_of_assets_gasb_dollar </th>
+   <th style="text-align:left;"> administrative_expense_dollar </th>
+   <th style="text-align:left;"> benefit_payments_dollar </th>
+   <th style="text-align:left;"> total_contribution_dollar </th>
+   <th style="text-align:left;"> x1_year_investment_return_percentage </th>
+   <th style="text-align:left;"> other_contribution_dollar </th>
+   <th style="text-align:left;"> total_pension_liability_dollar </th>
    <th style="text-align:left;"> employer_normal_cost_dollar </th>
   </tr>
  </thead>
@@ -1873,44 +1873,44 @@ state.data %>%
    <td style="text-align:right;"> 1 </td>
    <td style="text-align:left;"> Alabama Employees' Retirement System (ERS) </td>
    <td style="text-align:left;"> Alabama </td>
+   <td style="text-align:left;"> 254439719 </td>
    <td style="text-align:left;"> 0.077 </td>
    <td style="text-align:left;"> 0.682 </td>
    <td style="text-align:left;"> 467553000 </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:left;"> -12934000 </td>
+   <td style="text-align:left;"> 18543542000 </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> Plan covers state and local employees </td>
    <td style="text-align:left;"> 0.077 </td>
    <td style="text-align:left;"> 3793957000 </td>
    <td style="text-align:left;"> Entry Age Normal </td>
-   <td style="text-align:left;"> 18543542000 </td>
-   <td style="text-align:left;"> 28.0 </td>
+   <td style="text-align:left;"> 27.0 </td>
    <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> 0.143 </td>
    <td style="text-align:left;"> -1171825000 </td>
-   <td style="text-align:left;"> 0.0278 </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:left;"> 1084915300 </td>
-   <td style="text-align:left;"> 4187000 </td>
+   <td style="text-align:left;"> 2022.0 </td>
    <td style="text-align:left;"> 5-year smoothed market </td>
    <td style="text-align:left;"> 467553000 </td>
-   <td style="text-align:left;"> 47683000 </td>
-   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> 0.0861 </td>
    <td style="text-align:left;"> 5897753000 </td>
+   <td style="text-align:left;"> 0.0714 </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> NA </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:left;"> 12568473000 </td>
-   <td style="text-align:left;"> 12240597000 </td>
    <td style="text-align:left;"> Level Percent Closed </td>
-   <td style="text-align:left;"> 721993000 </td>
-   <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> 1.0 </td>
+   <td style="text-align:left;"> 47683000 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> 12568473000 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> 0.1577 </td>
+   <td style="text-align:left;"> 12645789000 </td>
+   <td style="text-align:left;"> -12934000 </td>
+   <td style="text-align:left;"> 1130927500 </td>
+   <td style="text-align:left;"> 721993000 </td>
+   <td style="text-align:left;"> 0.0278 </td>
+   <td style="text-align:left;"> 4187000 </td>
    <td style="text-align:left;"> 18353891000 </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:left;"> 254439719 </td>
    <td style="text-align:left;"> NA </td>
   </tr>
   <tr>
@@ -1918,44 +1918,44 @@ state.data %>%
    <td style="text-align:right;"> 2 </td>
    <td style="text-align:left;"> Alabama Teachers' Retirement System (TRS) </td>
    <td style="text-align:left;"> Alabama </td>
+   <td style="text-align:left;"> 522908600 </td>
    <td style="text-align:left;"> 0.077 </td>
    <td style="text-align:left;"> 0.694 </td>
    <td style="text-align:left;"> 869336000 </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:left;"> -20583000 </td>
+   <td style="text-align:left;"> 37215470000 </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> Plan covers teachers </td>
    <td style="text-align:left;"> 0.077 </td>
    <td style="text-align:left;"> 7193832000 </td>
    <td style="text-align:left;"> Entry Age Normal </td>
-   <td style="text-align:left;"> 37215470000 </td>
-   <td style="text-align:left;"> 28.0 </td>
+   <td style="text-align:left;"> 27.0 </td>
    <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> 0.1008 </td>
    <td style="text-align:left;"> -2290375000 </td>
-   <td style="text-align:left;"> 0.0263 </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:left;"> 2191704800 </td>
-   <td style="text-align:left;"> 6234000 </td>
+   <td style="text-align:left;"> 2022.0 </td>
    <td style="text-align:left;"> 5-year smoothed market related value. </td>
    <td style="text-align:left;"> 869336000 </td>
-   <td style="text-align:left;"> 58538000 </td>
-   <td style="text-align:left;"> 0.09866 </td>
+   <td style="text-align:left;"> 0.09118 </td>
    <td style="text-align:left;"> 11394144000 </td>
-   <td style="text-align:left;"> 0.07137 </td>
+   <td style="text-align:left;"> 0.0708 </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> NA </td>
-   <td style="text-align:left;"> 25619448000 </td>
-   <td style="text-align:left;"> 25006419000 </td>
    <td style="text-align:left;"> Level Percent Closed </td>
-   <td style="text-align:left;"> 1392245000 </td>
-   <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> 1.0 </td>
-   <td style="text-align:left;"> 36676350000 </td>
-   <td style="text-align:left;"> 0.12084 </td>
+   <td style="text-align:left;"> 58538000 </td>
    <td style="text-align:left;"> NA </td>
-   <td style="text-align:left;"> 522908600 </td>
+   <td style="text-align:left;"> 25619448000 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> 0.12119 </td>
+   <td style="text-align:left;"> 25821326000 </td>
+   <td style="text-align:left;"> -20583000 </td>
+   <td style="text-align:left;"> 2266860000 </td>
+   <td style="text-align:left;"> 1392245000 </td>
+   <td style="text-align:left;"> 0.0263 </td>
+   <td style="text-align:left;"> 6234000 </td>
+   <td style="text-align:left;"> 36676350000 </td>
    <td style="text-align:left;"> NA </td>
   </tr>
   <tr>
@@ -1963,134 +1963,134 @@ state.data %>%
    <td style="text-align:right;"> 25 </td>
    <td style="text-align:left;"> Alaska Public Employees Retirement System </td>
    <td style="text-align:left;"> Alaska </td>
+   <td style="text-align:left;"> 79609000 </td>
    <td style="text-align:left;"> 0.0738 </td>
    <td style="text-align:left;"> 0.637 </td>
    <td style="text-align:left;"> 414243000 </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:left;"> -7429000 </td>
+   <td style="text-align:left;"> 15039180000 </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> Plan covers state and local employees </td>
    <td style="text-align:left;"> 0.0738 </td>
    <td style="text-align:left;"> 1049152000 </td>
    <td style="text-align:left;"> Entry Age Normal </td>
-   <td style="text-align:left;"> 15039180000 </td>
    <td style="text-align:left;"> 25.0 </td>
    <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> 0.39342 </td>
    <td style="text-align:left;"> -837381000 </td>
-   <td style="text-align:left;"> 0.059 </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:left;"> 822390940 </td>
-   <td style="text-align:left;"> 0 </td>
+   <td style="text-align:left;"> 2022.0 </td>
    <td style="text-align:left;"> 5-year smoothed market </td>
    <td style="text-align:left;"> 350601000 </td>
-   <td style="text-align:left;"> -10638000 </td>
-   <td style="text-align:left;"> 0.1495 </td>
+   <td style="text-align:left;"> 0.1477 </td>
    <td style="text-align:left;"> 5462487000 </td>
-   <td style="text-align:left;"> 0.06937 </td>
-   <td style="text-align:left;"> 156862000 </td>
+   <td style="text-align:left;"> 0.06964 </td>
+   <td style="text-align:left;"> 148395000 </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> NA </td>
-   <td style="text-align:left;"> 9489405000 </td>
-   <td style="text-align:left;"> 9430192000 </td>
    <td style="text-align:left;"> Level Percent Closed </td>
-   <td style="text-align:left;"> 498067000 </td>
    <td style="text-align:left;"> NA </td>
-   <td style="text-align:left;"> 0.054 </td>
    <td style="text-align:left;"> 1.0101799999999999 </td>
-   <td style="text-align:left;"> 14963635000 </td>
-   <td style="text-align:left;"> 0.42887 </td>
+   <td style="text-align:left;"> -10638000 </td>
+   <td style="text-align:left;"> 0.054 </td>
+   <td style="text-align:left;"> 9489405000 </td>
    <td style="text-align:left;"> NA </td>
-   <td style="text-align:left;"> 79609000 </td>
-   <td style="text-align:left;"> 84080453 </td>
+   <td style="text-align:left;"> 0.47148 </td>
+   <td style="text-align:left;"> 9576693000 </td>
+   <td style="text-align:left;"> -7429000 </td>
+   <td style="text-align:left;"> 868825690 </td>
+   <td style="text-align:left;"> 498067000 </td>
+   <td style="text-align:left;"> 0.059 </td>
+   <td style="text-align:left;"> 0 </td>
+   <td style="text-align:left;"> 14963635000 </td>
+   <td style="text-align:left;"> 78445281 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 2019 </td>
    <td style="text-align:right;"> 24 </td>
    <td style="text-align:left;"> Alaska Teachers Retirement System </td>
    <td style="text-align:left;"> Alaska </td>
+   <td style="text-align:left;"> 35763000 </td>
    <td style="text-align:left;"> 0.0738 </td>
    <td style="text-align:left;">  </td>
    <td style="text-align:left;"> 154083000 </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:left;"> -3018000 </td>
+   <td style="text-align:left;"> 7388020000 </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> Plan covers teachers </td>
    <td style="text-align:left;"> 0.0738 </td>
-   <td style="text-align:left;"> 392609000 </td>
+   <td style="text-align:left;"> 392601000 </td>
    <td style="text-align:left;"> Entry Age Normal </td>
-   <td style="text-align:left;"> 7276290000 </td>
    <td style="text-align:left;"> 25.0 </td>
    <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> 0.36413 </td>
    <td style="text-align:left;"> -470414000 </td>
-   <td style="text-align:left;"> 0.0639 </td>
-   <td style="text-align:left;"> NA </td>
-   <td style="text-align:left;"> 470498280 </td>
-   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> 2022.0 </td>
    <td style="text-align:left;"> 5-year smoothed market </td>
    <td style="text-align:left;"> 36805000 </td>
-   <td style="text-align:left;"> -2303000 </td>
-   <td style="text-align:left;"> 0.1463 </td>
-   <td style="text-align:left;"> 1734690000 </td>
-   <td style="text-align:left;"> 0.046 </td>
-   <td style="text-align:left;"> 57447000 </td>
+   <td style="text-align:left;"> 0.1467 </td>
+   <td style="text-align:left;"> 1824089000 </td>
+   <td style="text-align:left;"> 0.0436 </td>
+   <td style="text-align:left;"> 53688000 </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> NA </td>
-   <td style="text-align:left;"> 5511929000 </td>
-   <td style="text-align:left;"> 5541600000 </td>
-   <td style="text-align:left;"> Level Percent Closed </td>
-   <td style="text-align:left;"> 199933000 </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> 1.0654700000000001 </td>
-   <td style="text-align:left;"> 7380472000 </td>
-   <td style="text-align:left;"> 1.9817200000000001 </td>
+   <td style="text-align:left;"> -2303000 </td>
    <td style="text-align:left;"> NA </td>
-   <td style="text-align:left;"> 35763000 </td>
-   <td style="text-align:left;"> 39386984 </td>
+   <td style="text-align:left;"> 5511929000 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> 0.46723000000000003 </td>
+   <td style="text-align:left;"> 5563931000 </td>
+   <td style="text-align:left;"> -3018000 </td>
+   <td style="text-align:left;"> 487631500 </td>
+   <td style="text-align:left;"> 199933000 </td>
+   <td style="text-align:left;"> 0.0639 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> 7380472000 </td>
+   <td style="text-align:left;"> 37728785 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 2019 </td>
    <td style="text-align:right;"> 33 </td>
    <td style="text-align:left;"> Arizona Corrections Officers Retirement Plan </td>
    <td style="text-align:left;"> Arizona </td>
+   <td style="text-align:left;"> 48549598 </td>
    <td style="text-align:left;"> 0.073 </td>
    <td style="text-align:left;"> 0.531 </td>
    <td style="text-align:left;"> NA </td>
-   <td style="text-align:left;"> 0.24026 </td>
-   <td style="text-align:left;"> -1448000 </td>
+   <td style="text-align:left;"> 3884070116 </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> Plan covers police and/or fire </td>
    <td style="text-align:left;"> 0.073 </td>
    <td style="text-align:left;"> 547363066 </td>
    <td style="text-align:left;"> Entry Age Normal </td>
-   <td style="text-align:left;"> 3884070116 </td>
    <td style="text-align:left;"> 17.0 </td>
    <td style="text-align:left;"> 1996273344 </td>
+   <td style="text-align:left;"> 0.24026 </td>
    <td style="text-align:left;"> -125481000 </td>
-   <td style="text-align:left;"> 0.0545 </td>
    <td style="text-align:left;"> 2021.0 </td>
-   <td style="text-align:left;"> 160313590 </td>
-   <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> 7-year smoothed market:; subject to a 20% corridor. </td>
    <td style="text-align:left;"> 137441000 </td>
-   <td style="text-align:left;"> -28530000 </td>
    <td style="text-align:left;"> 0.15108 </td>
    <td style="text-align:left;"> 1820717876 </td>
    <td style="text-align:left;"> 0.08398 </td>
    <td style="text-align:left;"> 83256164 </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> NA </td>
-   <td style="text-align:left;"> 1996513000 </td>
-   <td style="text-align:left;"> 2063352240 </td>
    <td style="text-align:left;"> Level Percent Closed </td>
-   <td style="text-align:left;"> 176123000 </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> -28530000 </td>
    <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> 1996513000 </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> 0.30738000000000004 </td>
+   <td style="text-align:left;"> 2063352240 </td>
+   <td style="text-align:left;"> -1448000 </td>
+   <td style="text-align:left;"> 160313590 </td>
+   <td style="text-align:left;"> 176123000 </td>
+   <td style="text-align:left;"> 0.0545 </td>
    <td style="text-align:left;"> NA </td>
-   <td style="text-align:left;"> 48549598 </td>
+   <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> 36968238 </td>
   </tr>
   <tr>
@@ -2098,44 +2098,44 @@ state.data %>%
    <td style="text-align:right;"> 30 </td>
    <td style="text-align:left;"> Arizona Public Safety Personnel Retirement System </td>
    <td style="text-align:left;"> Arizona </td>
+   <td style="text-align:left;"> 121556582 </td>
    <td style="text-align:left;"> 0.073 </td>
    <td style="text-align:left;"> 0.46399999999999997 </td>
    <td style="text-align:left;"> NA </td>
-   <td style="text-align:left;"> 0.37037 </td>
-   <td style="text-align:left;"> -7251000 </td>
+   <td style="text-align:left;"> 17393828992 </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> Plan covers police and/or fire </td>
    <td style="text-align:left;"> 0.073 </td>
    <td style="text-align:left;"> 1419642895 </td>
    <td style="text-align:left;"> Entry Age Normal </td>
-   <td style="text-align:left;"> 17393828992 </td>
    <td style="text-align:left;"> 17.0 </td>
    <td style="text-align:left;"> 7810990750 </td>
+   <td style="text-align:left;"> 0.37037 </td>
    <td style="text-align:left;"> -818430000 </td>
-   <td style="text-align:left;"> 0.054 </td>
    <td style="text-align:left;"> 2021.0 </td>
-   <td style="text-align:left;"> 850051750 </td>
-   <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> 7-year smoothed market value. 20% corridor. </td>
    <td style="text-align:left;"> 832026000 </td>
-   <td style="text-align:left;"> -15633000 </td>
    <td style="text-align:left;"> 0.22053000000000003 </td>
    <td style="text-align:left;"> 9314789253 </td>
    <td style="text-align:left;"> 0.07769 </td>
    <td style="text-align:left;"> 335921280 </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> 0.035 </td>
-   <td style="text-align:left;"> 7829913000 </td>
-   <td style="text-align:left;"> 8097785858 </td>
    <td style="text-align:left;"> Level Percent Closed </td>
-   <td style="text-align:left;"> 980958000 </td>
    <td style="text-align:left;"> 0.035 </td>
-   <td style="text-align:left;"> 0.067 </td>
    <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> -15633000 </td>
+   <td style="text-align:left;"> 0.067 </td>
+   <td style="text-align:left;"> 7829913000 </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> 0.5132 </td>
+   <td style="text-align:left;"> 8097785858 </td>
+   <td style="text-align:left;"> -7251000 </td>
+   <td style="text-align:left;"> 850051750 </td>
+   <td style="text-align:left;"> 980958000 </td>
+   <td style="text-align:left;"> 0.054 </td>
    <td style="text-align:left;"> NA </td>
-   <td style="text-align:left;"> 121556582 </td>
+   <td style="text-align:left;"> NA </td>
    <td style="text-align:left;"> 217577090 </td>
   </tr>
 </tbody>
@@ -2694,7 +2694,7 @@ NMERB.source %>%
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> 31142922 </td>
    <td style="text-align:right;"> NA </td>
-   <td style="text-align:right;"> 150068398 </td>
+   <td style="text-align:right;"> 150068390 </td>
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 0.076 </td>
    <td style="text-align:right;"> 0 </td>
@@ -2710,7 +2710,7 @@ NMERB.source %>%
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> -978572992 </td>
+   <td style="text-align:right;"> -978573000 </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
@@ -2739,8 +2739,8 @@ NMERB.source %>%
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> 0.03 </td>
-   <td style="text-align:right;"> 173709874 </td>
-   <td style="text-align:right;"> 142566952 </td>
+   <td style="text-align:right;"> 173709880 </td>
+   <td style="text-align:right;"> 142566950 </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> -4790177 </td>
    <td style="text-align:right;"> NA </td>
@@ -2756,7 +2756,7 @@ NMERB.source %>%
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
-   <td style="text-align:right;"> 6667001941 </td>
+   <td style="text-align:right;"> 6667002000 </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
@@ -2769,7 +2769,7 @@ NMERB.source %>%
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
-   <td style="text-align:right;"> -380747394 </td>
+   <td style="text-align:right;"> -380747410 </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
@@ -2801,12 +2801,12 @@ NMERB.source %>%
    <td style="text-align:left;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
-   <td style="text-align:right;"> -23684106 </td>
+   <td style="text-align:right;"> -23684105 </td>
    <td style="text-align:right;"> NA </td>
-   <td style="text-align:right;"> -335155233 </td>
-   <td style="text-align:right;"> -37826468 </td>
+   <td style="text-align:right;"> -335155220 </td>
+   <td style="text-align:right;"> -37826469 </td>
    <td style="text-align:right;"> 39773012 </td>
-   <td style="text-align:right;"> -37183529 </td>
+   <td style="text-align:right;"> -37183527 </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> Plan members covered by Social Security </td>
@@ -2822,16 +2822,16 @@ NMERB.source %>%
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
-   <td style="text-align:right;"> 65 </td>
+   <td style="text-align:right;"> 66 </td>
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> 60155 </td>
-   <td style="text-align:right;"> -492424583 </td>
+   <td style="text-align:right;"> -492424590 </td>
    <td style="text-align:right;"> 0.0353 </td>
    <td style="text-align:right;"> 1.820e+08 </td>
-   <td style="text-align:right;"> -340595679 </td>
+   <td style="text-align:right;"> -340595690 </td>
    <td style="text-align:right;"> NA </td>
-   <td style="text-align:right;"> 311592738 </td>
+   <td style="text-align:right;"> 311592750 </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> 0.1272 </td>
@@ -3382,14 +3382,14 @@ NMERB.source %>%
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> -5048278 </td>
    <td style="text-align:right;"> NA </td>
-   <td style="text-align:right;"> 36924554 </td>
+   <td style="text-align:right;"> 36924555 </td>
    <td style="text-align:right;"> NA </td>
-   <td style="text-align:right;"> 151378455 </td>
+   <td style="text-align:right;"> 151378450 </td>
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 0.076 </td>
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> NA </td>
-   <td style="text-align:right;"> 173863363 </td>
+   <td style="text-align:right;"> 173863360 </td>
    <td style="text-align:right;"> 0.0512 </td>
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> NA </td>
@@ -3400,7 +3400,7 @@ NMERB.source %>%
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> -746928008 </td>
+   <td style="text-align:right;"> -746928000 </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
@@ -3429,8 +3429,8 @@ NMERB.source %>%
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> 0.03 </td>
-   <td style="text-align:right;"> 165914492 </td>
-   <td style="text-align:right;"> 128989938 </td>
+   <td style="text-align:right;"> 165914480 </td>
+   <td style="text-align:right;"> 128989940 </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> -4291673 </td>
    <td style="text-align:right;"> NA </td>
@@ -3446,7 +3446,7 @@ NMERB.source %>%
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
-   <td style="text-align:right;"> 6013355928 </td>
+   <td style="text-align:right;"> 6013356000 </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
@@ -3459,7 +3459,7 @@ NMERB.source %>%
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
-   <td style="text-align:right;"> -399625267 </td>
+   <td style="text-align:right;"> -399625280 </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
@@ -3474,7 +3474,7 @@ NMERB.source %>%
    <td style="text-align:right;"> 3450084 </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> -8404063 </td>
+   <td style="text-align:right;"> -8404064 </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
@@ -3491,11 +3491,11 @@ NMERB.source %>%
    <td style="text-align:left;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
-   <td style="text-align:right;"> -20103972 </td>
+   <td style="text-align:right;"> -20103973 </td>
    <td style="text-align:right;"> NA </td>
-   <td style="text-align:right;"> -362446278 </td>
-   <td style="text-align:right;"> -19657478 </td>
-   <td style="text-align:right;"> 22250077 </td>
+   <td style="text-align:right;"> -362446280 </td>
+   <td style="text-align:right;"> -19657479 </td>
+   <td style="text-align:right;"> 22250076 </td>
    <td style="text-align:right;"> -19246939 </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
@@ -3512,16 +3512,16 @@ NMERB.source %>%
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
-   <td style="text-align:right;"> 65 </td>
+   <td style="text-align:right;"> 66 </td>
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> 61091 </td>
-   <td style="text-align:right;"> -254020746 </td>
+   <td style="text-align:right;"> -254020750 </td>
    <td style="text-align:right;"> 0.0353 </td>
    <td style="text-align:right;"> 1.979e+09 </td>
-   <td style="text-align:right;"> -367494556 </td>
+   <td style="text-align:right;"> -367494560 </td>
    <td style="text-align:right;"> NA </td>
-   <td style="text-align:right;"> 325241818 </td>
+   <td style="text-align:right;"> 325241810 </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:right;"> 0.1272 </td>
@@ -4314,16 +4314,39 @@ Example of how it is used in a standard workflow:
 
 ### `linePlot()`
 
-10. `linePlot()`: creates a plot comparing two variables, such as ADEC vs. Actual contributions. `linePlot()` has six arguments, with `data` being required:
+10. `linePlot()`: creates a plot comparing two variables, such as ADEC vs. Actual contributions. `linePlot()` has 20 arguments, with `data` being required:
 
-`linePlot(data, .var1, .var2, labelY, label1, label2)`
+`linePlot(data, title, caption, grid, treasury, inv.returns, ticks, font, yaxisMin, yaxisMax, yaxisSeq, yaxisScale, format, str, labelY, lab1, lab2, lab3, lab4, lab5)`
 
 * `data` a dataframe produced by the selectedData function or in the same format.
-* `.var1` The name of the first variable to plat, default is adec_contribution_rates.
-* `.var2` The name of the second variable to plot, default if actual_contribution_rates.
-* `labelY` A label for the Y-axis.
-* `label1` A label for the first variable.
-* `label2` A label for the second variable.
+* `title` naming the chart (e.g. "Unfunded Liability Growth").
+* `caption` set to TRUE to add "reason.org/pensions" caption at the bottom right corner
+* `grid` set to TRUE to add major gridlines
+* `ticks` set to FALSE to remove ticks
+* `treasury` if set to TRUE shows 30-Year treasury Yields on the secondary Y-axis
+* `inv.returns` if set to FALSE allows to graph anything other than Investment Return graph 
+* `yaxisMin` value that sets Y-axis minimum. 
+* `yaxisMax` value that sets Y-axis maximum. 
+* `yaxisSeq`  value that sets space between Major breaks.
+* `yaxisScale` value that sets Y-axis scale. Example: 100 for percentages or 1/1000 for thousands.
+* `format` format of Y-axis scale. Examples: "%", "$", or something else.
+* `str` value that sets number of strings at which to cut legend text at -- Default is 20.
+* `labelY` title of the Y-axis.
+* `lab1` text label for the 1st variable - optional.
+* `lab2` text label for the 2nd variable - optional.
+* `lab3` text label for the 3rd variable - optional.
+* `lab4` text label for the 4th variable - optional.
+* `lab5` text label for the 5th variable - optional.
+
+Example of how it is used in a standard workflow:
+```
+graph <- linePlot(data = PERSI.data, title = "", inv.returns = TRUE, treasury = FALSE,
+                  font = "Calibri", yaxisMin = -21, yaxisMax = 21, yaxisSeq = 3,
+                  yaxisScale = 100, format = "%", str = 60,
+                  labelY = "", lab1 = "Market Valued Returns (Actual)", 
+                  lab2 = "Actuarially Valued Investment Return (Smoothed by Plan)", 
+                  lab3 = "Assumed Rate of Return", lab4 = "10-Year Geometric Rolling Average")
+```
 
 ### `areaPlot()`
 

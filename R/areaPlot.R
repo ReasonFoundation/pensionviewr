@@ -115,3 +115,7 @@ areaPlot <- function(data, title = NULL, caption = FALSE, grid = FALSE, ticks = 
                                                                     paste(palette_reason$SpaceGrey),"white"),size = (1))) 
   
 }
+
+
+
+
