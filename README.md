@@ -2,7 +2,7 @@
 output: github_document
 always_allow_html: yes
 ---
-knitr::knit("README.Rmd")
+
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 
@@ -224,6 +224,7 @@ vtsrs_data %>%
    <th style="text-align:right;"> actuarial_cost_method_code_names_for_gasb </th>
    <th style="text-align:left;"> actuarial_cost_method_in_gasb_reporting </th>
    <th style="text-align:right;"> actuarial_experience_dollar </th>
+   <th style="text-align:left;"> actuarial_firm </th>
    <th style="text-align:right;"> actuarial_funded_ratio_percentage </th>
    <th style="text-align:left;"> actuarial_valuation_report_date </th>
    <th style="text-align:right;"> actuarial_value_of_assets_dollar </th>
@@ -452,6 +453,7 @@ vtsrs_data %>%
    <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:right;"> NA </td>
+   <td style="text-align:left;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:right;"> NA </td>
@@ -678,6 +680,7 @@ vtsrs_data %>%
    <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:right;"> NA </td>
+   <td style="text-align:left;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:right;"> NA </td>
@@ -904,6 +907,7 @@ vtsrs_data %>%
    <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:right;"> NA </td>
+   <td style="text-align:left;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:right;"> NA </td>
@@ -1130,6 +1134,7 @@ vtsrs_data %>%
    <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:right;"> NA </td>
+   <td style="text-align:left;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:right;"> NA </td>
@@ -1356,6 +1361,7 @@ vtsrs_data %>%
    <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:right;"> NA </td>
+   <td style="text-align:left;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:right;"> NA </td>
@@ -1582,6 +1588,7 @@ vtsrs_data %>%
    <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:right;"> NA </td>
+   <td style="text-align:left;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:right;"> NA </td>
@@ -1799,7 +1806,7 @@ vtsrs_data %>%
 
 ### `pullStateData()`
 
-3. `pullStateData()`: pulls all state-level pension data in wide format from the Reason pension database. `pullStateData` has single argument:
+3. `pullStateData()`: pulls all state-level pension data in wide format from the Reason pension database. `pullStateData` has a single argument:
 `pullStateData(fy)`
 
 * `fy`: Starting fiscal year for the data pulled from the Reason pension database.
@@ -2180,6 +2187,7 @@ NMERB.source %>%
    <th style="text-align:right;"> actuarial_cost_method_code_names_for_gasb </th>
    <th style="text-align:left;"> actuarial_cost_method_in_gasb_reporting </th>
    <th style="text-align:right;"> actuarial_experience_dollar </th>
+   <th style="text-align:left;"> actuarial_firm </th>
    <th style="text-align:right;"> actuarial_funded_ratio_percentage </th>
    <th style="text-align:left;"> actuarial_valuation_report_date </th>
    <th style="text-align:right;"> actuarial_value_of_assets_dollar </th>
@@ -2412,6 +2420,7 @@ NMERB.source %>%
    <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:right;"> NA </td>
+   <td style="text-align:left;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:right;"> NA </td>
@@ -2642,6 +2651,7 @@ NMERB.source %>%
    <td style="text-align:right;"> 1 </td>
    <td style="text-align:left;"> Entry Age Normal </td>
    <td style="text-align:right;"> NA </td>
+   <td style="text-align:left;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2001-06-30 </td>
    <td style="text-align:right;"> NA </td>
@@ -2872,6 +2882,7 @@ NMERB.source %>%
    <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:right;"> -76071151 </td>
+   <td style="text-align:left;"> GABRIEL, ROEDER, SMITH &amp; COMPANY </td>
    <td style="text-align:right;"> 0.9192099 </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:right;"> 7418300000 </td>
@@ -3102,6 +3113,7 @@ NMERB.source %>%
    <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:right;"> NA </td>
+   <td style="text-align:left;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:right;"> NA </td>
@@ -3332,6 +3344,7 @@ NMERB.source %>%
    <td style="text-align:right;"> 1 </td>
    <td style="text-align:left;"> Entry Age Normal </td>
    <td style="text-align:right;"> NA </td>
+   <td style="text-align:left;"> NA </td>
    <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> 2002-06-30 </td>
    <td style="text-align:right;"> NA </td>
@@ -3562,6 +3575,7 @@ NMERB.source %>%
    <td style="text-align:right;"> NA </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:right;"> -536122633 </td>
+   <td style="text-align:left;"> GABRIEL, ROEDER, SMITH &amp; COMPANY </td>
    <td style="text-align:right;"> 0.8682099 </td>
    <td style="text-align:left;"> NA </td>
    <td style="text-align:right;"> 7595100000 </td>
@@ -3791,7 +3805,7 @@ Example of the workflow around the filtering function:
 
 ```r
 state.data <- pullStateData(2001)
-filtered <- filterData(state.data, 2010, NULL, FALSE)
+filtered <- filterData(state.data, 2010)
 filtered %>% 
   head() %>%
   kable() %>%
@@ -4150,10 +4164,10 @@ filtered %>%
 
 ### `masterView()`
 
-6. `masterView()`: Allows to view already mapped & unmapped columns/variables per data source.
+6. `masterView()`: allows to view list of mapped & unmapped columns in pension database per data source.
 `masterView(source = NULL, expand = FALSE)` has 2 arguments:
 
-* `source`: Name of the main data sources: "Reason", "Public Plans Database", "Census".
+* `source`: main data sources: "Reason", "Public Plans Database", "Census".
 * `expand`: Set to `FALSE` (default) to see mapped variables. Change to `TRUE` if you want to see all unmapped variables.
 
 Example of how to use this function:
@@ -4314,23 +4328,23 @@ Example of how it is used in a standard workflow:
 
 ### `linePlot()`
 
-10. `linePlot()`: creates a plot comparing two variables, such as ADEC vs. Actual contributions. `linePlot()` has 20 arguments, with `data` being required:
+10. `linePlot()`: creates a line chart comparing up to 5 variables, such as ADEC vs. Actual contributions. `linePlot()` has 20 arguments, with `data` being required:
 
 `linePlot(data, title, caption, grid, treasury, inv.returns, ticks, font, yaxisMin, yaxisMax, yaxisSeq, yaxisScale, format, str, labelY, lab1, lab2, lab3, lab4, lab5)`
 
-* `data` a dataframe produced by the selectedData function or in the same format.
+* `data` a dataframe produced by the filterData function or in the same format.
 * `title` naming the chart (e.g. "Unfunded Liability Growth").
-* `caption` set to TRUE to add "reason.org/pensions" caption at the bottom right corner
-* `grid` set to TRUE to add major gridlines
-* `ticks` set to FALSE to remove ticks
-* `treasury` if set to TRUE shows 30-Year treasury Yields on the secondary Y-axis
-* `inv.returns` if set to FALSE allows to graph anything other than Investment Return graph 
-* `yaxisMin` value that sets Y-axis minimum. 
-* `yaxisMax` value that sets Y-axis maximum. 
-* `yaxisSeq`  value that sets space between Major breaks.
+* `caption` set to `TRUE` to add "reason.org/pensions" caption at the bottom right corner
+* `grid` set to `TRUE` to add major gridlines
+* `ticks` set to `FALSE` to remove ticks
+* `treasury` if set to `TRUE` shows 30-Year treasury Yields on the secondary Y-axis
+* `inv.returns` if set to `FALSE` allows to graph anything other than Investment Return graph 
+* `yaxisMin` minimum value for Y-axis 
+* `yaxisMax` maximum value for Y-axis 
+* `yaxisSeq` value that sets space between Major breaks.
 * `yaxisScale` value that sets Y-axis scale. Example: 100 for percentages or 1/1000 for thousands.
 * `format` format of Y-axis scale. Examples: "%", "$", or something else.
-* `str` value that sets number of strings at which to cut legend text at -- Default is 20.
+* `str` value that sets number of strings at which to cut legend text -- Defaulted to 20.
 * `labelY` title of the Y-axis.
 * `lab1` text label for the 1st variable - optional.
 * `lab2` text label for the 2nd variable - optional.
@@ -4343,23 +4357,25 @@ Example of how it is used in a standard workflow:
 graph <- linePlot(data = PERSI.data, title = "", inv.returns = TRUE, treasury = FALSE,
                   font = "Calibri", yaxisMin = -21, yaxisMax = 21, yaxisSeq = 3,
                   yaxisScale = 100, format = "%", str = 60,
-                  labelY = "", lab1 = "Market Valued Returns (Actual)", 
+                  labelY = "", 
+                  lab1 = "Market Valued Returns (Actual)", 
                   lab2 = "Actuarially Valued Investment Return (Smoothed by Plan)", 
-                  lab3 = "Assumed Rate of Return", lab4 = "10-Year Geometric Rolling Average")
+                  lab3 = "Assumed Rate of Return", 
+                  lab4 = "10-Year Geometric Rolling Average")
 ```
 
 ### `areaPlot()`
 
-11. `areaPlot()`: creates the "Mountain of Debt" chart or S&P500 chart. `areaPlot` has seven arguments, with `data` being required:
+11. `areaPlot()`: creates Mountain of Debt or S&P500 chart. `areaPlot` has seven arguments, with `data` being required:
 
 `areaPlot(data, title, caption, grid, ticks, sp500, font)`
 
 * `data` a dataframe or data.table produced by the pullStateData function or in the same format.
 * `title` naming the chart (e.g. "Unfunded Liability Growth").
-* `caption` set to TRUE to add "reason.org/pensions" caption at the bottom right corner
+* `caption` set to `TRUE` to add "reason.org/pensions" caption at the bottom right corner
 * `grid` set to TRUE to add major gridlines
-* `ticks` Set to FALSE to remove ticks
-* `sp500` default is FALSE ti create Mounain of Debt chart. Set sp500 to TRUE to visualize annual S&P500 Index values on the secondary Y-axis
+* `ticks` Set to `FALSE` to remove ticks
+* `sp500` default is `FALSE` for Mountain of Debt chart. Set sp500 to `TRUE` to visualize annual S&P500 Index values on the secondary Y-axis
 * `font` directly paste name of a font (e.g. "Calibri") to change the default font of the text
 
 Example of how it is used in a standard workflow:
