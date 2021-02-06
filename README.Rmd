@@ -2,6 +2,7 @@
 output: github_document
 always_allow_html: yes
 ---
+
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 ```{r setup, include = FALSE}
@@ -173,7 +174,7 @@ filtered %>%
 
 ### `masterView()`
 
-6. `masterView()`: allows to view mapped & unmapped columns in oension datatabse per data source.
+6. `masterView()`: allows to view list of mapped & unmapped columns in pension database per data source.
 `masterView(source = NULL, expand = FALSE)` has 2 arguments:
 
 * `source`: main data sources: "Reason", "Public Plans Database", "Census".
