@@ -47,8 +47,12 @@ filterData <- function(Data, fy = 2001, employee = NULL, blend.teacher = FALSE, 
       "Maryland State Employees’ Retirement System"
     )
     
-    Data <- data.table(Data)
-    Data[display_name %in% blended.teach]$type_of_employees_covered <- "Plan covers state, local and teachers"
+    Data <- data.frame(Data)
+    
+    Data <- Data %>% 
+      mutate(type_of_employees_covered = 
+               case_when(display_name %in% blended.teach ~ "Plan covers state, local and teachers",
+                         TRUE ~ type_of_employees_covered))
     
   }
   
