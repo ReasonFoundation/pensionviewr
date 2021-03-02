@@ -3793,11 +3793,12 @@ NMERB.source %>%
 
 ### `filterData()`
 
-5. `filterData()`: filters existing data (data.frame/data.table format) keeping & renaming set of commonly used variables in pension analysis. `filterData(Data, fy, source = FALSE)` has 4 arguments:
+5. `filterData()`: filters existing data (data.frame/data.table format) keeping & renaming set of commonly used variables in pension analysis. `filterData(Data, fy, source = FALSE, employee = "", blend.teacher = FALSE)` has 5 arguments:
 
 * `Data`: A data table already pulled with `pullData`, `pullStateData`, or other ways. 
 * `fy`: Starting fiscal year for the data pulled from the Reason pension database.
 * `employee`: Character designating type of employees covered (e.g. "teacher", "state", "local", "state and local", "police and fire").
+* `blend.teacher`: Set to `TRUE` if you want to create another category featurinf 23 plans (i.e.,"state, local, and teacher")
 * `source`: Set to `FALSE`. It should be set to `source = TRUE` if you filter data pulled with `pullSourceData` function.
 
 Example of the workflow around the filtering function:
@@ -3805,7 +3806,7 @@ Example of the workflow around the filtering function:
 
 ```r
 state.data <- pullStateData(2001)
-filtered <- filterData(state.data, 2010)
+filtered <- filterData(state.data, 2010, blend.teacher = FALSE)
 filtered %>% 
   head() %>%
   kable() %>%
