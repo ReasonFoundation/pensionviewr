@@ -18,7 +18,42 @@
 
 filterData <- function(Data, fy = 2001, employee = NULL, blend.teacher = FALSE, source = FALSE) 
 {
+  
+  if (isTRUE(blend.teacher)) {
+    
+    blended.teach <- c(
+      "Arizona State Retirement System",
+      "Delaware State Employees’ Pension Plan",
+      "District of Columbia Teachers Retirement Fund",
+      "Florida Retirement System",
+      "Employee Retirement System of Hawaii",
+      "Idaho Public Employee Retirement System",
+      "Iowa Public Employees' Retirement System",
+      "Kansas Public Employees' Retirement System",
+      "Public Employees' Retirement System of Mississippi",
+      "Nevada Public Employees Retirement System",
+      "New Hampshire Retirement System",
+      "North Carolina Teachers' and State Employees' Retirement System",
+      "Oregon Public Employees Retirement System",
+      "Rhode Island Employees Retirement System",
+      "South Carolina Retirement Systems",
+      "South Dakota Retirement System",
+      "Tennessee Consolidated Retirement System, Teachers Pension Plan",
+      "Utah Retirement Systems, Noncontributory Retirement System",
+      "Virginia Retirement System",
+      "Wisconsin Retirement System",
+      "Wyoming Retirement System, Public Employees’ Pension Plan",
+      "Maine Public Employees Retirement System (PERS) Defined Benefit Plan",
+      "Maryland State Employees’ Retirement System"
+    )
+    
+    Data <- data.table(Data)
+    Data[display_name %in% blended.teach]$type_of_employees_covered <- "Plan covers state, local and teachers"
+    
+  }
+  
   Data <- data.frame(Data)
+  
   columns <- c("total_pension_liability_dollar", "wage_inflation", 
                "payroll_growth_assumption", "other_contribution_dollar", 
                "other_additions_dollar", "x1_year_investment_return_percentage", 
@@ -75,38 +110,7 @@ filterData <- function(Data, fy = 2001, employee = NULL, blend.teacher = FALSE, 
   Data$fy_contribution <- round(Data$fy_contribution, 0)
   Data <- Data %>% filter(year >= fy)
   
-  if (isTRUE(blend.teacher)) {
-    
-    blended.teach <- c(
-      "Arizona State Retirement System",
-      "Delaware State Employees’ Pension Plan",
-      "District of Columbia Teachers Retirement Fund",
-      "Florida Retirement System",
-      "Employee Retirement System of Hawaii",
-      "Idaho Public Employee Retirement System",
-      "Iowa Public Employees' Retirement System",
-      "Kansas Public Employees' Retirement System",
-      "Public Employees' Retirement System of Mississippi",
-      "Nevada Public Employees Retirement System",
-      "New Hampshire Retirement System",
-      "North Carolina Teachers' and State Employees' Retirement System",
-      "Oregon Public Employees Retirement System",
-      "Rhode Island Employees Retirement System",
-      "South Carolina Retirement Systems",
-      "South Dakota Retirement System",
-      "Tennessee Consolidated Retirement System, Teachers Pension Plan",
-      "Utah Retirement Systems, Noncontributory Retirement System",
-      "Virginia Retirement System",
-      "Wisconsin Retirement System",
-      "Wyoming Retirement System, Public Employees’ Pension Plan",
-      "Maine Public Employees Retirement System (PERS) Defined Benefit Plan",
-      "Maryland State Employees’ Retirement System"
-    )
-    
-    Data <- data.table(Data)
-    Data[plan_name %in% blended.teach]$type_of_employees_covered <- "Plan covers state, local and teachers"
-    
-  }
+
   
   if (is_null(employee)) {
     employee <- employee
