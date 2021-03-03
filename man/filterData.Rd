@@ -2,18 +2,24 @@
 % Please edit documentation in R/filterData.R
 \name{filterData}
 \alias{filterData}
-\title{filterData selects around 50 of the original columns, recreates any of the missing columns, 
-renames column headers for simplicity, and allows to filter plans by type of employees covered}
+\title{filterData}
 \usage{
-filterData(Data, fy = 2001, employee = NULL, source = FALSE)
+filterData(
+  Data,
+  fy = 2001,
+  employee = NULL,
+  blend.teacher = FALSE,
+  source = FALSE
+)
 }
 \arguments{
 \item{Data}{data file (in data.frame/data.table format)}
 
 \item{fy}{starting year}
 
-\item{employee}{character parameter designating filter for 
-type of employees covered (e.g. "teacher", "state", "local", "state and local", "police and fire").}
+\item{employee}{character parameter designating filter for type of employees covered (e.g. "teacher", "state", "local", "state and local", "police and fire", "state, local, and teacher")}
+
+\item{blend.teacher}{TRUE if you want to create another category ("state, local, and teacher")}
 
 \item{source}{TRUE/FALSE statement to indicate if "source data" is used}
 }
@@ -21,12 +27,11 @@ type of employees covered (e.g. "teacher", "state", "local", "state and local", 
 A wide data frame with each year as a row and variables as columns.
 }
 \description{
-filterData selects around 50 of the original columns, recreates any of the missing columns, 
-renames column headers for simplicity, and allows to filter plans by type of employees covered
+filterData
 }
 \examples{
 \dontrun{
-filterData(Data, 2001, employee = "teacher", source = FALSE)
+filterData(Data, 2001, employee = "teacher", blend.teacher = FALSE, source = FALSE)
 }
 }
 \author{
