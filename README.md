@@ -3798,7 +3798,7 @@ NMERB.source %>%
 * `Data`: A data table already pulled with `pullData`, `pullStateData`, or other ways. 
 * `fy`: Starting fiscal year for the data pulled from the Reason pension database.
 * `employee`: Character designating type of employees covered (e.g. "teacher", "state", "local", "state and local", "police and fire").
-* `blend.teacher`: Set to `TRUE` if you want to create another category featurinf 23 plans (i.e.,"state, local, and teacher")
+* `blend.teacher`: Set to `TRUE` if you want to create another plan category for 23 plans (i.e.,"Plan covers state, local, and teachers")
 * `source`: Set to `FALSE`. It should be set to `source = TRUE` if you filter data pulled with `pullSourceData` function.
 
 Example of the workflow around the filtering function:
