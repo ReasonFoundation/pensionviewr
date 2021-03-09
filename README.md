@@ -4328,15 +4328,17 @@ Example of how it is used in a standard workflow:
 
 ### `linePlot()`
 
-10. `linePlot()`: creates a line chart comparing up to 5 variables, such as ADEC vs. Actual contributions. `linePlot()` has 20 arguments, with `data` being required:
+10. `linePlot()`: creates a line chart comparing up to 5 variables, such as ADEC vs. Actual contributions. `linePlot()` has 22 arguments, with `data` being required:
 
-`linePlot(data, title, caption, grid, treasury, inv.returns, ticks, font, yaxisMin, yaxisMax, yaxisSeq, yaxisScale, format, str, labelY, lab1, lab2, lab3, lab4, lab5)`
+`linePlot(data, title, caption, grid, interactive, Ytitle, treasury, inv.returns, ticks, font, yaxisMin, yaxisMax, yaxisSeq, yaxisScale, format, str, labelY, lab1, lab2, lab3, lab4, lab5)`
 
 * `data` a dataframe produced by the filterData function or in the same format.
 * `title` naming the chart (e.g. "Unfunded Liability Growth").
 * `caption` set to `TRUE` to add "reason.org/pensions" caption at the bottom right corner
 * `grid` set to `TRUE` to add major gridlines
 * `ticks` set to `FALSE` to remove ticks
+* `interactive` set to `TRUE` to create interactive plot
+* `Ytitle` naming the Y-axis title
 * `treasury` if set to `TRUE` shows 30-Year treasury Yields on the secondary Y-axis
 * `inv.returns` if set to `FALSE` allows to graph anything other than Investment Return graph 
 * `yaxisMin` minimum value for Y-axis 
@@ -4355,6 +4357,7 @@ Example of how it is used in a standard workflow:
 Example of how it is used in a standard workflow:
 ```
 graph <- linePlot(data = PERSI.data, title = "", inv.returns = TRUE, treasury = FALSE,
+                  interactive = TRUE, Ytitle = NULL,
                   font = "Calibri", yaxisMin = -21, yaxisMax = 21, yaxisSeq = 3,
                   yaxisScale = 100, format = "%", str = 60,
                   labelY = "", 
