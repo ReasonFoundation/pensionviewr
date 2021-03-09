@@ -9,6 +9,7 @@ linePlot(
   title = NULL,
   caption = FALSE,
   grid = FALSE,
+  interactive = FALSE,
   treasury = FALSE,
   inv.returns = TRUE,
   ticks = TRUE,
@@ -17,6 +18,7 @@ linePlot(
   yaxisMax = NULL,
   yaxisSeq = 5,
   yaxisScale = 100,
+  Ytitle = NULL,
   format = NULL,
   str = 20,
   labelY = NULL,
@@ -36,6 +38,8 @@ linePlot(
 
 \item{grid}{Set to TRUE to add major gridlines}
 
+\item{interactive}{Set to TRUE to create interactive version of the plot (w/ plotly)}
+
 \item{treasury}{= Set to TRUE to show 30-Year treasury Yeilds on the secondary Y-axis}
 
 \item{inv.returns}{= Set to FALSE to graph anything other than Investsment Return graph}
@@ -51,6 +55,8 @@ linePlot(
 \item{yaxisSeq}{Value that sets space between Major breaks.}
 
 \item{yaxisScale}{Value that sets Y-axis scale. Example: 100 for percentages or 1/1000 for thousands.}
+
+\item{Ytitle}{Set Y-axis title}
 
 \item{format}{Format of Y-axis scale. Examples: "%", "$", or something else.}
 
@@ -73,10 +79,13 @@ Create a line plot to visualize up to 5 variables, such as ADEC vs. Actual contr
 }
 \examples{
 \dontrun{
-linePlot(data, title = NULL, caption = FALSE, grid = FALSE, ticks = TRUE, font = "Calibri",
-yaxisMin = -20, yaxisMax = 30, yaxisSeq = 5, yaxisScale = 100, 
-format = "\%", str = 20, labelY = NULL, lab1 = "Market Valued Return", 
-lab2 = "Assumed Rate of Return",lab3 = "",lab4 = "",lab5 = "")
+graph <- linePlot(ERB.data, title = "<b>A History of New Mexico Investment Returns (2001-2020)<b>", inv.returns = F, treasury = T,
+font = "Arial", yaxisMin = -21, yaxisMax = 21, yaxisSeq = 3,
+interactive = T, Ytitle = NULL,
+yaxisScale = 100, format = "\%", str = 60,
+labelY = "", lab1 = "Market Valued Returns (Actual)", 
+lab2 = "Actuarially Valued Investment Return (Smoothed by Plan)", 
+lab3 = "Assumed Rate of Return")
 }
 }
 \author{
