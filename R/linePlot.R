@@ -47,26 +47,28 @@ linePlot <- function (data, title = NULL, caption = FALSE, grid = FALSE, interac
   reasontheme::set_reason_theme(style = "slide")
   x <- length(data$year)
   data$year <- as.numeric(data$year)
-  data <- data.frame(data) %>% dplyr::mutate_all(as.numeric)
+  yearMax <- max(data$year)
+  yearMin <- min(data$year)
   if (isTRUE(treasury)) {
     urlfile <- "https://raw.githubusercontent.com/ReasonFoundation/databaseR/master/files/treasury.csv"
     treasury <- read_csv(url(urlfile), col_names = TRUE, 
                          na = c(""), skip_empty_rows = TRUE, col_types = NULL)
     treasury$year <- as.numeric(treasury$year)
     data$year <- as.numeric(data$year)
-    treasury <- data.table(treasury %>% filter(year > min(data$year - 
-                                                            1)))
-    data <- data %>% select(year, dr)
+    data$treasury <-0
+    data$treasury <- data.table(treasury %>% filter(year > (yearMin - 
+                                                            1)) %>%
+                                  select("30.treasury"))
+    data <- data %>% select(year, arr, treasury)
     data <- data.table(data)
-    data <- cbind(data, treasury[, 2])
-    data <- data.frame(data) %>% dplyr::mutate_all(as.numeric)
-    data <- data.table(data)
-    data$alt.discount <- NA
     data$year <- as.numeric(data$year)
-    data.2 <- data.table(data[year == min(data$year)])
-    diff <- (data.2$dr - data.2$X30.treasury)
-    data$alt.discount <- data$X30.treasury + diff
-    data <- data.table(data)
+    data$arr <- as.numeric(data$arr)
+    data$treasury <- as.numeric(data$treasury)
+    diff <- data.frame(data %>% filter(year == yearMin) %>%
+                           mutate(diff = arr - treasury))
+    diff <- as.numeric(diff$diff)
+    data$alt.discount <-0
+    data$alt.discount <- c(data$treasury + diff)
     data$year <- as.numeric(data$year)
   }
   geomean <- function(x) {
@@ -104,16 +106,17 @@ linePlot <- function (data, title = NULL, caption = FALSE, grid = FALSE, interac
     paste(lab5)
   })
   graph <- data.table(melt(data, id.vars = "year"))
+ 
   lineColors <- c(palette_reason$Orange, palette_reason$Yellow, 
                   palette_reason$SatBlue, palette_reason$LightGrey, palette_reason$LightGreen)
   options(repr.plot.width = 1, repr.plot.height = 0.75)
-  
+  graph$value <- as.numeric(graph$value)
   graph <- (
     
     
     
     ggplot2::ggplot(graph, ggplot2::aes(x = year, y = yaxisScale * 
-                                          value, group = variable,text = paste0("Fiscal Year: ", year, "<br>",
+                                          as.numeric(value), group = variable,text = paste0("Fiscal Year: ", year, "<br>",
                                                                                 variable, ": ",
                                                                                 round(
                                                                                   value
@@ -142,8 +145,8 @@ linePlot <- function (data, title = NULL, caption = FALSE, grid = FALSE, interac
           paste0(format, round(b, 0))
         }
       }, expand = c(0, 0), if(!is.null(Ytitle)){name = paste(Ytitle)}else{""}) + 
-      ggplot2::scale_x_continuous(breaks = seq(min(graph$year), 
-                                               max(graph$year), by = 2), expand = c(0, 0), name = "") + theme(legend.text = element_text(size = 8),
+      ggplot2::scale_x_continuous(breaks = seq(yearMin, 
+                                               yearMax, by = 2), expand = c(0, 0), name = "") + theme(legend.text = element_text(size = 8),
                                                                                                               plot.title = element_text(size = 14.5))+ 
       theme(legend.direction = "vertical", legend.box = "horizontal", 
             legend.position = if (isTRUE(treasury)) {
