@@ -67,6 +67,7 @@ Create the 'Gain/Loss' plot using a file as an input.
 \dontrun{
 glPlot(url = "https://raw.githubusercontent.com/ReasonFoundation/GraphicsR/master/PERSI_GL2.csv", 
 interactive =  TRUE,
+database = FALSE,
 fileName = "PERSI_GainLoss.png",
 title = "",#"<b>Causes of Arkansas ERS Pension Debt (2001-2019)<b>",
 yaxisMax = 4.5,
