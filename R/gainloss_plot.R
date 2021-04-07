@@ -2,6 +2,7 @@
 #'
 #' @param url an http web link to csv (comma separated value) file containing columns of gain loss category names with one row of values.
 #' @param interactive set to TRUE to create interactive waterfall chart
+#' @param database Set to TRUE to pull data from pension database
 #' @param fileName Define name of the Static chart to save (interactive = FALSE)
 #' @param title Add chart title (text)
 #' @param caption reason.org caption (set to TRUE)
@@ -37,7 +38,9 @@
 #' @author Anil Niraula <anil.niraula@reason.org>
 
 glPlot <- function(url = "https://raw.githubusercontent.com/ReasonFoundation/databaseR/master/apps/APERS_GL.csv", 
-                   interactive = FALSE, fileName = "GainLoss.png",
+                   database = FALSE, 
+                   interactive = FALSE, 
+                   fileName = "GainLoss.png",
                    title = "<b>Causes of Arkansas ERS Pension Debt (2001-2019)<b>",
                    caption = FALSE,
                    yaxisScale = 1e-06,

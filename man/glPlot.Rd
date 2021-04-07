@@ -7,6 +7,7 @@
 glPlot(
  
     url = "https://raw.githubusercontent.com/ReasonFoundation/databaseR/master/apps/APERS_GL.csv",
+  database = FALSE,
   interactive = FALSE,
   fileName = "GainLoss.png",
   title = "<b>Causes of Arkansas ERS Pension Debt (2001-2019)<b>",
@@ -26,6 +27,8 @@ glPlot(
 }
 \arguments{
 \item{url}{an http web link to csv (comma separated value) file containing columns of gain loss category names with one row of values.}
+
+\item{database}{Set to TRUE to pull data from pension database}
 
 \item{interactive}{set to TRUE to create interactive waterfall chart}
 
