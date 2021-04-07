@@ -64,9 +64,10 @@ glPlot <- function(url = "https://raw.githubusercontent.com/ReasonFoundation/dat
     data <- as.data.table(data)# convert to data.table
     data <-  data %>%
       replace(is.na(.), 0)
-    
+    data <- as.data.table(data)# conv
     #[2] Calculate Total Gain/Loss for each column (i.e. Net Change to UAL over the years)
     y = data[,lapply(.SD,sum),.SDcols=colnames(data)]*yaxisScale
+    data <- as.data.table(data)# conv
     y = y[,!1]# sum values by each column
     y = t(y)#Saving needed columns and transposing table for graphics
   }
