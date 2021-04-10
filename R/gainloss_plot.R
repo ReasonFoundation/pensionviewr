@@ -74,7 +74,7 @@ glPlot <- function(url = "https://raw.githubusercontent.com/ReasonFoundation/dat
   #[3] Combine gain/loss data & categories to create interactive Waterfall chart w/ plotly
   #  x = list(lab1, lab2, lab3, lab4, lab5, lab6, lab7,  lab8,  lab9)
   
-  x = list(lab1, lab2, lab3, if (!is_null(lab4)) {
+  x = c(lab1, lab2, lab3, if (!is_null(lab4)) {
     paste(lab4)
   }, if (!is_null(lab5)) {
     paste(lab5)
@@ -93,8 +93,9 @@ glPlot <- function(url = "https://raw.githubusercontent.com/ReasonFoundation/dat
   data <- data.frame(x = factor(x, levels = x), y)
   data <- data %>% dplyr::mutate(measure = dplyr::case_when(.data$y > 
                                                               0 ~ "relative", .data$y < 0 ~ "negative"))
-  
+  data <- data.frame(data)
   data[length(data[,3]),]$measure <- "total"
+  x <- as.data.frame(x)
   
   #  m <- list(
   #  l = 50,
