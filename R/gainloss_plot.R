@@ -89,7 +89,6 @@ glPlot <- function(url = "https://raw.githubusercontent.com/ReasonFoundation/dat
   })
   
     x <- unlist(x)
-    x <- as.list(x)
     
   data <- data.frame(x = factor(x, levels = x), y)
   data <- data %>% dplyr::mutate(measure = dplyr::case_when(.data$y > 
