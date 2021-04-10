@@ -88,12 +88,14 @@ glPlot <- function(url = "https://raw.githubusercontent.com/ReasonFoundation/dat
     paste(lab9)
   }else{NULL})
   
-  num <- sum(
-    sum(is.null(x[[6]]))+sum(is.null(x[[7]]))+sum(is.null(x[[8]]))+sum(is.null(x[[9]]))
-  )
+  num <- sum(sum(is.null(x[[6]])) + sum(is.null(x[[7]])) + 
+               sum(is.null(x[[8]])) + sum(is.null(x[[9]])))
+  if (num > 0) {
+    x <- unlist(x)
+    x <- x[1:(9 - num)]
+  }
   
-  if(num >0){ x <- x[1:(9-num)]}
-  
+  x <- as.list(x)
   data <- data.frame(x = factor(x, levels = x), y)
   data <- data %>% dplyr::mutate(measure = dplyr::case_when(.data$y > 
                                                               0 ~ "relative", .data$y < 0 ~ "negative"))
