@@ -137,7 +137,7 @@ filterAssets <- function(data, fy = 2001, plan = NULL){
   #View(assets1$total)
   
   
-  assets <- assets %>% filter(year >= 2001)
+  assets <- assets %>% filter(year >= fy)
   #View(assets1)
   colnames(assets) <- c("year",
                          "Plan",
