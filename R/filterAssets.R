@@ -14,7 +14,7 @@
 
 filterAssets <- function(data, fy = 2001, plan = NULL){
   
-  data <- data.frame(x)
+  data <- data.frame(data)
   data[,5:74]  <- data[,5:74] %>% mutate_all(as.numeric)
   #View(data[,75])## TOTAL
   #View(reason.data$unfunded_actuarially_accrued_liabilities_dollar)
