@@ -14,6 +14,7 @@
 
 filterAssets <- function(assets, fy = 2001, plan = NULL){
   
+  assets <- data.frame(x)
   assets[,5:74]  <- assets[,5:74] %>% mutate_all(as.numeric)
   #View(assets[,75])## TOTAL
   #View(reason.data$unfunded_actuarially_accrued_liabilities_dollar)
@@ -103,15 +104,19 @@ filterAssets <- function(assets, fy = 2001, plan = NULL){
   }
   
   
-  assets1 <- assets %>% filter(display_name == plan) %>% select(year, display_name, state, 
-                                                                private.equity,
-                                                                real.estate,
-                                                                hedge,
-                                                                infrastructure,
-                                                                other.alternatives,
-                                                                equity,
-                                                                fixed,
-                                                                cash)
+  assets1 <- assets %>% select(year, display_name, state, 
+                                                   private.equity,
+                                                   real.estate,
+                                                   hedge,
+                                                   infrastructure,
+                                                   other.alternatives,
+                                                   equity,
+                                                   fixed,
+                                                   cash) 
+  
+  if(!is.null(plan)){
+                                                                  
+    assets1 <- assets1 %>% filter(display_name == plan) }
   
   
   assets1$total <- 0
@@ -132,9 +137,11 @@ filterAssets <- function(assets, fy = 2001, plan = NULL){
   #View(assets1$total)
   
   
-  assets1 <- assets1 %>% filter(year >= 2001) %>% select(-total, -display_name, -state)
+  assets1 <- assets1 %>% filter(year >= 2001) %>% select(-total)
   #View(assets1)
   colnames(assets1) <- c("year",
+                         "Plan",
+                         "State",
                          "Private Equity",
                          "Real Estate",
                          "Hedge Funds",
