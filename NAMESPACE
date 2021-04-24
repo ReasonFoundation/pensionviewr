@@ -2,6 +2,7 @@
 
 export("%>%")
 export(areaPlot)
+export(assetPlot)
 export(debtPlot)
 export(debtTable)
 export(filterAssets)
