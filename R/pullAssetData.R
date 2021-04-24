@@ -12,7 +12,6 @@
 
 pullAssetData <- function (fy, mva = FALSE) 
 {
-  
   #dw <- get("dw")
   con <- RPostgres::dbConnect(
     RPostgres::Postgres(),

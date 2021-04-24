@@ -4,10 +4,10 @@
 \alias{filterAssets}
 \title{Filter Asset data}
 \usage{
-filterAssets(assets, fy = 2001, plan = NULL)
+filterAssets(data, fy = 2001, plan = NULL)
 }
 \arguments{
-\item{assets}{data frame or data.table containing PPD's asset allocation data.}
+\item{data}{a data frame or data.table containing PPD's asset allocation data.}
 
 \item{fy}{Numeric parameter containing a starting fiscal year as it is listed in the Reason pension database.}
 
@@ -21,7 +21,7 @@ Filter Asset data
 }
 \examples{
 \dontrun{
-filterAssets(assets, fy = 2001, plan = NULL)
+filterAssets(data, fy = 2001, plan = NULL)
 }
 }
 \author{
