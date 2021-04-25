@@ -4,20 +4,83 @@
 \alias{glPlot}
 \title{Create the 'Gain/Loss' plot using a file as an input.}
 \usage{
-glPlot(filename, ylab_unit = "Billions")
+glPlot(
+ 
+    url = "https://raw.githubusercontent.com/ReasonFoundation/databaseR/master/apps/APERS_GL.csv",
+  database = FALSE,
+  interactive = FALSE,
+  fileName = "GainLoss.png",
+  title = "<b>Causes of Arkansas ERS Pension Debt (2001-2019)<b>",
+  caption = FALSE,
+  yaxisScale = 1e-06,
+  yaxisMax = 4.5,
+  lab1 = "Investment<br>Returns",
+  lab2 = "Benefit<br>Changes<br> & Other",
+  lab3 = "Changes to<br>Actuarial<br>Methods &<br>Assumptions",
+  lab4 = "Negative<br>Amortization",
+  lab5 = "Deviations from<br>Demographic<br>Assumptions",
+  lab6 = "Gains From<br>Pay<br>Increases<br>Not Given",
+  lab7 = NULL,
+  lab8 = NULL,
+  lab9 = NULL
+)
 }
 \arguments{
-\item{filename}{a csv (comma separated value) file containing columns of gain loss category names with one row of values.}
+\item{url}{an http web link to csv (comma separated value) file containing columns of gain loss category names with one row of values.}
 
-\item{ylab_unit}{a string contained within quotation marks containing th y-axis label unit. The default value is "Billions"}
+\item{database}{Set to TRUE to pull data from pension database}
+
+\item{interactive}{set to TRUE to create interactive waterfall chart}
+
+\item{fileName}{Define name of the Static chart to save (interactive = FALSE)}
+
+\item{title}{Add chart title (text)}
+
+\item{caption}{reason.org caption (set to TRUE)}
+
+\item{yaxisScale}{Y axis scale to divide Gain/Loss data by to get $Billions (e.g., 1e-06)}
+
+\item{yaxisMax}{Y axis maximum value (in $Billions)}
+
+\item{lab1}{Gain/Loss category label #1}
+
+\item{lab2}{Gain/Loss category label #2}
+
+\item{lab3}{Gain/Loss category label #3}
+
+\item{lab4}{Gain/Loss category label #4}
+
+\item{lab5}{Gain/Loss category label #5}
+
+\item{lab6}{Gain/Loss category label #6}
+
+\item{lab7}{Gain/Loss category label #7}
+
+\item{lab8}{Gain/Loss category label #8 (can set to NULL)}
+
+\item{lab9}{Gain/Loss category label #9 (can set to NULL)}
 }
 \description{
 Create the 'Gain/Loss' plot using a file as an input.
 }
 \examples{
 \dontrun{
-glPlot(filename = 'data/Graph 1.csv')
-glPlot(filename = 'data/Graph 2.csv', ylab = "Millions")
-glPlot(filename = 'data/Graph 2.csv', ylab = "millions")
+glPlot(url = "https://raw.githubusercontent.com/ReasonFoundation/GraphicsR/master/PERSI_GL2.csv", 
+interactive =  TRUE,
+database = FALSE,
+fileName = "PERSI_GainLoss.png",
+title = "",#"<b>Causes of Arkansas ERS Pension Debt (2001-2019)<b>",
+yaxisMax = 4.5,
+lab1 = "Investment<br>Returns", 
+lab2 = "Changes to<br>Actuarial<br>Methods &<br>Assumptions",
+lab3 = "Negative<br>Amortization",
+lab4 = "Benefit<br>Changes<br>& Other",
+lab6 = "Gains From<br>Pay<br>Increases<br>Not Given",
+lab7 = "Net Change to<br>Unfunded<br>Liability",
+lab8 = NULL,
+lab9 = NULL)
 }
+}
+\author{
+Anil Niraula <anil.niraula@reason.org>
 }
