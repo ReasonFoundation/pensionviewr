@@ -212,7 +212,7 @@ data_from_file <- loadData('data/NorthCarolina_PensionDatabase_TSERS.xlsx')
 
 Back to the Kansas Public Employees' example. That is a lot of variables. The `selectedData()` function selects only a handful of needed variables:
 
-```{r selectedData}
+```
 df <- selectedData(vtsrs_data)
 df %>% 
   head() %>%
@@ -295,7 +295,7 @@ debt <- areaPlot(PERSI.debt, caption = F, grid = F, ticks = F, sp500 = F, font =
 ```
 ### `barPlot()`
 
-12. `barPlot()`:  creates bar charts for Compound Gain/Loss, Net Amortization, Stochastic, and ADEC vs. ERCs. `barPlot()` has 24 arguments, with `data` being required:
+12. `barPlot()`:  creates bar charts for Compound Gain/Loss, Net Amortization, Stochastic, and ADEC vs. ERCs. `barPlot()` has 24 arguments, with `data` not being required for G/L or Stochastic charts:
 
 `barplot(data, net.amo, contributions, compound.gl, gl.url, stochastic.alpha, Ymax, Ymin, Ybreak, yaxisScale, interactive, font, lab1, lab2, lab3, lab4, lab5, lab6, lab7, lab8, lab9)`
 
