@@ -1,8 +1,3 @@
----
-output: github_document
-always_allow_html: yes
----
-
 # pensionviewr
 
 The goal of `pensionviewr` is to simplify the process of gathering and visualizing public pension plan data from the Reason pension database. This repo contains the functions of the `pensionviewr` package, which once installed locally, provides helpful functions for creating and exporting graphics made in ggplot in the style used by the Reason Pension Integrity Project team.
