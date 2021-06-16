@@ -13,6 +13,7 @@ knitr::opts_chunk$set(
 )
 ```
 ```{r packages, include = FALSE}
+
 library(pensionviewr)
 library(tidyverse)
 library(kableExtra)
@@ -61,7 +62,8 @@ devtools::install_github("ReasonFoundation/pensionviewr")
 * The package has four functions for plots: 
 `glPlot()`, 
 `linePlot()`, 
-`areaPlot()`, and 
+`areaPlot()`, 
+`barPlot()`, and
 `savePlot()`.
 
 * The package has Reason color palette: 
@@ -102,7 +104,7 @@ VT %>%
   kable_styling(full_width = FALSE, position = "left")
 ```
 
-The full plan name we are interested in is there listed as "Vermon State Retirement System". We can pull the data for it now:
+The full plan name we are interested in is there listed as "Vermont State Retirement System". We can pull the data for it now:
 
 ```{r pullData}
 vtsrs_data <- pullData(pl, plan_name = "Vermont State Retirement System")
@@ -211,7 +213,7 @@ data_from_file <- loadData('data/NorthCarolina_PensionDatabase_TSERS.xlsx')
 
 Back to the Kansas Public Employees' example. That is a lot of variables. The `selectedData()` function selects only a handful of needed variables:
 
-```{r selectedData}
+```
 df <- selectedData(vtsrs_data)
 df %>% 
   head() %>%
@@ -292,10 +294,70 @@ Example of how it is used in a standard workflow:
 ```
 debt <- areaPlot(PERSI.debt, caption = F, grid = F, ticks = F, sp500 = F, font = "Calibri")
 ```
+### `barPlot()`
+
+12. `barPlot()`:  creates bar charts for Compound Gain/Loss, Net Amortization, Stochastic, and ADEC vs. ERCs. `barPlot()` has 24 arguments, with `data` not being required for G/L or Stochastic charts:
+
+`barplot(data, net.amo, contributions, compound.gl, gl.url, stochastic.alpha, Ymax, Ymin, Ybreak, yaxisScale, interactive, font, lab1, lab2, lab3, lab4, lab5, lab6, lab7, lab8, lab9)`
+
+* `data`: data used for the bar chart (default it set to `NULL`) 
+* `net.amo`: Set to `TRUE` to graph Net Amortization bar chart 
+* `contributions`: Set to `TRUE` to graph ADEC vs. Actual Contribution bar chart 
+* `compound.gl`: Set to `TRUE` to graph Compound Change in Gain/Loss bar chart 
+* `gl.url`: Provide a url to GitHub or Dropbox file with Compound Gain/Loss data
+* `str`: Length of legend text (default set to 25 characters),
+* `stochastic`: Set to `TRUE` to graph Stochastic projections bar chart 
+* `stochastic.url`: provide url to the file with Stochastic data outputs 
+* `Ymax`: Set the Y-axis maximum value 
+* `Ymin`: Set the Y-axis minimum value  
+* `Ybreak`: Set the chucks for Y-axis breaks
+* `yaxisScale`: Set the Y-axis scale (e.g., 1/1000000 – in $Millions)
+* `stochastic.alpha`: Set the transparency for the blue color used for Stochastic bar chart (e.g., 0.95  - 5% transparent)
+* `interactive`: Set to ‘TRUE`  to create an interactive, as opposed to static, chart (using ggplotly)
+* `lab1`: Gain/Loss chart Legend 1 (e.g., "Investment Experience")
+* `lab2`: Gain/Loss chart Legend 2 (e.g., "Benefit Changes")
+* `lab3`: Gain/Loss chart Legend 3 (e.g.,"Changes to Actuarial Methods & Assumptions")
+* `lab4`: Gain/Loss chart Legend 4 (e.g., "Deviations from Demographic Assumptions")
+* `lab5`: Gain/Loss chart Legend 5 (e.g.,"Negative Amortization")
+* `lab6`: Gain/Loss chart Legend 6 (e.g., "Gains From Pay Increases Not Given")
+* `lab7`: Gain/Loss chart Legend 7 (e.g., "Net Change to Unfunded Liability")
+* `lab8`: Gain/Loss chart Legend 8 (e.g., NULL)
+* `lab9`: Gain/Loss chart Legend 9 (e.g., NULL)
+
+Example of how it is used in a standard workflow:
+
+```
+barPlot <- function(
+  data = NULL, 
+  net.amo = FALSE, 
+  contributions = FALSE, 
+  compound.gl = TRUE,
+  gl.url = "https://raw.githubusercontent.com/ReasonFoundation/GraphicsR/master/PERSI_GL2.csv",
+  str = 25,
+  stochastic = FALSE, 
+  stochastic.url = "https://raw.githubusercontent.com/ReasonFoundation/databaseR/master/files/perctest2.csv",
+  stochastic.alpha = 0.40,
+  Ymax = 25,
+  Ymin = 0,
+  Ybreak = 5,
+  yaxisScale = 1/1000000000, 
+  interactive = FALSE,
+  font = "Calibri",
+  lab1 = "Investment Experience", 
+  lab2 = "Benefit Changes",
+  lab3 = "Changes to Actuarial Methods & Assumptions",
+  lab4 = "Deviations from Demographic Assumptions",
+  lab5 = "Negative Amortization",
+  lab6 = "Gains From Pay Increases Not Given",
+  lab7 = "Net Change to Unfunded Liability",
+  lab8 = NULL,
+  lab9 = NULL)
+  
+```
 
 ### `savePlot()`
 
-12. `savePlot()`: adds a source and save ggplot chart. `savePlot` takes five arguments:
+13. `savePlot()`: adds a source and save ggplot chart. `savePlot` takes five arguments:
 `savePlot(plot = myplot, source = "The source for my data", save_filepath = "filename_that_my_plot_should_be_saved_to.png", width_pixels = 648, height_pixels = 384.48)`
 
 * `plot`: The variable name of the plot you have created that you want to format and save
